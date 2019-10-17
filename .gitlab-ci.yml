@@ -1,0 +1,9 @@
+compile_pdf:
+  image: tianon/latex
+  script:
+    - cd dokumentacija
+    - latexmk -pdf OPP_ProjektnaDokumentacija_v5.tex
+  artifacts:
+    paths:
+      - OPP_ProjektnaDokumentacija_v5.pdf
+ 
