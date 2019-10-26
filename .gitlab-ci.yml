@@ -1,4 +1,14 @@
-compile_pdf:
+cache:
+  paths:
+    - /root/.m2/repository
+ 
+stages:
+  - build
+  - test
+  - deploy
+
+compile_documentation:
+  stage: build
   image: tianon/latex
   script:
     - cd dokumentacija
@@ -6,4 +16,29 @@ compile_pdf:
   artifacts:
     paths:
       - dokumentacija/OPP_ProjektnaDokumentacija_v5.pdf
- 
+
+build_backend:
+  stage: build
+  image: maven:3.3.9-jdk-8
+  script:
+    - cd izvorniKod/manje-smece-vise-srece-backend
+    - mvn clean package
+
+test_backend:
+  stage: test
+  image: maven:3.3.9-jdk-8
+  script:
+    - cd izvorniKod/manje-smece-vise-srece-backend
+    - mvn test
+
+deploy_backend:
+  stage: deploy
+  image: ruby:latest
+  script:
+    - cd izvorniKod/manje-smece-vise-srece-backend
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_BACKEND_NAME --api-key=$HEROKU_BACKEND_API_KEY
+  only:
+    - master
