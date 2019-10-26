@@ -58,25 +58,21 @@
 				\textbf{\textit{dio 1. revizije}}
 				
 				\subsubsection{Opis obrazaca uporabe}
-					\textit{Funkcionalne zahtjeve razraditi u obliku obrazaca uporabe. Svaki obrazac je potrebno razraditi prema donjem predlošku. Ukoliko u nekom koraku može doći do odstupanja, potrebno je to odstupanje opisati i po mogućnosti ponuditi rješenje kojim bi se tijek obrasca vratio na osnovni tijek.}\\
 					
-
-					\noindent \underbar{\textbf{UC$<$broj obrasca$>$ -$<$ime obrasca$>$}}
+					\noindent \underbar{\textbf{UC1 - Pronalazak kontejnera}}
+					\\ \textit{Trebamo se dogovoriti kako će korisnik naći kontejner prije opisa ovog obrasca uporabe.}
 					\begin{packed_item}
 	
-						\item \textbf{Glavni sudionik: }$<$sudionik$>$
-						\item  \textbf{Cilj:} $<$cilj$>$
-						\item  \textbf{Sudionici:} $<$sudionici$>$
-						\item  \textbf{Preduvjet:} $<$preduvjet$>$
+						\item \textbf{Glavni sudionik:} Registrirani korisnik
+						\item  \textbf{Cilj:} Pronaći odgovarajući kontejner
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} -
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
 	
-							\item $<$opis korak jedan$>$
-							\item $<$opis korak dva$>$
-							\item $<$opis korak tri$>$
-							\item $<$opis korak četiri$>$
-							\item $<$opis korak pet$>$
+							\item ?
+							
 						\end{packed_enum}
 						
 						\item  \textbf{Opis mogućih odstupanja:}
@@ -92,6 +88,85 @@
 							\end{packed_enum}
 							\item[2.b] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
 							\item[3.a] $<$opis mogućeg scenarija odstupanja  u koraku 3$>$
+							
+						\end{packed_item}
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC2 - Objava slike kontejnera}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik:} Registrirani korisnik
+						\item  \textbf{Cilj:} Objaviti trenutno stanje kontejnera
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Korisnik je registriran
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik odabere kontejner
+							\item Korisnik učitava sliku kontejnera
+							\item Korisnik objavljuje sliku kontejnera
+							
+						\end{packed_enum}
+						
+						\item  \textbf{Opis mogućih odstupanja:}
+						
+						\item[] \begin{packed_item}
+							
+							\item[2.a] Korisnik učita sliku, ali ju ne objavi
+							\item[] \begin{packed_enum}
+								
+								\item Sustav obavještava korisnika da slika nije objavljena prije obustavljanja radnje
+								
+							\end{packed_enum}
+							
+						\end{packed_item}
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC3 - Ocjenjivanje kontejnera}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik:} Registrirani korisnik
+						\item  \textbf{Cilj:} Ocijeniti trenutno stanje kontejnera
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Korisnik je registriran
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik odabere kontejner
+							\item Korisnik daje ocjenu kontejneru
+							
+						\end{packed_enum}
+					\end{packed_item}
+				
+					\noindent \underbar{\textbf{UC4 - Komentiranje kontejnera}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik:} Registrirani korisnik
+						\item  \textbf{Cilj:} Komentirati stanje kontejnera
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Korisnik je registriran
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik odabere kontejner
+							\item Korisnik piše komentar
+							\item Korisnik objavljuje komentar
+							
+						\end{packed_enum}
+						
+						\item  \textbf{Opis mogućih odstupanja:}
+						
+						\item[] \begin{packed_item}
+							
+							\item[2.a] Korisnik napiše komentar, ali ga ne objavi
+							\item[] \begin{packed_enum}
+								
+								\item Sustav obavještava korisnika da komentar nije objavljen prije obustavljanja radnje
+								
+							\end{packed_enum}
 							
 						\end{packed_item}
 					\end{packed_item}
