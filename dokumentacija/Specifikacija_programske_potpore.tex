@@ -186,9 +186,21 @@
 	
 		\section{Ostali zahtjevi}
 		
-			\textbf{\textit{dio 1. revizije}}\\
-		 
-			 \textit{Nefunkcionalni zahtjevi i zahtjevi domene primjene dopunjuju funkcionalne zahtjeve. Oni opisuju \textbf{kako se sustav treba ponašati} i koja \textbf{ograničenja} treba poštivati (performanse, korisničko iskustvo, pouzdanost, standardi kvalitete, sigurnost...). Primjeri takvih zahtjeva u Vašem projektu mogu biti: podržani jezici korisničkog sučelja, vrijeme odziva, najveći mogući podržani broj korisnika, podržane web/mobilne platforme, razina zaštite (protokoli komunikacije, kriptiranje...)... Svaki takav zahtjev potrebno je navesti u jednoj ili dvije rečenice.}
+			\begin{packed_item}
+				\item Sustav treba biti izveden kao responzivna web aplikacija prilagođena mobilnim uređajima, te se prikladno skalirati za ekrane računala
+				\item Sustav treba omogućiti rad više korisnika u stvarnom vremenu
+				\item Pogreške pri izvođenju se ne smiju direktno prikazivati korisniku
+				\item Sustav treba provjeravati ispravnost unesenih podataka, te ne smije dopustiti korisniku da unese podatke koji bi narušili funkcionalnost sustava
+				\item Korisničko sučelje sustava mora biti na hrvatskom jeziku, te podržavati hrvatsku abecedu pri unosu i prikazu podataka
+				\item Korisničko sučelje mora biti intuitivno i jednostavno za korištenje
+				\item Korisniku treba omogućiti pronalazak kontejnera u manje od 10 akcija
+				\item Učitavanje stranice ne smije trajati duže od nekoliko sekundi
+				\\
+				\item Korisničko ime i email adresa korisnika moraju biti jedinstveni
+				\item Lozinke se ne smiju spremati u bazu podataka kao nešifrirani tekst \engl{plaintext}, nego moraju biti šifrirane algoritmom raspršivanja
+				\item Nakon registracije ili promjene email adrese, potrebno je potvrditi vlasništvo email adrese
+				\item Email obavijesti se ne smiju slati na nepotvrđene email adrese.
+			\end{packed_item}
 			 
 			 
 			 
