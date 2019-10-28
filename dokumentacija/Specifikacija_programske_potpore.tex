@@ -59,35 +59,82 @@
 				
 				\subsubsection{Opis obrazaca uporabe}
 					
-					\noindent \underbar{\textbf{UC1 - Pronalazak kontejnera}}
-					\\ \textit{Trebamo se dogovoriti kako će korisnik naći kontejner prije opisa ovog obrasca uporabe.}
+					\noindent \underbar{\textbf{UC1 - Pretraživanje i pregled kontejnera putem ID-a}}
 					\begin{packed_item}
-	
-						\item \textbf{Glavni sudionik:} Registrirani korisnik
-						\item  \textbf{Cilj:} Pronaći odgovarajući kontejner
+						
+						\item \textbf{Glavni sudionik:} Svi korisnici
+						\item  \textbf{Cilj:} Pregledati kontejnere i njihovo stanje kroz vremenski period
 						\item  \textbf{Sudionici:} Baza podataka
 						\item  \textbf{Preduvjet:} -
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
-	
-							\item ?
+							
+							\item Korisnik u tražilicu upisuje ID kontejnera
+							\item Prikazuju se informacije o kontejneru
 							
 						\end{packed_enum}
 						
 						\item  \textbf{Opis mogućih odstupanja:}
 						
 						\item[] \begin{packed_item}
-	
-							\item[2.a] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
+							
+							\item[2.a] Neispravan/nepostojeći ID
 							\item[] \begin{packed_enum}
 								
-								\item $<$opis rješenja mogućeg scenarija korak 1$>$
-								\item $<$opis rješenja mogućeg scenarija korak 2$>$
-								
+								\item Sustav obavještava korisnike o neuspjelom pokušaju te navodi korisnika na upis valjanog ID-a
+								\item Korisnik upisuje ispravan ID ili odustaje od pretraživanja
 							\end{packed_enum}
-							\item[2.b] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
-							\item[3.a] $<$opis mogućeg scenarija odstupanja  u koraku 3$>$
+							
+						\end{packed_item}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC2 - Pretraživanje i pregled kontejnera odabirom na karti/putem adrese}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik:} Svi korisnici
+						\item  \textbf{Cilj:} Pregledati kontejnere i njihovo stanje kroz vremenski period 
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} -
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Karta je prikazana prilikom učitavanja aplikacije
+							\item Korisnik na karti odabire kontejner 
+							\item Prikazuju se informacije o kontejneru 
+							
+						\end{packed_enum}
+					\end{packed_item}
+					
+					
+				\noindent \underbar{\textbf{UC3 - Registracija}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik:} Neregistrirani korisnici
+						\item  \textbf{Cilj:} Stvoriti korisnički račun za pristup sustavu
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} -
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Korisnik odabire opciju za registraciju
+							\item Korisnik unosi potrebne korisničke podatke 
+							\item Korisnik prima obavijest o uspješnoj registraciji
+							
+						\end{packed_enum}
+						
+						\item  \textbf{Opis mogućih odstupanja:}
+						
+						\item[] \begin{packed_item}
+							
+							\item[3.a] Odabir vec zauzetog korisničkog imena i/ili e-maila, unos korisničkog podatka u nedozvoljenom formatu ili pružanje neispravnoga e-maila 
+							\item[] \begin{packed_enum}
+								
+								\item Sustav obavještava korisnika o neuspjelom upisu i vraća ga na stranicu za registraciju
+								\item Korisnik mijenja potrebne podatke te završava unos ili odustaje od registracije
+							\end{packed_enum}
 							
 						\end{packed_item}
 					\end{packed_item}
