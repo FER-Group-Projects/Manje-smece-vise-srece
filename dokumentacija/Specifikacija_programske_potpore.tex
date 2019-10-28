@@ -106,7 +106,6 @@
 				\end{packed_enum}
 				
 				\item  \textbf{Opis mogućih odstupanja:}
-				
 				\item[] \begin{packed_item}
 					
 					\item[2.a] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
@@ -145,7 +144,6 @@
 					
 					\item[2.a] Korisnik učita sliku, ali ju ne objavi
 					\item[] \begin{packed_enum}
-						
 						\item Sustav obavještava korisnika da slika nije objavljena prije obustavljanja radnje
 						
 					\end{packed_enum}
@@ -201,9 +199,182 @@
 				\end{packed_item}
 			\end{packed_item}
 			
+			\noindent \underbar{\textbf{UC5 - Dodavanje  korisnika}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: } Direktor
+				\item  \textbf{Cilj:} Dodati novog korisnika
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Direktor mora biti prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Direktor ide na aplikaciju i odabire opciju: dodaj novog korisnika
+					\item Direktor upisuje ime, prezime, ID novog korisnika (i ostale podatke koji idu u bazu podataka)
+					\item Direktor potvrđuje svoj unos
+				\end{packed_enum}
+				\item[] \begin{packed_item}
+
+					\item[2.a] Korisnik već postoji u bazi
+					\item[] \begin{packed_enum}
+						
+						\item Sustav izvještava direktora o tome da već postoji korisnik s tim ID-om
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+							
+								
+			\noindent \underbar{\textbf{UC6 - Brisanje  korisnika}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: } Direktor
+				\item  \textbf{Cilj:} Izbrisati postojećeg korisnika
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Direktor mora biti prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Direktor ide na aplikaciju i pretražuje korisnike
+					\item Direktor odabire opciju brisanja korisnika
+					\item Direktor potvrđuje svoj izbor
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] ID korisnika ne postoji u bazi
+					\item[] \begin{packed_enum}
+						
+						\item Ispisati poruku da taj korisnik nije pronađen
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
 			
+			\noindent \underbar{\textbf{UC7 - Dodavanje  kontejnera}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: } Direktor
+				\item  \textbf{Cilj:} Dodati novi kontejner
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Direktor mora biti prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Direktor ide na aplikaciju i odabire opciju: dodaj novi kontejner
+					\item Direktor upisuje adresu i ID novog kontejnera 
+					\item Direktor potvrđuje svoj unos
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Na odabranoj adresi već postoji kontejner
+					\item[] \begin{packed_enum}
+						
+						\item Pitati direktora želi li postaviti još jedan kontejner na tu adresu
+						\item Direktor odabire opciju da ili ne
+						
+					\end{packed_enum}
+					\item[2.b] Već postoji kontejner s tim ID-om
+					\item[] \begin{packed_enum}
+						
+						\item Ispisati poruku da već postoji kontejner s tim ID-om
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC8 - Brisanje  kontejnera}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: } Direktor
+				\item  \textbf{Cilj:} Dodati novog korisnika
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Direktor mora biti prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Direktor ide na aplikaciju pretražuje kontejner po ID-u ili adresi i odabire opciju za brisanje kontejnera
+					\item Direktor potvrđuje svoj unos
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Traženi ID kontejnera ne postoji
+					\item[] \begin{packed_enum}
+						
+						\item Ispisati poruku da traženi kontejner nije pronađen
+						
+					\end{packed_enum}
+					\item[2.b] Na traženoj adresi nema niti jednog kontejnera
+							\item[] \begin{packed_enum}
+						
+						\item Ispisati da na traženoj adresi nema niti jednog kontejnera
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC9 - Premještanje  kontejnera}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: } Direktor
+				\item  \textbf{Cilj:} Premjestiti kontejner s jedne lokacije na drugu
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Direktor mora biti prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Direktor ide na aplikaciju i pretražuje kontejner po ID-u ili adresi i odabire opciju za premještanje kontejnera
+					\item Direktor upisuje adresu gdje želi da kontejner bude premješten
+					\item Direktor potvrđuje svoj unos
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+							\item[2.a] Traženi ID kontejnera ne postoji
+					\item[] \begin{packed_enum}
+						
+						\item Ispisati poruku da traženi kontejner nije pronađen
+						
+					\end{packed_enum}
+					\item[2.b] Na traženoj adresi nema niti jednog kontejnera
+					\item[] \begin{packed_enum}
+						
+						\item Ispisati da na traženoj adresi nema niti jednog kontejnera
+							\end{packed_enum}
+					\item[2.c] Na odabranoj adresi već postoji kontejner
+			
+						\item[] \begin{packed_enum}
+							
+							\item Pitati direktora želi li postaviti još jedan kontejner na tu adresu
+							\item Direktor odabire opciju da ili ne
+							
+						\end{packed_enum}
+						
+					
+				\end{packed_item}
+			\end{packed_item}
+
 			\subsubsection{Dijagrami obrazaca uporabe}
-			
+
 			\textit{Prikazati odnos aktora i obrazaca uporabe odgovarajućim UML dijagramom. Nije nužno nacrtati sve na jednom dijagramu. Modelirati po razinama apstrakcije i skupovima srodnih funkcionalnosti.}
 			\eject		
 			
@@ -231,4 +402,3 @@
 				\item Nakon registracije ili promjene email adrese, potrebno je potvrditi vlasništvo email adrese
 				\item Email obavijesti se ne smiju slati na nepotvrđene email adrese.
 			\end{packed_item}
-			 
