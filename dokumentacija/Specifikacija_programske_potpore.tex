@@ -2,20 +2,23 @@
 		
 	\section{Funkcionalni zahtjevi}
 			
-			\textbf{\textit{dio 1. revizije}}\\
-			
-			\textit{Navesti \textbf{dionike} koji imaju \textbf{interes u ovom sustavu} ili  \textbf{su nositelji odgovornosti}. To su prije svega korisnici, ali i administratori sustava, naručitelji, razvojni tim.}\\
-				
-			\textit{Navesti \textbf{aktore} koji izravno \textbf{koriste} ili \textbf{komuniciraju sa sustavom}. Oni mogu imati inicijatorsku ulogu, tj. započinju određene procese u sustavu ili samo sudioničku ulogu, tj. obavljaju određeni posao. Za svakog aktora navesti funkcionalne zahtjeve koji se na njega odnose.}\\
-			
-			
 			\noindent \textbf{Dionici:}
 			
 			\begin{packed_enum}
 				
-				\item Dionik 1
-				\item Dionik 2				
-				\item ...
+				\item Direktor službe
+				\item Korisnici stranice
+				
+				\begin{packed_enum}
+				
+						\item Neregistrirani korisnici
+						\item Registrirani korisnici
+						
+				\end{packed_enum}
+				
+				\item Službenici	
+				\item Razvojni tim	
+				
 				
 			\end{packed_enum}
 			
@@ -23,30 +26,57 @@
 			
 			
 			\begin{packed_enum}
-				\item  \underbar{Aktor 1 (inicijator) može:}
+				\item  \underbar{Neregistrirani/neprijavljeni korisnik (inicijator) može:}
 				
 				\begin{packed_enum}
 					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
-					\begin{packed_enum}
-						
-						\item  podfunkcionalnost 1 
-						\item  podfunkcionalnost 2
-				
-					\end{packed_enum}
-					\item  funkcionalnost 3
+					\item na karti pregledati pozicije kontejnera
+					\item pronaći kontejner pomoću njegovog ID-a ili adrese
+					\item vidjeti trenutno i stanje kontejnera do 3 mjeseca unatrag
+					\item registrirati se u sustav te stvoriti novi korisnički račun za koji su mu potrebni korisničko ime, lozinka i e-mail adresa
 					
 				\end{packed_enum}
 			
-				\item  \underbar{Aktor 2 (sudionik) može:}
+				\item  \underbar{Registrirani korisnik (inicijator) može:}
 				
 				\begin{packed_enum}
 					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
+					\item pregledavati i mijenjati svoje osobne podatke
+					\item izbrisati svoj korisnički račun
+					\item ocijeniti stanje i pisati komentare o kontejneru
+					\item postaviti fotografije kontejnera
+					\item odabrati kontejnere za praćenje njihovog stanja
 					
 				\end{packed_enum}
+				
+					\item \underbar{Službenik (inicijator) može:}
+				
+				\begin{packed_enum}
+				
+					\item označiti da je ispraznio kontejner 
+					\item premjestiti kontejner
+					\item povući kontejner u skladište
+				
+				\end{packed_enum}	
+				
+				\item \underbar{Direktor službe (inicijator) može:}		
+				
+				\begin{packed_enum}
+				
+					\item dodati i izbrisati korisnika iz svoje službe
+					\item dodati, izbrisati i premjestiti kontejner 				
+				
+				\end{packed_enum}
+				
+				\item	\underbar{Baza podataka (sudionik):}
+				
+				\begin{packed_enum}
+				
+					\item pohranjuje sve podatke o korisnicima i njihovim ovlastima
+					\item pohranjuje sve podatke o kontejnerima 
+				
+				\end{packed_enum}
+				
 			\end{packed_enum}
 			
 			\eject 
@@ -54,138 +84,138 @@
 			
 				
 			\subsection{Obrasci uporabe}
+			
+			\textbf{\textit{dio 1. revizije}}
+			
+			\subsubsection{Opis obrazaca uporabe}
+			
+			\noindent \underbar{\textbf{UC1 - Pronalazak kontejnera}}
+			\\ \textit{Trebamo se dogovoriti kako će korisnik naći kontejner prije opisa ovog obrasca uporabe.}
+			\begin{packed_item}
 				
-				\textbf{\textit{dio 1. revizije}}
+				\item \textbf{Glavni sudionik:} Registrirani korisnik
+				\item  \textbf{Cilj:} Pronaći odgovarajući kontejner
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} -
+				\item  \textbf{Opis osnovnog tijeka:}
 				
-				\subsubsection{Opis obrazaca uporabe}
+				\item[] \begin{packed_enum}
 					
-					\noindent \underbar{\textbf{UC1 - Pronalazak kontejnera}}
-					\\ \textit{Trebamo se dogovoriti kako će korisnik naći kontejner prije opisa ovog obrasca uporabe.}
-					\begin{packed_item}
-	
-						\item \textbf{Glavni sudionik:} Registrirani korisnik
-						\item  \textbf{Cilj:} Pronaći odgovarajući kontejner
-						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} -
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-	
-							\item ?
-							
-						\end{packed_enum}
-						
-						\item  \textbf{Opis mogućih odstupanja:}
-						
-						\item[] \begin{packed_item}
-	
-							\item[2.a] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
-							\item[] \begin{packed_enum}
-								
-								\item $<$opis rješenja mogućeg scenarija korak 1$>$
-								\item $<$opis rješenja mogućeg scenarija korak 2$>$
-								
-							\end{packed_enum}
-							\item[2.b] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
-							\item[3.a] $<$opis mogućeg scenarija odstupanja  u koraku 3$>$
-							
-						\end{packed_item}
-					\end{packed_item}
-				
-					\noindent \underbar{\textbf{UC2 - Objava slike kontejnera}}
-					\begin{packed_item}
-						
-						\item \textbf{Glavni sudionik:} Registrirani korisnik
-						\item  \textbf{Cilj:} Objaviti trenutno stanje kontejnera
-						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Korisnik je prijavljen
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-							
-							\item Korisnik odabere kontejner
-							\item Korisnik učitava sliku kontejnera
-							\item Korisnik objavljuje sliku kontejnera
-							
-						\end{packed_enum}
-						
-						\item  \textbf{Opis mogućih odstupanja:}
-						
-						\item[] \begin{packed_item}
-							
-							\item[2.a] Korisnik učita sliku, ali ju ne objavi
-							\item[] \begin{packed_enum}
-								
-								\item Sustav obavještava korisnika da slika nije objavljena prije obustavljanja radnje
-								
-							\end{packed_enum}
-							
-						\end{packed_item}
-					\end{packed_item}
-				
-					\noindent \underbar{\textbf{UC3 - Ocjenjivanje kontejnera}}
-					\begin{packed_item}
-						
-						\item \textbf{Glavni sudionik:} Registrirani korisnik
-						\item  \textbf{Cilj:} Ocijeniti trenutno stanje kontejnera
-						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Korisnik je prijavljen
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-							
-							\item Korisnik odabere kontejner
-							\item Korisnik daje ocjenu kontejneru
-							
-						\end{packed_enum}
-					\end{packed_item}
-				
-					\noindent \underbar{\textbf{UC4 - Komentiranje kontejnera}}
-					\begin{packed_item}
-						
-						\item \textbf{Glavni sudionik:} Registrirani korisnik
-						\item  \textbf{Cilj:} Komentirati stanje kontejnera
-						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Korisnik je prijavljen
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-							
-							\item Korisnik odabere kontejner
-							\item Korisnik piše komentar
-							\item Korisnik objavljuje komentar
-							
-						\end{packed_enum}
-						
-						\item  \textbf{Opis mogućih odstupanja:}
-						
-						\item[] \begin{packed_item}
-							
-							\item[2.a] Korisnik napiše komentar, ali ga ne objavi
-							\item[] \begin{packed_enum}
-								
-								\item Sustav obavještava korisnika da komentar nije objavljen prije obustavljanja radnje
-								
-							\end{packed_enum}
-							
-						\end{packed_item}
-					\end{packed_item}
-				
+					\item ?
 					
-				\subsubsection{Dijagrami obrazaca uporabe}
-					
-					\textit{Prikazati odnos aktora i obrazaca uporabe odgovarajućim UML dijagramom. Nije nužno nacrtati sve na jednom dijagramu. Modelirati po razinama apstrakcije i skupovima srodnih funkcionalnosti.}
-				\eject		
+				\end{packed_enum}
 				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
+					\item[] \begin{packed_enum}
+						
+						\item $<$opis rješenja mogućeg scenarija korak 1$>$
+						\item $<$opis rješenja mogućeg scenarija korak 2$>$
+						
+					\end{packed_enum}
+					\item[2.b] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
+					\item[3.a] $<$opis mogućeg scenarija odstupanja  u koraku 3$>$
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC2 - Objava slike kontejnera}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik:} Registrirani korisnik
+				\item  \textbf{Cilj:} Objaviti trenutno stanje kontejnera
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Korisnik je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Korisnik odabere kontejner
+					\item Korisnik učitava sliku kontejnera
+					\item Korisnik objavljuje sliku kontejnera
+					
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Korisnik učita sliku, ali ju ne objavi
+					\item[] \begin{packed_enum}
+						
+						\item Sustav obavještava korisnika da slika nije objavljena prije obustavljanja radnje
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC3 - Ocjenjivanje kontejnera}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik:} Registrirani korisnik
+				\item  \textbf{Cilj:} Ocijeniti trenutno stanje kontejnera
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Korisnik je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Korisnik odabere kontejner
+					\item Korisnik daje ocjenu kontejneru
+					
+				\end{packed_enum}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC4 - Komentiranje kontejnera}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik:} Registrirani korisnik
+				\item  \textbf{Cilj:} Komentirati stanje kontejnera
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Korisnik je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Korisnik odabere kontejner
+					\item Korisnik piše komentar
+					\item Korisnik objavljuje komentar
+					
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Korisnik napiše komentar, ali ga ne objavi
+					\item[] \begin{packed_enum}
+						
+						\item Sustav obavještava korisnika da komentar nije objavljen prije obustavljanja radnje
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			
+			\subsubsection{Dijagrami obrazaca uporabe}
+			
+			\textit{Prikazati odnos aktora i obrazaca uporabe odgovarajućim UML dijagramom. Nije nužno nacrtati sve na jednom dijagramu. Modelirati po razinama apstrakcije i skupovima srodnih funkcionalnosti.}
+			\eject		
+			
 			\subsection{Sekvencijski dijagrami}
-				
-				\textbf{\textit{dio 1. revizije}}\\
-				
-				\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
-				\eject
-	
-		\section{Ostali zahtjevi}
-		
+			
+			\textbf{\textit{dio 1. revizije}}\\
+			
+			\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
+			\eject
+			
+			\section{Ostali zahtjevi}
+			
 			\begin{packed_item}
 				\item Sustav treba biti izveden kao responzivna web aplikacija prilagođena mobilnim uređajima, te se prikladno skalirati za ekrane računala
 				\item Sustav treba omogućiti rad više korisnika u stvarnom vremenu
@@ -202,6 +232,3 @@
 				\item Email obavijesti se ne smiju slati na nepotvrđene email adrese.
 			\end{packed_item}
 			 
-			 
-			 
-	
