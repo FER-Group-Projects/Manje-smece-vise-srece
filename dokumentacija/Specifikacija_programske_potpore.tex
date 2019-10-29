@@ -89,39 +89,136 @@
 			
 			\subsubsection{Opis obrazaca uporabe}
 			
-			\noindent \underbar{\textbf{UC1 - Pronalazak kontejnera}}
-			\\ \textit{Trebamo se dogovoriti kako će korisnik naći kontejner prije opisa ovog obrasca uporabe.}
+			\noindent \underbar{\textbf{UC1 - Pretraživanje i pregled kontejnera putem ID-a}}
 			\begin{packed_item}
 				
-				\item \textbf{Glavni sudionik:} Registrirani korisnik
-				\item  \textbf{Cilj:} Pronaći odgovarajući kontejner
+				\item \textbf{Glavni sudionik:} Svi korisnici
+				\item  \textbf{Cilj:} Pregledati kontejnere i njihovo stanje kroz vremenski period
 				\item  \textbf{Sudionici:} Baza podataka
 				\item  \textbf{Preduvjet:} -
 				\item  \textbf{Opis osnovnog tijeka:}
 				
 				\item[] \begin{packed_enum}
 					
-					\item ?
+					\item Korisnik u tražilicu upisuje ID kontejnera
+					\item Prikazuju se informacije o kontejneru
 					
 				\end{packed_enum}
 				
 				\item  \textbf{Opis mogućih odstupanja:}
+				
 				\item[] \begin{packed_item}
 					
-					\item[2.a] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
+					\item[2.a] Neispravan/nepostojeći ID
 					\item[] \begin{packed_enum}
 						
-						\item $<$opis rješenja mogućeg scenarija korak 1$>$
-						\item $<$opis rješenja mogućeg scenarija korak 2$>$
-						
+						\item Sustav obavještava korisnike o neuspjelom pokušaju te navodi korisnika na upis valjanog ID-a
+						\item Korisnik upisuje ispravan ID ili odustaje od pretraživanja
 					\end{packed_enum}
-					\item[2.b] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
-					\item[3.a] $<$opis mogućeg scenarija odstupanja  u koraku 3$>$
 					
 				\end{packed_item}
 			\end{packed_item}
 			
-			\noindent \underbar{\textbf{UC2 - Objava slike kontejnera}}
+			\noindent \underbar{\textbf{UC2 - Pretraživanje i pregled kontejnera odabirom na karti/putem adrese}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik:} Svi korisnici
+				\item  \textbf{Cilj:} Pregledati kontejnere i njihovo stanje kroz vremenski period 
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} -
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Karta je prikazana prilikom učitavanja aplikacije
+					\item Korisnik na karti odabire kontejner 
+					\item Prikazuju se informacije o kontejneru 
+					
+				\end{packed_enum}
+			\end{packed_item}
+			
+			
+			\noindent \underbar{\textbf{UC3 - Registracija}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik:} Neregistrirani korisnici
+				\item  \textbf{Cilj:} Stvoriti korisnički račun za pristup sustavu
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} -
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Korisnik odabire opciju za registraciju
+					\item Korisnik unosi potrebne korisničke podatke 
+					\item Korisnik prima obavijest o uspješnoj registraciji
+					
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[3.a] Odabir vec zauzetog korisničkog imena i/ili e-maila, unos korisničkog podatka u nedozvoljenom formatu ili pružanje neispravnoga e-maila 
+					\item[] \begin{packed_enum}
+						
+						\item Sustav obavještava korisnika o neuspjelom upisu i vraća ga na stranicu za registraciju
+						\item Korisnik mijenja potrebne podatke te završava unos ili odustaje od registracije
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			
+			\noindent\underbar{\textbf{UC4 - Prijava u sustav}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik:} Registrirani korisnici, zaposlenici, direktor
+				\item  \textbf{Cilj:} Dobiti pristup korisničkom sučelju
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Registracija
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Unos korisničkog imena i lozinke
+					\item Potvrda o ispravnosti unesenih podataka
+					\item Pristup funkcijama
+					
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Neispravno korisničko ime/lozinka
+					\item[] \begin{packed_enum}
+						
+						\item Sustav obavještava korisnike o neuspješnom upisu 
+						\item Korisnik upisuje ispravne podatke ili odustaje od prijave
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC5 - Pregled osobnih podataka}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik:} Registrirani korisnici, zaposlenici, direktor
+				\item  \textbf{Cilj:} Pregledati osobne podatke
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Klijent je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Korisnik odabire opciju "Osobni podatci"
+					\item Prikazuju se osobni podatci korisnika
+					
+				\end{packed_enum}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC6 - Objava slike kontejnera}}
 			\begin{packed_item}
 				
 				\item \textbf{Glavni sudionik:} Registrirani korisnik
@@ -144,6 +241,7 @@
 					
 					\item[2.a] Korisnik učita sliku, ali ju ne objavi
 					\item[] \begin{packed_enum}
+						
 						\item Sustav obavještava korisnika da slika nije objavljena prije obustavljanja radnje
 						
 					\end{packed_enum}
@@ -151,7 +249,7 @@
 				\end{packed_item}
 			\end{packed_item}
 			
-			\noindent \underbar{\textbf{UC3 - Ocjenjivanje kontejnera}}
+			\noindent \underbar{\textbf{UC7 - Ocjenjivanje kontejnera}}
 			\begin{packed_item}
 				
 				\item \textbf{Glavni sudionik:} Registrirani korisnik
@@ -168,7 +266,7 @@
 				\end{packed_enum}
 			\end{packed_item}
 			
-			\noindent \underbar{\textbf{UC4 - Komentiranje kontejnera}}
+			\noindent \underbar{\textbf{UC8 - Komentiranje kontejnera}}
 			\begin{packed_item}
 				
 				\item \textbf{Glavni sudionik:} Registrirani korisnik
@@ -199,7 +297,7 @@
 				\end{packed_item}
 			\end{packed_item}
 			
-			\noindent \underbar{\textbf{UC5 - Dodavanje  korisnika}}
+			\noindent \underbar{\textbf{UC9 - Dodavanje  korisnika}}
 			\begin{packed_item}
 				
 				\item \textbf{Glavni sudionik: } Direktor
@@ -227,7 +325,7 @@
 			\end{packed_item}
 							
 								
-			\noindent \underbar{\textbf{UC6 - Brisanje  korisnika}}
+			\noindent \underbar{\textbf{UC10 - Brisanje  korisnika}}
 			\begin{packed_item}
 				
 				\item \textbf{Glavni sudionik: } Direktor
@@ -257,7 +355,7 @@
 				\end{packed_item}
 			\end{packed_item}
 			
-			\noindent \underbar{\textbf{UC7 - Dodavanje  kontejnera}}
+			\noindent \underbar{\textbf{UC11 - Dodavanje  kontejnera}}
 			\begin{packed_item}
 				
 				\item \textbf{Glavni sudionik: } Direktor
@@ -294,7 +392,7 @@
 				\end{packed_item}
 			\end{packed_item}
 			
-			\noindent \underbar{\textbf{UC8 - Brisanje  kontejnera}}
+			\noindent \underbar{\textbf{UC12 - Brisanje  kontejnera}}
 			\begin{packed_item}
 				
 				\item \textbf{Glavni sudionik: } Direktor
@@ -329,7 +427,7 @@
 				\end{packed_item}
 			\end{packed_item}
 			
-			\noindent \underbar{\textbf{UC9 - Premještanje  kontejnera}}
+			\noindent \underbar{\textbf{UC13 - Premještanje  kontejnera}}
 			\begin{packed_item}
 				
 				\item \textbf{Glavni sudionik: } Direktor
@@ -377,16 +475,16 @@
 
 			\textit{Prikazati odnos aktora i obrazaca uporabe odgovarajućim UML dijagramom. Nije nužno nacrtati sve na jednom dijagramu. Modelirati po razinama apstrakcije i skupovima srodnih funkcionalnosti.}
 			\eject		
-			
+
 			\subsection{Sekvencijski dijagrami}
-			
+
 			\textbf{\textit{dio 1. revizije}}\\
 			
 			\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
 			\eject
-			
+
 			\section{Ostali zahtjevi}
-			
+
 			\begin{packed_item}
 				\item Sustav treba biti izveden kao responzivna web aplikacija prilagođena mobilnim uređajima, te se prikladno skalirati za ekrane računala
 				\item Sustav treba omogućiti rad više korisnika u stvarnom vremenu
