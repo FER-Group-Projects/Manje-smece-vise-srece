@@ -1,17 +1,18 @@
 \chapter{Opis projektnog zadatka}
-
-		Cilj ovog projekta je razviti programsku podršku za web aplikaciju koja će građanima omogućiti slanje stanja kontejnera djelatnicima komunalnih službi. Aplikacija bi, temeljem zaprimljenih stanja kontejnera, pomogla komunalnim službama da problem odvoza smeća rješavaju na efikasniji i brži način.\\
 		
-		Prilikom pokretanja sustava, prikazuje se karta s ucrtanim kontejnerima koji se nalaze u blizini te traka za pretraživanje kontejnera.
+		Cilj ovog projekta je razviti programsku podršku za web aplikaciju \textit{"Manje smeće više sreće"} koja će građanima omogućiti ocjenjivanje i komentiranje stanja kontejnera, te praćenje tih recenzija djelatnicima komunalnih službi.
+		Aplikacija bi time povećala povezanost građana s djelatnicima komunalnih službi, što bi omogućilo rješavanje problema odvoza smeća na efikasniji i brži način. 
+		Osim toga, aplikacija mi omogućila građanima transparentniji uvid u rad komunalnih službi.
+		
+		Prilikom pokretanja sustava, prikazuje se karta s ucrtanim kontejnerima koji se nalaze u blizini korisnika te traka za pretraživanje kontejnera.
         Neregistriranom korisniku, odabirom kontejnera na karti, otvaraju se opće informacije o istom; ID kontejnera, adresa te povijest stanja
-        koja je vidljiva kroz recenzije i slike koje su korisnici objavljivali.\\
+        koja je vidljiva kroz recenzije korisnika i slike koje su korisnici objavljivali.
 
-        Osim pregleda kontejnera odabirom na karti, neregistriranim korisnicima ponuđena je opcija pretraživanja
-        putem jedinstvenog ID-a dodijeljenog svakom kontejneru. Upisom valjanog ID-a, otvaraju se opće informacije o kontejneru, a u suprotnom korisnik dobiva odgovarajuću
-        poruku.\\
+        Osim pregleda kontejnera odabirom na karti, korisnicima je ponuđena opcija pretraživanja putem jedinstvenog ID-a koji je prikazan na kontejneru.
+        Upisom valjanog ID-a, otvaraju se opće informacije o kontejneru, a u suprotnom korisnik dobiva odgovarajuću poruku.
         
-        Neregistriranom korisniku omogućeno je registriranje u sustav/kreiranje novog računa, a
-        za to su potrebni sljedeći podatci:
+        Neregistriranom korisniku omogućeno je prijavljivanje u sustav s postojećim računom ili registracija novog računa.
+        Za registraciju novog računa potrebni su sljedeći podatci:
         \begin{packed_item}
 			
 			\item  korisničko ime
@@ -20,11 +21,25 @@
 			
 		\end{packed_item}
 		
-		Registracijom u sustav, korisnik dobiva mogućnost ocjenjivanja i komentiranja stanja kontejnera kao građanin. Korisnik, osim kao građanin, može biti djelatnik ili direktor komunalne službe.\\
+		Registracijom u sustav, korisnik dobiva mogućnost ocjenjivanja i komentiranja stanja kontejnera kao građanin. 
+		Korisnik, osim kao građanin, može biti djelatnik ili direktor komunalne službe.
 		
-		\underbar{\textit{Građanin}} je registrirani korisnik koji ima mogućnost ocjenjivanja i komentiranja stanja kontejnera. Osim navedenog, građanin može slikati kontejner i objaviti njegovo stvarno stanje.\\
+		\underbar{\textit{Građanin}} je registrirani korisnik koji ima mogućnost ocjenjivanja i komentiranja stanja kontejnera. 
+		Nakon što je odabrao kontejner, građaninu je omogućeno davanje numeričke ocjene punoće kontejnera, te ocjene neurednosti kontejnera.
+		Osim navedenog, omogućeno mu je ostavljanje tekstualnih komentara, te slika samog kontejnera kako bi po potrebi bolje prikazao stanje kontejnera.
+		Građaninu je omogućeno praćenje kontejnera čime dobiva email obavijesti pri promjeni stanja kontejnera, te pregled kontejnera koje trenutno prati i mogućnost prestanka praćenja pojedinih kontejnera. 
+		Obavijesti o promjeni stanja kontejnera zahtijevaju potvrđenu email adresu kako ne bi slali email poruke na krivu adresu. 
 		
-		\underbar{\textit{Direktor}} ima širi spektar mogućnosti rada u aplikaciji. Njemu je omogućeno pregled svih kontejnera, zaposlenika, zona i ruta. Također mu je omogućeno dodavanje novih kontejnera i zaposlenika, te svrstavanje zaposlenika i kontejnera u zone.\\
+		\underbar{\textit{Djelatnik}} komunalne službe kroz aplikaciju ima pristup dodijeljenim kontejnerima svoje komunalne službe.
+		Omogućen mu je pregled svojih kontejnera i njihovih stanja, te može označiti da je ispraznio određeni kontejner čime se šalje obavijest svim pretplaćenom korisnicima tog kontejnera.
+		Osim toga, omogućen mu je prikaz svoje rute koju aplikacija generira na temelju dodijeljenih kontejnera i njihovih stanja. 
+		
+		
+		\underbar{\textit{Direktor}} komunalne službe ima širi spektar mogućnosti rada u aplikaciji. 
+		Njemu je omogućen pregled svih kontejnera, zaposlenika, zona i ruta svoje komunalne službe. 
+		Odabirom kontejnera, omogućeno mu je brisanje, premještanje i označavanje da je kontejner poslan u skladište.
+		Omogućeno mu je dodavanje kontejnera na trenutnoj lokaciji čime aplikacija popunjava adresu i koordinate kontejnera ili nekoj drugoj lokaciji pri čemu mora ručno postaviti te parametre.
+		Osim toga, direktoru je omogućeno dodavanje i uklanjanje djelatnika iz svoje službe.
 		
 		
 		\eject
