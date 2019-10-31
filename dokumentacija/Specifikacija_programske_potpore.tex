@@ -296,7 +296,7 @@
 					
 				\end{packed_item}
 			\end{packed_item}
-			
+		
 			\noindent \underbar{\textbf{UC9 - Dodavanje  korisnika}}
 			\begin{packed_item}
 				
@@ -312,8 +312,11 @@
 					\item Direktor upisuje ime, prezime, ID novog korisnika (i ostale podatke koji idu u bazu podataka)
 					\item Direktor potvrđuje svoj unos
 				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
 				\item[] \begin{packed_item}
-
+					
 					\item[2.a] Korisnik već postoji u bazi
 					\item[] \begin{packed_enum}
 						
@@ -323,8 +326,8 @@
 					
 				\end{packed_item}
 			\end{packed_item}
-							
-								
+			
+			
 			\noindent \underbar{\textbf{UC10 - Brisanje  korisnika}}
 			\begin{packed_item}
 				
@@ -403,7 +406,7 @@
 				
 				\item[] \begin{packed_enum}
 					
-					\item Direktor ide na aplikaciju pretražuje kontejner po ID-u ili adresi i odabire opciju za brisanje kontejnera
+					\item Direktor ide na aplikaciju pretražuje kontejner po ID-u ili ulici i odabire opciju za brisanje kontejnera
 					\item Direktor potvrđuje svoj unos
 				\end{packed_enum}
 				
@@ -417,10 +420,10 @@
 						\item Ispisati poruku da traženi kontejner nije pronađen
 						
 					\end{packed_enum}
-					\item[2.b] Na traženoj adresi nema niti jednog kontejnera
-							\item[] \begin{packed_enum}
+					\item[2.b] U traženoj ulici nema niti jednog kontejnera
+					\item[] \begin{packed_enum}
 						
-						\item Ispisati da na traženoj adresi nema niti jednog kontejnera
+						\item Ispisati da u traženoj ulici nema niti jednog kontejnera
 						
 					\end{packed_enum}
 					
@@ -438,7 +441,7 @@
 				
 				\item[] \begin{packed_enum}
 					
-					\item Direktor ide na aplikaciju i pretražuje kontejner po ID-u ili adresi i odabire opciju za premještanje kontejnera
+					\item Direktor ide na aplikaciju i pretražuje kontejner po ID-u ili ulici i odabire opciju za premještanje kontejnera
 					\item Direktor upisuje adresu gdje želi da kontejner bude premješten
 					\item Direktor potvrđuje svoj unos
 				\end{packed_enum}
@@ -447,26 +450,26 @@
 				
 				\item[] \begin{packed_item}
 					
-							\item[2.a] Traženi ID kontejnera ne postoji
+					\item[2.a] Traženi ID kontejnera ne postoji
 					\item[] \begin{packed_enum}
 						
 						\item Ispisati poruku da traženi kontejner nije pronađen
 						
 					\end{packed_enum}
-					\item[2.b] Na traženoj adresi nema niti jednog kontejnera
+					\item[2.b] U traženoj ulici nema niti jednog kontejnera
 					\item[] \begin{packed_enum}
 						
-						\item Ispisati da na traženoj adresi nema niti jednog kontejnera
-							\end{packed_enum}
+						\item Ispisati da u traženoj ulici nema niti jednog kontejnera
+					\end{packed_enum}
 					\item[2.c] Na odabranoj adresi već postoji kontejner
-			
-						\item[] \begin{packed_enum}
-							
-							\item Pitati direktora želi li postaviti još jedan kontejner na tu adresu
-							\item Direktor odabire opciju da ili ne
-							
-						\end{packed_enum}
+					
+					\item[] \begin{packed_enum}
 						
+						\item Pitati direktora želi li postaviti još jedan kontejner na tu adresu
+						\item Direktor odabire opciju da ili ne
+						
+					\end{packed_enum}
+					
 					
 				\end{packed_item}
 			\end{packed_item}
@@ -562,3 +565,37 @@
 				\item Nakon registracije ili promjene email adrese, potrebno je potvrditi vlasništvo email adrese
 				\item Email obavijesti se ne smiju slati na nepotvrđene email adrese.
 			\end{packed_item}
+				
+
+
+			\subsection{Sekvencijski dijagrami}
+			 
+			\noindent {\textbf{Obrazac uporabe UC1 - Dodavanje korisnika}}
+				
+			
+			\noindent	Direktor želi dodati novog korisnika. U aplikaciji bira opciju za unos korisnika, gdje predaje sve njegove podatke, što uključuje i njegov ID. Nakon toga aplikacija njegov ID proslijeđuje do baze podataka gdje se provjerava postoji li več korisnik s tim ID-om, ako ne onda Direktor dobiva opciju za potvrdu unosa i ako izabere tu opciju, novi korisnik se unosi u bazu. Ako već korisnik s tim ID-om postoji ispisuje se odgovarajuća poruka. Ako direktor nije potvrdio unos, postupak će se prekinuti. Na kraju svega se aplikacija vraća u prvotno stanje.
+						 
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.0\linewidth]{"slike/Sekvencijski dijagram za dodavanje korisnika"}
+				\caption{}
+				\label{fig:sekvencijski-dijagram-za-dodavanje-korisnika}
+			\end{figure}
+			
+			\clearpage	 
+			\noindent {\textbf{Obrazac uporabe UC5 - Premještanje kontejnera}}
+			
+			
+			\noindent
+				Direktor želi premjestiti određeni kontejner. U aplikaciji traži kontejner po ID-u ili ulici i odabire opciju za premještanje tog kontejnera. Provjerava se postoji li kontejner s tim ID-om ili u toj ulici. Nakon toga odabire adresu na koju će kontejner biti premješten. Ako na toj adresi već postoji kontejner onda se treba prikazati dijalog da direktor potvrdi da želi da se 2 kontejnera nalaze na toj adresi. Nakon toga se mijenja adresa kontejnera u bazi podataka i aplikacija se vraća u prvotno stanje.
+				
+			\clearpage	 
+				
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.1\linewidth]{"slike/Sekvencijski dijagram za premjestanje kontejnera"}
+				\caption{}
+				\label{fig:sekvencijski-dijagram-za-premjestanje-kontejnera}
+			\end{figure}
+			
+			\clearpage
