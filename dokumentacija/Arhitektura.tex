@@ -16,39 +16,218 @@
 
 				
 		\section{Baza podataka}
+		
+		Aplikacija koristi SQL relacijsku bazu podataka. Ona se sastoji od relacija (tablica) koje se sastoje od atributa. Razlog uporabe relacijske baze podataka je olakšavanje modeliranja entiteta i događaja iz stvarnog svijeta. Baza podataka ove aplikacije sastoji se od sljedećih entiteta:
+		
+		\begin{packed_item}
 			
-			\textbf{\textit{dio 1. revizije}}\\
+			\item Korisnik
+			\item Kontejner
+			\item Komunalna služba
+			\item Pretplata
+			\item Recenzija
+			\item Senzor
+			\item Zona
+			\item Grad
+			\item Država
 			
-		\textit{Potrebno je opisati koju vrstu i implementaciju baze podataka ste odabrali, glavne komponente od kojih se sastoji i slično.}
+		\end{packed_item}
 		
 			\subsection{Opis tablica}
-			
-
-				\textit{Svaku tablicu je potrebno opisati po zadanom predlošku. Lijevo se nalazi točno ime varijable u bazi podataka, u sredini se nalazi tip podataka, a desno se nalazi opis varijable. Svjetlozelenom bojom označite primarni ključ. Svjetlo plavom označite strani ključ}
+				
+				\textbf{Korisnik.} Ovaj entitet sadrži informacije o korisniku aplikacije. Uključeni atributi su ID korisnika, ID komunalne službe u kojoj je korisnik zaposlen (ako je zaposlen u komunalnoj službi), korisničko ime, e-mail adresa, informacije je li e-mail adresa potvrđena te lozinka. Ovaj entitet u vezi je \textit{One-to-Many} s entitetom Komunalna služba preko ID-a korisnika te u vezi \textit{Many-to-One} s entitetom Komunalna služba preko ID-a komunalne službe u kojoj je korisnik zaposlen.
 				
 				\begin{longtabu} to \textwidth {|X[6, l]|X[6, l]|X[20, l]|}
 					
-					\hline \multicolumn{3}{|c|}{\textbf{korisnik - ime tablice}}	 \\[3pt] \hline
+					\hline \multicolumn{3}{|c|}{\textbf{Korisnik}}\\[3pt] \hline
 					\endfirsthead
 					
-					\hline \multicolumn{3}{|c|}{\textbf{korisnik - ime tablice}}	 \\[3pt] \hline
+					\hline \multicolumn{3}{|c|}{\textbf{Korisnik}}\\[3pt] \hline
 					\endhead
 					
 					\hline 
 					\endlastfoot
 					
-					\cellcolor{LightGreen}IDKorisnik & INT	&  	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam 	\\ \hline
-					korisnickoIme	& VARCHAR &   	\\ \hline 
-					email & VARCHAR &   \\ \hline 
-					ime & VARCHAR	&  		\\ \hline 
-					\cellcolor{LightBlue} primjer	& VARCHAR &   	\\ \hline 
+					\cellcolor{LightGreen}IDkorisnik & INTEGER & Jedinstveni identifikator korisnika\\ \hline
+					\cellcolor{LightBlue}IDsluzba & INTEGER & Jedinstveni identifikator komunalne službe\\ \hline 
+					korisnickoIme & VARCHAR & Korisničko ime\\ \hline 
+					email & VARCHAR & E-mail adresa korisnika\\ \hline 
+					emailPotvrda & BOOLEAN & Stanje potvrđenosti e-mail adrese\\ \hline 
+					lozinka & VARCHAR & Hash lozinke\\ \hline 
 					
+				\end{longtabu}
+			
+				\textbf{Kontejner.} Ovaj entitet sadrži informacije o kontejneru. Uključeni atributi su ID kontejnera, ID komunalne službe, ID zone u kojoj se kontejner nalazi, adresa kontejnera, geografska dužina te geografska širina kontejnera. Ovaj entitet u vezi je \textit{One-to-Many} s entitetom Pretplata, Recenzija i Senzor preko ID-a kontejnera, \textit{Many-to-One} s entitetom Komunalna služba preko ID-a komunalne službe te u vezi \textit{Many-to-One} s entitetom Zona preko ID-a zone.
+				
+				\begin{longtabu} to \textwidth {|X[6, l]|X[6, l]|X[20, l]|}
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Kontejner}}\\[3pt] \hline
+					\endfirsthead
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Kontejner}}\\[3pt] \hline
+					\endhead
+					
+					\hline 
+					\endlastfoot
+					
+					\cellcolor{LightGreen}IDkontejner & INTEGER & Jedinstveni identifikator kontejnera\\ \hline
+					\cellcolor{LightBlue}IDsluzba & INTEGER & Jedinstveni identifikator komunalne službe\\ \hline 
+					\cellcolor{LightBlue}IDzona & INTEGER & Jedinstveni identifikator gradske zone\\ \hline 
+					adresa & VARCHAR & Adresa kontejnera\\ \hline 
+					geoDuzina & NUMERIC & Geografska dužina kontejnera\\ \hline 
+					geoSirina & NUMERIC & Geografska širina kontejnera\\ \hline 
+					
+				\end{longtabu}
+			
+				\textbf{Komunalna služba.} Ovaj entitet sadrži informacije o komunalnoj službi. Uključeni atributi su ID komunalne službe, ID direktora komunalne službe, ime komunalne službe te opis komunalne službe. Ovaj entitet u vezi je \textit{One-to-Many} s entitetom Korisnik i Kontejner preko ID-a komunalne službe te u vezi \textit{Many-to-One} s entitetom Korisnik preko ID-a direktora komunalne službe.
+				
+				\begin{longtabu} to \textwidth {|X[6, l]|X[6, l]|X[20, l]|}
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Komunalna služba}}\\[3pt] \hline
+					\endfirsthead
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Komunalna služba}}\\[3pt] \hline
+					\endhead
+					
+					\hline 
+					\endlastfoot
+					
+					\cellcolor{LightGreen}IDsluzba & INTEGER & Jedinstveni identifikator komunalne službe\\ \hline
+					\cellcolor{LightBlue}IDdirektor & INTEGER & Jedinstveni identifikator direktora komunalne službe\\ \hline 
+					imeSluzba & VARCHAR & Ime komunalne službe\\ \hline 
+					opisSluzba & VARCHAR & Opis komunalne službe\\ \hline
+					
+				\end{longtabu}
+			
+				\textbf{Pretplata.} Ovaj entitet sadrži informacije o korisničkim pretplatama na kontejnere. Uključeni atributi su ID korisnika i ID kontejnera. Ovaj entitet u vezi je \textit{Many-to-One} s entitetom Korisnik preko ID-a korisnika te u vezi \textit{Many-to-One} s entitetom Kontejner preko ID-a kontejnera.
+				
+				\begin{longtabu} to \textwidth {|X[6, l]|X[6, l]|X[20, l]|}
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Pretplata}}\\[3pt] \hline
+					\endfirsthead
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Pretplata}}\\[3pt] \hline
+					\endhead
+					
+					\hline 
+					\endlastfoot
+					
+					\cellcolor{LightGreen}IDkorisnik & INTEGER & Jedinstveni identifikator komunalne službe\\ \hline
+					\cellcolor{LightGreen}IDkontejner & INTEGER & Jedinstveni identifikator direktora komunalne službe\\ \hline 
+					
+				\end{longtabu}
+			
+				\textbf{Recenzija.} Ovaj entitet sadrži informacije o recenzijama kontejnera. Uključeni atributi su ID recenzije, ID korisnika, ID kontejnera, ocjena punoće, ocjena urednosti, komentar, slika te vrijeme objave recenzije. Ovaj entitet u vezi je \textit{Many-to-One} s entitetom Korisnik preko ID-a korisnika te u vezi \textit{Many-to-One} s entitetom Kontejner preko ID-a kontejnera.
+				
+				\begin{longtabu} to \textwidth {|X[6, l]|X[6, l]|X[20, l]|}
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Recenzija}}\\[3pt] \hline
+					\endfirsthead
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Recenzija}}\\[3pt] \hline
+					\endhead
+					
+					\hline 
+					\endlastfoot
+					
+					\cellcolor{LightGreen}IDrecenzija & INTEGER & Jedinstveni identifikator recenzije\\ \hline
+					\cellcolor{LightBlue}IDkorisnik & INTEGER & Jedinstveni identifikator korisnika\\ \hline 
+					\cellcolor{LightBlue}IDkontejner & INTEGER & Jedinstveni identifikator kontejnera\\ \hline 
+					ocjenaPunoce & INTEGER & Ocjena punoće kontejnera\\ \hline
+					ocjenaUrednosti & INTEGER & Ocjena urednosti kontejnera\\ \hline
+					komentar & VARCHAR & Komentar na stanje kontejnera u trenutku objavljivanja recenzije\\ \hline
+					slika & LONGBLOB & Slika kontejnera u trenutku objavljivanja recenzije\\ \hline
+					vrijemeObjave & TIMESTAMP & Vrijeme u trenutku objavljivanja recenzije\\ \hline
+					
+				\end{longtabu}
+			
+				\textbf{Senzor.} Ovaj entitet sadrži informacije o senzoru. Uključeni atributi su ID senzora, ID kontejnera te token. Ovaj entitet u vezi je \textit{Many-to-One} s entitetom Kontejner preko ID-a kontejnera.
+				
+				\begin{longtabu} to \textwidth {|X[6, l]|X[6, l]|X[20, l]|}
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Senzor}}\\[3pt] \hline
+					\endfirsthead
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Senzor}}\\[3pt] \hline
+					\endhead
+					
+					\hline 
+					\endlastfoot
+					
+					\cellcolor{LightGreen}IDsenzor & INTEGER & Jedinstveni identifikator senzora\\ \hline
+					\cellcolor{LightBlue}IDkontejner & INTEGER & Jedinstveni identifikator kontejnera\\ \hline 
+					token & VARCHAR & Token senzora\\ \hline
+					
+				\end{longtabu}
+			
+				\textbf{Zona.} Ovaj entitet sadrži informacije o gradskoj zoni u kojoj je smješten kontejner. Uključeni atributi su ID zone, ID grada te ime zone. Ovaj entitet u vezi je \textit{One-to-Many} s entitetom Kontejner preko ID-a zone te u vezi \textit{Many-to-One} s entitetom Grad preko ID-a grada.
+				
+				\begin{longtabu} to \textwidth {|X[6, l]|X[6, l]|X[20, l]|}
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Zona}}\\[3pt] \hline
+					\endfirsthead
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Zona}}\\[3pt] \hline
+					\endhead
+					
+					\hline 
+					\endlastfoot
+					
+					\cellcolor{LightGreen}IDzona & INTEGER & Jedinstveni identifikator gradske zone\\ \hline
+					\cellcolor{LightBlue}IDgrad & INTEGER & Jedinstveni identifikator grada\\ \hline 
+					imeZona & VARCHAR & Ime zone\\ \hline
+					
+				\end{longtabu}
+			
+				\textbf{Grad.} Ovaj entitet sadrži informacije o gradu u kojoj je smješten kontejner. Uključeni atributi su ID grada, ID države te ime grada. Ovaj entitet u vezi je \textit{One-to-Many} s entitetom Zona preko ID-a grada te u vezi \textit{Many-to-One} s entitetom Država preko ID-a države.
+				
+				\begin{longtabu} to \textwidth {|X[6, l]|X[6, l]|X[20, l]|}
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Grad}}\\[3pt] \hline
+					\endfirsthead
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Grad}}\\[3pt] \hline
+					\endhead
+					
+					\hline 
+					\endlastfoot
+					
+					\cellcolor{LightGreen}IDgrad & INTEGER & Jedinstveni identifikator grada\\ \hline
+					\cellcolor{LightBlue}IDdrzava & INTEGER & Jedinstveni identifikator države\\ \hline 
+					imeGrad & VARCHAR & Ime grada\\ \hline
+					
+				\end{longtabu}
+			
+				\textbf{Država.} Ovaj entitet sadrži informacije o državi u kojoj je smješten kontejner. Uključeni atributi su ID države te ime države. Ovaj entitet u vezi je \textit{One-to-Many} s entitetom Grad preko ID-a države.
+				
+				\begin{longtabu} to \textwidth {|X[6, l]|X[6, l]|X[20, l]|}
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Država}}\\[3pt] \hline
+					\endfirsthead
+					
+					\hline \multicolumn{3}{|c|}{\textbf{Države}}\\[3pt] \hline
+					\endhead
+					
+					\hline 
+					\endlastfoot
+					
+					\cellcolor{LightGreen}IDdrzava & INTEGER & Jedinstveni identifikator države\\ \hline
+					imeDrzava & VARCHAR & Ime države\\ \hline
 					
 				\end{longtabu}
 			
 			
+			
+			
 			\subsection{Dijagram baze podataka}
-				\textit{ U ovom potpoglavlju potrebno je umetnuti dijagram baze podataka. Primarni i strani ključevi moraju biti označeni, a tablice povezane. Bazu podataka je potrebno normalizirati. Podsjetite se kolegija "Baze podataka".}
+				\begin{figure}[H]
+					\includegraphics[scale=0.35]{slike/dijagramBaze.png}
+					\centering
+					\caption{Dijagram baze podataka}
+					\label{fig:promjene}
+				\end{figure}
+			
+			Dijagram baze podataka je izrađen alatom \href{https://dbdiagram.io}{dbdiagram.io}. Svjetlo plavo su označeni strani ključevi, a primarni ključevi su podebljani. 
 			
 			\eject
 			
