@@ -1,7 +1,7 @@
-// https://dbdiagram.io/d/5db9d654edf08a25543d55ce
+// https://dbdiagram.io/d/5dbafaceedf08a25543d5ed8
 Table Korisnik {
-  ID int [pk, increment] // auto-increment
-  "ID komunalne službe u kojoj je zaposlen" int [null, ref: > "Komunalna služba".ID]
+  "ID korisnika" integer [pk, increment] // auto-increment
+  "ID komunalne službe u kojoj je zaposlen" integer [null, ref: > "Komunalna služba"."ID komunalne službe"]
   "Korisničko ime" varchar
   "Email adresa" varchar
   "Je li email adresa potvrđena" boolean
@@ -15,59 +15,59 @@ Table Korisnik {
 }
 
 Table "Komunalna služba" {
-  "ID direktora" int [not null, ref: > Korisnik.ID]
-  ID int [pk, increment]
+  "ID direktora" integer [not null, ref: > Korisnik."ID korisnika"]
+  "ID komunalne službe" integer [pk, increment]
   "Ime komunalne službe" varchar
   "Opis komunalne službe" varchar
  }
  
 Table "Država" {
-  ID int [pk, increment]
+  "ID države" integer [pk, increment]
   "Ime države" varchar
 }
 
 Table Grad {
-  ID int [pk, increment]
-  "ID države" int [ref: > "Država".ID]
+  "ID grada" integer [pk, increment]
+  "ID države" integer [ref: > "Država"."ID države"]
   "Ime grada" varchar
 }
 
 Table Zona {
-  ID int [pk, increment]
-  "ID grada" int [ref: > Grad.ID]
+  "ID zone" integer [pk, increment]
+  "ID grada" integer [ref: > Grad."ID grada"]
   "Ime zone" varchar
 }
  
 Table Kontejner {
-  ID int [pk, increment]
-  "ID komunalne službe" int [ref: > "Komunalna služba".ID]
-  "ID zone" int [ref: > Zona.ID]
+  "ID kontejnera" integer [pk, increment]
+  "ID komunalne službe" integer [ref: > "Komunalna služba"."ID komunalne službe"]
+  "ID zone" integer [ref: > Zona."ID zone"]
   "Adresa kontejnera" varchar
-  "Zemljopisna dužina kontejnera" int
-  "Zempljopisna širina kontejnera" int
+  "Geografska dužina kontejnera" numeric
+  "Geografska širina kontejnera" numeric
 }
 
 Table Recenzija {
-  ID int [pk, increment]
-  "ID korisnika" int [ref: > Korisnik.ID]
-  "ID kontejnera" int [ref: > Kontejner.ID]
-  "Ocjena punoće" int
-  "Ocjena neurednosti" int
+  "ID recenzije" integer [pk, increment]
+  "ID korisnika" integer [ref: > Korisnik."ID korisnika"]
+  "ID kontejnera" integer [ref: > Kontejner."ID kontejnera"]
+  "Ocjena punoće" integer
+  "Ocjena urednosti" integer
   Komentar varchar
   Slika longblob
-  "Vrijeme objave" datetime
+  "Vrijeme objave" timestamp
 }
 
 Table Pretplata {
-  "ID korisnika" int [ref: > Korisnik.ID]
-  "ID kontejnera" int [ref: > Kontejner.ID]
+  "ID korisnika" integer [ref: > Korisnik."ID korisnika"]
+  "ID kontejnera" integer [ref: > Kontejner."ID kontejnera"]
   Indexes {
     ("ID korisnika", "ID kontejnera") [pk]
   }
 }
 
 Table Senzor {
-  "ID" int [pk, increment]
-  "ID kontejnera" int [ref: > Kontejner.ID]
+  "ID senzora" integer [pk, increment]
+  "ID kontejnera" integer [ref: > Kontejner."ID kontejnera"]
   "Token" varchar
 }
