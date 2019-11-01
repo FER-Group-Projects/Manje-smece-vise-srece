@@ -508,11 +508,42 @@
 			\eject		
 
 			\subsection{Sekvencijski dijagrami}
-
-			\textbf{\textit{dio 1. revizije}}\\
 			
-			\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
+			\noindent {\textbf{UC1 - Pretraživanje i pregled kontejnera putem ID-a}}
+			
+			\noindent Korisnik upisuje ID kontejnera za koji želi pregledati podatke. Poslužitelj prosljeđuje upisani ID bazi koja provjerava je li ID ispravan te postoji li kontejner s tim ID-om. Ako postoji, poslužitelj dohvaća podatke o kontejneru i prikazuje ih korisniku. Ako je ID neispravan ili kontejner s tim ID-om ne postoji u bazi, sustav obavještava korisnika te ga navodi na ispravan unos ID-a. Proces se ponavlja dok korisnik ne unese ispravan ID za koji postoji kontejner ili dok ne odustane od pretraživanja.
+			
+			
 			\eject
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.0\linewidth]{"slike/UC1-seq"}
+				\caption{Sekvencijski dijagram za pretraživanje i pregled kontejnera putem ID-a}
+				\label{fig:UC1-Seq}
+			\end{figure}
+			
+			\clearpage
+			\eject
+			
+			\noindent {\textbf{UC8 - Komentiranje kontejnera}}
+			
+			\noindent Korisnik odabire kontejner koji želi komentirati. Poslužitelj dohvaća i prikazuje željeni kontejner. Korisnik počinje pisati komentar i u jednom trenutku prekida s komentiranjem. Ako je korisnik objavio komentar, poslužitelj ga upisuje u bazu te korisniku šalje potvrdu o uspješnoj objavi. Ako korisnik prekine komentiranje, a nije objavio komentar, sustav ga o tome obavještava i upita ga želi li nastaviti s komentiranjem. Proces se ponavlja dok korisnik ne objavi komentar ili dok ne odustane od komentiranja.
+			
+			\eject
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.0\linewidth]{"slike/UC8-seq"}
+				\caption{Sekvencijski dijagram za komentiranje kontejnera}
+				\label{fig:UC8-Seq}
+			\end{figure}
+			
+			\clearpage
+			
+			\eject
+			
+			
 
 			\section{Ostali zahtjevi}
 
