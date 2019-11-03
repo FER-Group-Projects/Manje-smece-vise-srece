@@ -1,18 +1,18 @@
 \chapter{Opis projektnog zadatka}
-
-		Cilj ovog projekta je razviti programsku podršku za web aplikaciju koja će građanima omogućiti slanje stanja kontejnera djelatnicima komunalnih službi. Aplikacija bi, temeljem zaprimljenih stanja kontejnera, pomogla komunalnim službama da problem odvoza smeća rješavaju na efikasniji i brži način.\\
 		
-		Prilikom pokretanja sustava, prikazuje se karta s ucrtanim kontejnerima koji se nalaze u blizini te traka za pretraživanje kontejnera.
-        Neregistriranom korisniku, odabirom kontejnera na karti, otvaraju se opće informacije o istom; ID kontejnera, adresa te povijest stanja
-        koja je vidljiva kroz recenzije i slike koje su korisnici objavljivali.\\
-
-        Osim pregleda kontejnera odabirom na karti, neregistriranim korisnicima ponuđena je opcija pretraživanja
-        putem jedinstvenog ID-a dodijeljenog svakom kontejneru. Upisom valjanog ID-a, otvaraju se opće informacije o kontejneru, a u suprotnom korisnik dobiva odgovarajuću
-        poruku.\\
-        
-        Neregistriranom korisniku omogućeno je registriranje u sustav/kreiranje novog računa, a
-        za to su potrebni sljedeći podatci:
-        \begin{packed_item}
+		Cilj ovog projekta je razviti programsku podršku za web aplikaciju \textit{"Manje smeće više sreće"} koja će građanima omogućiti ocjenjivanje i komentiranje stanja kontejnera te će djelatnicima komunalnih službi omogućiti praćenje tih recenzija.
+		Aplikacija bi time povećala povezanost građana s djelatnicima komunalnih službi, što bi omogućilo rješavanje problema odvoza smeća na efikasniji i brži način. 
+		Osim toga, aplikacija bi omogućila građanima transparentniji uvid u rad komunalnih službi.
+		
+		Prilikom pokretanja sustava, prikazuje se karta s ucrtanim kontejnerima koji se nalaze u blizini korisnika te traka za pretraživanje kontejnera.
+		Neregistriranom korisniku, odabirom kontejnera na karti, otvaraju se opće informacije o istom; ID kontejnera, adresa te povijest stanja koja je vidljiva kroz recenzije korisnika i slike koje su korisnici objavljivali.
+		
+		Osim pregleda kontejnera odabirom na karti, korisnicima je ponuđena opcija pretraživanja putem jedinstvenog ID-a koji je prikazan na kontejneru.
+		Upisom valjanog ID-a, otvaraju se opće informacije o kontejneru, a u suprotnom korisnik dobiva odgovarajuću poruku.
+		
+		Neregistriranom korisniku omogućeno je prijavljivanje u sustav s postojećim računom ili registracija novog računa.
+		Za registraciju novog računa potrebni su sljedeći podatci:
+		\begin{packed_item}
 			
 			\item  korisničko ime
 			\item  lozinka
@@ -20,12 +20,57 @@
 			
 		\end{packed_item}
 		
-		Registracijom u sustav, korisnik dobiva mogućnost ocjenjivanja i komentiranja stanja kontejnera kao građanin. Korisnik, osim kao građanin, može biti djelatnik ili direktor komunalne službe.\\
+		Registracijom u sustav, korisnik dobiva mogućnost ocjenjivanja i komentiranja stanja kontejnera kao građanin. 
+		Korisnik, osim kao građanin, može biti djelatnik ili direktor komunalne službe.
 		
-		\underbar{\textit{Građanin}} je registrirani korisnik koji ima mogućnost ocjenjivanja i komentiranja stanja kontejnera. Osim navedenog, građanin može slikati kontejner i objaviti njegovo stvarno stanje.\\
+		\underbar{\textit{Građanin}} je registrirani korisnik koji ima mogućnost ocjenjivanja i komentiranja stanja kontejnera. 
+		Nakon što je odabrao kontejner, građaninu je omogućeno davanje numeričke ocjene punoće kontejnera te ocjene neurednosti kontejnera.
+		Osim navedenog, omogućeno mu je ostavljanje tekstualnih komentara, te slika samog kontejnera kako bi po potrebi bolje prikazao stanje kontejnera.
+		Građaninu je omogućeno praćenje kontejnera čime dobiva email obavijesti pri promjeni stanja kontejnera te pregled kontejnera koje trenutno prati i mogućnost prestanka praćenja pojedinih kontejnera. 
+		Obavijesti o promjeni stanja kontejnera zahtijevaju potvrđenu email adresu kako ne bi slali email poruke na krivu adresu. 
 		
-		\underbar{\textit{Direktor}} ima širi spektar mogućnosti rada u aplikaciji. Njemu je omogućeno pregled svih kontejnera, zaposlenika, zona i ruta. Također mu je omogućeno dodavanje novih kontejnera i zaposlenika, te svrstavanje zaposlenika i kontejnera u zone.\\
+		\underbar{\textit{Djelatnik}} komunalne službe kroz aplikaciju ima pristup dodijeljenim kontejnerima svoje komunalne službe.
+		Omogućen mu je pregled svojih kontejnera i njihovih stanja, te može označiti da je ispraznio određeni kontejner čime se šalje obavijest svim pretplaćenom korisnicima tog kontejnera. 
+		Osim toga, omogućen mu je prikaz svoje rute koju aplikacija generira na temelju dodijeljenih kontejnera i njihovih stanja. Područje grada podijeljeno je na zone za koje su zadužene ekipe komunalnih djelatnika. 
 		
+		\underbar{\textit{Direktor}} komunalne službe ima širi spektar mogućnosti rada u aplikaciji. 
+		Njemu je omogućen pregled svih kontejnera, zaposlenika, zona i ruta svoje komunalne službe. 
+		Odabirom kontejnera, omogućeno mu je brisanje, premještanje i označavanje da je kontejner poslan u skladište.
+		Omogućeno mu je dodavanje kontejnera na nekoj od lokacija po izboru pri čemu mora ručno postaviti adresu i koordinate kontejnera. Uz dodavanje, omogućeno mu je i brisanje kontejnera te premještanje kontejnera na neku drugu lokaciju.
+		Osim toga, direktoru je omogućeno dodavanje i uklanjanje djelatnika iz svoje službe.
 		
-		\eject
+		Kontejneri u sebi imaju senzor koji detektira je li kontejner očišćen ili nije. Pomoću tog senzora moguće je otkriti koliko dugo neki kontejner nije očišćen, ali nije moguće otkriti treba li kontejner čišćenje ili ne, zato su potrebni građani i njihove recenzije kako bi ovaj sustav bio efikasan i kvalitetan.
+		
+		Svi kontejneri u ovom projektu bit će smješteni u gradu Zagrebu te se očekuje da će korisnici aplikacije biti građani grada Zagreba i da će oni imati najveću korist od same aplikacije. U budućnosti je, međutim, moguće da proširenje na cijelu Hrvatsku ili šire, što bi omogućilo više korisnika koji će imati izravnu korist od ove aplikacije kao i veću uštedu u pogledu vremena, ali i novca, za komunalne radnike na čijem će području biti ostvaren rad ove aplikacije.
+		
+		Jedna od sličnih aplikacija koja se bavi sličnim problemima je aplikacija Zagrebačkog holdinga. Njihova aplikacija se, naravno, bavi puno većim opsegom poslova nego što je specificirano u ovom projektnom zadatku, ali se u domeni održavanja kontejnera poklapa s domenom ovog projektnog zadatka. Ključna razlika između ovog projekta i aplikacije Zagrebačkog holdinga je transparentnost, odnosno nedostatak iste. Na njihovoj aplikaciji nije moguće pratiti kada je (i je li) neki kontejner očišćen niti se može ocijeniti stanje pojednog kontejnera. Zagrebački holding, također, nema način na koji će pratiti koliko je neki kontejner očišćen te se, prema tome, odvoz smeća uvijek vrši u isto vrijeme i na istim kontejnerima, što može biti neefikasno. Jedan od ciljeva ove aplikacije je, uz transparentnost, veća efikasnost nego što je trenutno efikasnost aplikacije Zagrebačkog holdinga. Uz to, naravno, važno je dati građanima mogućnost pridonjeti cijelom tom procesu jer su ipak oni u središtu ove aplikacije. 
+		
+		Evolucija je neizostavni dio aplikacija programske potpore. Kao takva, aplikacija je podložna promjeni i nadogradnjama, stoga će u nastavku biti navedene poneke nove mogućnost i svojstva za svaku vrstu korisnika aplikacije.
+		
+		Moguće buduće nadogradnje projektnog zadatka za građanina uključuju:
+		\begin{packed_item}
+			
+			\item pronalazak kontejnera preko QR koda
+			\item opcije zaboravio sam lozinku/zapamti kako bi proces prijave bio što lakši i bolji
+			\item potvrđivanje email adrese preko tokena u email poruci
+			\item obavijesti unutar aplkacije za praćene kontejnere (uz obavijesti preko e-maile)
+			
+		\end{packed_item}
+		
+		Moguće buduće nadogradnje projektnog zadatka za djelatnika komunalne službe uključuju:
+		\begin{packed_item}
+			
+			\item brzo skeniranje QR koda kako bi se potvrdilo da je taj kontejner sa sigurnošću ispražnjen
+			\item generiranje optimalne rute čišćenja kontejnera koja će se mijenjati dinamički tijekom vožnje
+			\item paljenje točkice na ekranu kada se skenira QR kod kontejnera
+			
+		\end{packed_item}
 	
+		Moguće buduće nadogradnje projektnog zadatka za direktora komunalne službe uključuju:
+		\begin{packed_item}
+			
+			\item karta s lokacijiama kontejnera na osobnoj aplikaciji na kojoj će biti oznake u boji ovisno o stanju kontejnera
+			\item očitavanje trenutne lokacije te dodavanje kontejnera na trenutnoj lokaciji
+			
+		\end{packed_item}
+		\eject
