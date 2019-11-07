@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import Loginform from './login-form'
-import Myform from './signup-form'
+import Loginform from './forms/login-form'
+import App from './routes/router'
 
-ReactDOM.render(<Myform />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 
 serviceWorker.unregister();
