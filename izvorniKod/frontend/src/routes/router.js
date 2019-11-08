@@ -3,19 +3,23 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    NavLink,
-    Redirect,
   } from "react-router-dom"
 import Loginform  from '.././forms/login-form'
+import Signupform  from '.././forms/signup-form'
+import MainWindow from '.././component/MainWindow'
 
 function App() {
 return (
     <Router>
         <Switch>
-            <Route path="/pokemon_old">
+            <Route path="/signup">
+                <Signupform />
+            </Route>
+            <Route path="/login">
+                <Loginform />
             </Route>
             <Route path="/">
-            <Loginform />
+                <MainWindow />
             </Route>
         </Switch>
     </Router>
