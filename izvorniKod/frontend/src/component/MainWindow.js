@@ -28,7 +28,7 @@ const MainWindow = () => {
 
     const logout = () => {
         AuthStore.setLoggedIn('')
-        localStorage.setItem('username','')
+        localStorage.removeItem('username')
         history.push('/')
     }
 
