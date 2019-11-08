@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "formik": "^2.0.3",
+    "mobx": "^5.15.0",
+    "mobx-react": "^6.1.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
