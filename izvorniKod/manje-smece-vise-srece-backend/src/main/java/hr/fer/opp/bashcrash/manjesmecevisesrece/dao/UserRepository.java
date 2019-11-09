@@ -1,9 +1,9 @@
 package hr.fer.opp.bashcrash.manjesmecevisesrece.dao;
 
-import hr.fer.opp.bashcrash.manjesmecevisesrece.model.User;
+import hr.fer.opp.bashcrash.manjesmecevisesrece.model.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<UserModel, Long> {
 
-    User findByUsername(String username);
+    UserModel findByUsername(String username);
 }

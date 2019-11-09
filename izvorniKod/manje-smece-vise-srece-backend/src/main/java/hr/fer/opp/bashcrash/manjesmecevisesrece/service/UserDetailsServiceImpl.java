@@ -1,6 +1,7 @@
 package hr.fer.opp.bashcrash.manjesmecevisesrece.service;
 
 import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.UserRepository;
+import hr.fer.opp.bashcrash.manjesmecevisesrece.model.UserModel;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,10 +23,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        hr.fer.opp.bashcrash.manjesmecevisesrece.model.User applicationUser = userRepository.findByUsername(username);
-        if (applicationUser == null) {
+        UserModel applicationUserModel = userRepository.findByUsername(username);
+        if (applicationUserModel == null) {
             throw new UsernameNotFoundException(username);
         }
-        return new User(applicationUser.getUsername(), applicationUser.getPassword(), emptyList());
+        return new User(applicationUserModel.getUsername(), applicationUserModel.getPassword(), emptyList());
     }
 }
