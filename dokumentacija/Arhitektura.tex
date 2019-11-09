@@ -1,21 +1,65 @@
 \chapter{Arhitektura i dizajn sustava}
+
+		Glavni prioriteti kod izgradnje sustava i odabira arhitekture su nam jednostavnost korištenja sučelja za sve korisnike(osobito za građane), paralelni rad više korisnika u stvarnom vremenu te korištenje na različitim uređajima(prvenstveno na mobilnim). Osim toga, građani najvjerojatnije neće biti voljni instalirati dodatnu programsku podršku, već će se htjeti koristiti onim što već imaju, a to je standardni web preglednik. Zbog navedenih zahtjeva, odlučili smo se za arhitekturu responzivne web aplikacije.
+		\newline
 		
-		\textbf{\textit{dio 1. revizije}}\\
-
-		\textit{ Potrebno je opisati stil arhitekture te identificirati: podsustave, preslikavanje na radnu platformu, spremišta podataka, mrežne protokole, globalni upravljački tok i sklopovsko-programske zahtjeve. Po točkama razraditi i popratiti odgovarajućim skicama:}
-	\begin{itemize}
-		\item 	\textit{izbor arhitekture temeljem principa oblikovanja pokazanih na predavanjima (objasniti zašto ste baš odabrali takvu arhitekturu)}
-		\item 	\textit{organizaciju sustava s najviše razine apstrakcije (npr. klijent-poslužitelj, baza podataka, datotečni sustav, grafičko sučelje)}
-		\item 	\textit{organizaciju aplikacije (npr. slojevi frontend i backend, MVC arhitektura) }		
-	\end{itemize}
-
-	
+		\textbf{Arhitekturu} možemo podijeliti na tri osnovna podsustava:
+		\begin{packed_item}
+		\item Web poslužitelj
+		\item Web aplikacija
+		\item Baza podataka
+		\end{packed_item}
 		
-
+		\begin{figure}[H]
+					\includegraphics[scale=0.6]{slike/webapp.png}
+					\centering
+					\caption{Arhitektura sustava}
+					\label{fig:Arhitektura-sustava}
+		\end{figure}
+		\newpage
 		
-
-				
+		\textbf{Web preglednik} je program koji omogućuje korisnicima pregled web-stranica i sadržaja vezanih uz njih. Web preglednici su prevoditelji, tj. stranice su pisane u kodu koji preglednici nakon toga interpretiraju u nešto razumljivo. Korisnik putem web preglednika šalje zahtjev web poslužitelju.
+		
+		\textbf{Web poslužitelj} je osnova rada web aplikacije. Glavna mu je zadaća komunikacija klijenta s aplikacijom. Komunikacija se vrši putem HTTP (engl. Hyper Text Transfer Protocol) protokola,  glavne i najčešće metode prijenosa informacija na Webu.  Osnovna namjena ovog protokola je omogućavanje objavljivanja i prezentacije HTML dokumenata, tj. web stranica. Poslužitelj pokreće web aplikaciju te joj prosljeđuje zahtjev.
+		
+        Korisnik koristi \textbf{web aplikaciju} za obrađivanje željenih zahtijeva. Web aplikacija obrađuje zahtjev, pristupa bazi podataka te preko poslužitelja vraća korisniku odgovor u obliku HTML dokumenta vidljivog u web pregledniku.
+        
+        Programski jezici koje smo odabrali za izradu naše web aplikacije su Java zajedno sa Spring Boot radnim okvirom za izradu backenda 
+        te React i jezik Javascript za izradu frontenda.
+        \newline
+        
+        Arhitektura sustava razvijat će se prema \textbf{MVC} (Model-View-Controller) konceptu. 
+        MVC odvaja korisničko sučelje od ostatka sustava, pogodan je za uporabu razinske kohezije te smanjuje međuovisnost između U/I sučelja i ostatka sustava. Posljedica toga je jednostavnije ispitivanje i razvijanje i dodavanje novih svojstava u sustav.
+        \newline
+        
+        MVC se sastoji od: 
+        
+        \begin{packed_item}
+		\item \textbf{Model}
+		\item \textbf{View}
+		\item \textbf{Controller}
+		\end{packed_item}
+		
+		\begin{figure}[H]
+					\includegraphics[scale=0.6]{slike/mvcskica.png}
+					\centering
+					\caption{MVC skica}
+					\label{fig:MVC-skica}
+		\end{figure}
+		
+		
+		Model čuva podatke web aplikacije, logiku i pravila aplikacije te je centralna komponenta sustava. 
+		
+		Controller prima ulaze i prilagođava ih za prosljeđivanje Modelu ili Viewu. Nadalje, upravlja korisničkim zahtjevima te pomoću njih izvodi daljnju komunikaciju i interakciju s ostalim elementima sustava. 
+		
+		View predstavlja bilo kakav prikaz podataka te su mogući različiti prikazi istih. 
+		
+		Korisnik koristi Controller te vidi View. Controller mijenja Model, a model osvježava View.
+		\newpage
+        
+			
 		\section{Baza podataka}
+		
 		
 		Aplikacija koristi SQL relacijsku bazu podataka. Ona se sastoji od relacija (tablica) koje se sastoje od atributa. Razlog uporabe relacijske baze podataka je olakšavanje modeliranja entiteta i događaja iz stvarnog svijeta. Baza podataka ove aplikacije sastoji se od sljedećih entiteta:
 		
