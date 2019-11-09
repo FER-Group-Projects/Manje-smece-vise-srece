@@ -32,11 +32,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
+                .antMatchers("/h2-console/*").permitAll()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()
+                .formLogin().loginProcessingUrl("/login").successForwardUrl("/login/success").failureForwardUrl("/login/failure").permitAll()
+                .and()
+                .logout().logoutUrl("/logout")
+                .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()));
+
+        http.headers().frameOptions().disable();
     }
 
     @Override
