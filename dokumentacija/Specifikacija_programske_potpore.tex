@@ -85,7 +85,6 @@
 				
 			\subsection{Obrasci uporabe}
 			
-			\textbf{\textit{dio 1. revizije}}
 			
 			\subsubsection{Opis obrazaca uporabe}
 			
@@ -159,7 +158,7 @@
 				
 				\item[] \begin{packed_item}
 					
-					\item[3.a] Odabir vec zauzetog korisničkog imena i/ili e-maila, unos korisničkog podatka u nedozvoljenom formatu ili pružanje neispravnoga e-maila 
+					\item[3.a] Odabir već zauzetog korisničkog imena i/ili e-maila, unos korisničkog podatka u nedozvoljenom formatu ili pružanje neispravnoga e-maila 
 					\item[] \begin{packed_enum}
 						
 						\item Sustav obavještava korisnika o neuspjelom upisu i vraća ga na stranicu za registraciju
@@ -176,7 +175,7 @@
 				\item \textbf{Glavni sudionik:} Registrirani korisnici, zaposlenici, direktor
 				\item  \textbf{Cilj:} Dobiti pristup korisničkom sučelju
 				\item  \textbf{Sudionici:} Baza podataka
-				\item  \textbf{Preduvjet:} Registracija
+				\item  \textbf{Preduvjet:} Korisnik je registriran
 				\item  \textbf{Opis osnovnog tijeka:}
 				
 				\item[] \begin{packed_enum}
@@ -191,7 +190,7 @@
 				
 				\item[] \begin{packed_item}
 					
-					\item[2.a] Neispravno korisničko ime/lozinka
+					\item[2.a] Neispravno korisničko ime ili lozinka
 					\item[] \begin{packed_enum}
 						
 						\item Sustav obavještava korisnike o neuspješnom upisu 
@@ -207,7 +206,7 @@
 				\item \textbf{Glavni sudionik:} Registrirani korisnici, zaposlenici, direktor
 				\item  \textbf{Cilj:} Pregledati osobne podatke
 				\item  \textbf{Sudionici:} Baza podataka
-				\item  \textbf{Preduvjet:} Klijent je prijavljen
+				\item  \textbf{Preduvjet:} Korisnik je prijavljen
 				\item  \textbf{Opis osnovnog tijeka:}
 				
 				\item[] \begin{packed_enum}
@@ -303,12 +302,12 @@
 				\item \textbf{Glavni sudionik: } Direktor
 				\item  \textbf{Cilj:} Dodati novog korisnika
 				\item  \textbf{Sudionici:} Baza podataka
-				\item  \textbf{Preduvjet:} Direktor mora biti prijavljen
+				\item  \textbf{Preduvjet:} Direktor je prijavljen
 				\item  \textbf{Opis osnovnog tijeka:}
 				
 				\item[] \begin{packed_enum}
 					
-					\item Direktor ide na aplikaciju i odabire opciju: dodaj novog korisnika
+					\item Direktor u aplikaciji odabire opciju dodavanja novog korisnika
 					\item Direktor upisuje ime, prezime, ID novog korisnika (i ostale podatke koji idu u bazu podataka)
 					\item Direktor potvrđuje svoj unos
 				\end{packed_enum}
@@ -320,7 +319,7 @@
 					\item[2.a] Korisnik već postoji u bazi
 					\item[] \begin{packed_enum}
 						
-						\item Sustav izvještava direktora o tome da već postoji korisnik s tim ID-om
+						\item Sustav obavještava direktora o tome da već postoji korisnik s tim ID-om
 						
 					\end{packed_enum}
 					
@@ -334,12 +333,12 @@
 				\item \textbf{Glavni sudionik: } Direktor
 				\item  \textbf{Cilj:} Izbrisati postojećeg korisnika
 				\item  \textbf{Sudionici:} Baza podataka
-				\item  \textbf{Preduvjet:} Direktor mora biti prijavljen
+				\item  \textbf{Preduvjet:} Direktor je prijavljen
 				\item  \textbf{Opis osnovnog tijeka:}
 				
 				\item[] \begin{packed_enum}
 					
-					\item Direktor ide na aplikaciju i pretražuje korisnike
+					\item Direktor u aplikaciji pretražuje korisnike
 					\item Direktor odabire opciju brisanja korisnika
 					\item Direktor potvrđuje svoj izbor
 				\end{packed_enum}
@@ -351,7 +350,7 @@
 					\item[2.a] ID korisnika ne postoji u bazi
 					\item[] \begin{packed_enum}
 						
-						\item Ispisati poruku da taj korisnik nije pronađen
+						\item Sustav ispisuje poruku da taj korisnik nije pronađen
 						
 					\end{packed_enum}
 					
@@ -364,12 +363,12 @@
 				\item \textbf{Glavni sudionik: } Direktor
 				\item  \textbf{Cilj:} Dodati novi kontejner
 				\item  \textbf{Sudionici:} Baza podataka
-				\item  \textbf{Preduvjet:} Direktor mora biti prijavljen
+				\item  \textbf{Preduvjet:} Direktor je prijavljen
 				\item  \textbf{Opis osnovnog tijeka:}
 				
 				\item[] \begin{packed_enum}
 					
-					\item Direktor ide na aplikaciju i odabire opciju: dodaj novi kontejner
+					\item Direktor u aplikaciji odabire opciju dodavanja novog kontejnera
 					\item Direktor upisuje adresu i ID novog kontejnera 
 					\item Direktor potvrđuje svoj unos
 				\end{packed_enum}
@@ -401,12 +400,12 @@
 				\item \textbf{Glavni sudionik: } Direktor
 				\item  \textbf{Cilj:} Dodati novog korisnika
 				\item  \textbf{Sudionici:} Baza podataka
-				\item  \textbf{Preduvjet:} Direktor mora biti prijavljen
+				\item  \textbf{Preduvjet:} Direktor je prijavljen
 				\item  \textbf{Opis osnovnog tijeka:}
 				
 				\item[] \begin{packed_enum}
 					
-					\item Direktor ide na aplikaciju pretražuje kontejner po ID-u ili ulici i odabire opciju za brisanje kontejnera
+					\item Direktor u aplikaciji pretražuje kontejner po ID-u ili ulici i odabire opciju za brisanje kontejnera
 					\item Direktor potvrđuje svoj unos
 				\end{packed_enum}
 				
@@ -436,12 +435,12 @@
 				\item \textbf{Glavni sudionik: } Direktor
 				\item  \textbf{Cilj:} Premjestiti kontejner s jedne lokacije na drugu
 				\item  \textbf{Sudionici:} Baza podataka
-				\item  \textbf{Preduvjet:} Direktor mora biti prijavljen
+				\item  \textbf{Preduvjet:} Direktor je prijavljen
 				\item  \textbf{Opis osnovnog tijeka:}
 				
 				\item[] \begin{packed_enum}
 					
-					\item Direktor ide na aplikaciju i pretražuje kontejner po ID-u ili ulici i odabire opciju za premještanje kontejnera
+					\item Direktor u aplikaciji pretražuje kontejner po ID-u ili ulici i odabire opciju za premještanje kontejnera
 					\item Direktor upisuje adresu gdje želi da kontejner bude premješten
 					\item Direktor potvrđuje svoj unos
 				\end{packed_enum}
@@ -477,10 +476,10 @@
 			\noindent \underbar{\textbf{UC14 - Pregled rute}}
 			\begin{packed_item}
 				
-				\item \textbf{Glavni sudionik:} Zaoslenici
-				\item  \textbf{Cilj:} Pregledati rutu uz prikazivanje vih kontejnera
+				\item \textbf{Glavni sudionik:} Zaposlenici
+				\item  \textbf{Cilj:} Pregledati rutu uz prikazivanje svih kontejnera na ruti
 				\item  \textbf{Sudionici:} Baza podataka
-				\item  \textbf{Preduvjet:} Zaposlenik mora biti prijavljen
+				\item  \textbf{Preduvjet:} Zaposlenik je prijavljen
 				\item  \textbf{Opis osnovnog tijeka:}
 				
 				\item[] \begin{packed_enum}
@@ -494,7 +493,7 @@
 				
 				\item[] \begin{packed_item}
 					
-					\item[2.a] Neispravana/nepostojeća ruta
+					\item[2.a] Neispravana ili nepostojeća ruta
 					\item[] \begin{packed_enum}
 						
 						\item Sustav obavještava zaposlenika o nepostojećoj ruti
@@ -504,28 +503,31 @@
 				\end{packed_item}
 			\end{packed_item}
 			
+			\clearpage
+			\eject
+			
 			\subsubsection{Dijagrami obrazaca uporabe}
-            
-            \begin{figure}
-                    \centering
-                    \includegraphics[width=1.0\linewidth]{slike/Funkcionalnost_korisnika_aplikacije.png}
-                    \caption{Dijagram obrazaca uporabe, funkcionalnost korisnika aplikacije}
-                    \label{fig:Funkcionalnost korisnika aplikacije}
-            \end{figure}
-            
-            \clearpage
-            
-            \eject
-            
-            \begin{figure}
-                    \centering
-                    \includegraphics[width=1.0\linewidth]{slike/Funkcionalnost_direktora_i_zaposlenika.png}
-                    \caption{Dijagram obrazaca uporabe, funkcionalnost direktora i zaposlenika}
-                    \label{fig:Funkcionalnost direktora i zaposlenika}
-            \end{figure}
-            
-            \clearpage
-            
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.0\linewidth]{slike/Funkcionalnost_korisnika_aplikacije.png}
+				\caption{Dijagram obrazaca uporabe, funkcionalnost korisnika aplikacije}
+				\label{fig:Funkcionalnost korisnika aplikacije}
+			\end{figure}
+			
+			\clearpage
+			
+			\eject
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.0\linewidth]{slike/Funkcionalnost_direktora_i_zaposlenika.png}
+				\caption{Dijagram obrazaca uporabe, funkcionalnost direktora i zaposlenika}
+				\label{fig:Funkcionalnost direktora i zaposlenika}
+			\end{figure}
+			
+			\clearpage
+			
 			\eject		
 
 			\subsection{Sekvencijski dijagrami}
@@ -539,7 +541,7 @@
 			
 			\begin{figure}
 				\centering
-				\includegraphics[width=1.0\linewidth]{"slike/UC1-seq"}
+				\includegraphics[width=1.0\linewidth]{slike/Seq-UC1.png}
 				\caption{Sekvencijski dijagram za UC1}
 				\label{fig:UC1-Seq}
 			\end{figure}
@@ -555,7 +557,7 @@
 			
 			\begin{figure}
 				\centering
-				\includegraphics[width=1.0\linewidth]{"slike/UC8-seq"}
+				\includegraphics[width=1.0\linewidth]{slike/UC8-seq.jpg}
 				\caption{Sekvencijski dijagram za UC8}
 				\label{fig:UC8-Seq}
 			\end{figure}
@@ -567,11 +569,11 @@
 			\noindent {\textbf{Obrazac uporabe UC9 - Dodavanje korisnika}}
 			
 			
-			\noindent	Direktor želi dodati novog korisnika. U aplikaciji bira opciju za unos korisnika, gdje predaje sve njegove podatke, što uključuje i njegov ID. Nakon toga aplikacija njegov ID proslijeđuje do baze podataka gdje se provjerava postoji li več korisnik s tim ID-om, ako ne onda Direktor dobiva opciju za potvrdu unosa i ako izabere tu opciju, novi korisnik se unosi u bazu. Ako već korisnik s tim ID-om postoji ispisuje se odgovarajuća poruka. Ako direktor nije potvrdio unos, postupak će se prekinuti. Na kraju svega se aplikacija vraća u prvotno stanje.
+			\noindent	Direktor želi dodati novog korisnika. U aplikaciji bira opciju za unos korisnika, gdje predaje sve njegove podatke, što uključuje i njegov ID. Nakon toga aplikacija njegov ID prosljeđuje do baze podataka gdje se provjerava postoji li već korisnik s tim ID-om, ako ne onda Direktor dobiva opciju za potvrdu unosa i ako izabere tu opciju, novi korisnik se unosi u bazu. Ako već korisnik s tim ID-om postoji ispisuje se odgovarajuća poruka. Ako direktor nije potvrdio unos, postupak će se prekinuti. Na kraju svega se aplikacija vraća u prvotno stanje.
 			
 			\begin{figure}
 				\centering
-				\includegraphics[width=1.0\linewidth]{"slike/Sekvencijski dijagram za dodavanje korisnika"}
+				\includegraphics[width=1.0\linewidth]{slike/Sekvencijski dijagram za dodavanje korisnika.png}
 				\caption{Sekvencijski dijagram za UC9}
 				\label{fig:sekvencijski-dijagram-za-dodavanje-korisnika}
 			\end{figure}
@@ -587,7 +589,7 @@
 			
 			\begin{figure}
 				\centering
-				\includegraphics[width=1.1\linewidth]{"slike/Sekvencijski dijagram za premjestanje kontejnera"}
+				\includegraphics[width=1.1\linewidth]{slike/Sekvencijski dijagram za premjestanje kontejnera.png}
 				\caption{Sekvencijski dijagram za UC13}
 				\label{fig:sekvencijski-dijagram-za-premjestanje-kontejnera}
 			\end{figure}
@@ -604,12 +606,12 @@
 				\item Korisničko sučelje sustava mora biti na hrvatskom jeziku, te podržavati hrvatsku abecedu pri unosu i prikazu podataka
 				\item Korisničko sučelje mora biti intuitivno i jednostavno za korištenje
 				\item Korisniku treba omogućiti pronalazak kontejnera u manje od 10 akcija
-				\item Učitavanje stranice ne smije trajati duže od nekoliko sekundi
+				\item Učitavanje stranice ne smije trajati duže od 6 sekundi
 				\\
-				\item Korisničko ime i email adresa korisnika moraju biti jedinstveni
+				\item Korisničko ime i e-mail adresa korisnika moraju biti jedinstveni
 				\item Lozinke se ne smiju spremati u bazu podataka kao nešifrirani tekst \engl{plaintext}, nego moraju biti šifrirane algoritmom raspršivanja
-				\item Nakon registracije ili promjene email adrese, potrebno je potvrditi vlasništvo email adrese
-				\item Email obavijesti se ne smiju slati na nepotvrđene email adrese.
+				\item Nakon registracije ili promjene e-mail adrese, potrebno je potvrditi vlasništvo e-mail adrese
+				\item E-mail obavijesti (osim slanja upita za potvrdu e-maila) se ne smiju slati na nepotvrđene e-mail adrese.
 			\end{packed_item}
 			
 			
