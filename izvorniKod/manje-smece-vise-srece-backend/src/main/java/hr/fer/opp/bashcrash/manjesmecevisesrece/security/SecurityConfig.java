@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginProcessingUrl("/login").successForwardUrl("/login/success").failureForwardUrl("/login/failure").permitAll()
+                .formLogin().loginPage("/login").loginProcessingUrl("/login").successForwardUrl("/login/success").failureForwardUrl("/login/failure").permitAll()
                 .and()
                 .logout().logoutUrl("/logout")
                 .and()
