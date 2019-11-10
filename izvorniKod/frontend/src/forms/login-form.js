@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { observer } from 'mobx-react'
 import { Link, useHistory } from 'react-router-dom'
+import axios from 'axios'
 import { AuthStore } from '../store/AuthStore'
 
 const Loginform = observer(() => {
@@ -8,17 +9,34 @@ const Loginform = observer(() => {
     const [password, setPassword] = useState("")
     let history = useHistory()
 
-    function usernameChanged(event) {
+    async function usernameChanged(event) {
         setUsername(event.target.value)
     }
     function passwordChanged(event) {
         setPassword(event.target.value)
     }
 
-    function login(event) {
-        AuthStore.setLoggedIn(username)
-        history.push('/')
+    async function login(event) {
         event.preventDefault()
+        try {
+            await axios({
+                method: 'POST',
+                url: '/login',
+                data: {
+                    "username" : `${username}`,
+                    "password" : `${password}`
+                }
+            }).then((e) => {
+                if(e.status==200){
+                    localStorage.setItem('username', 'username')
+                    console.log("hellos")
+                    AuthStore.setLoggedIn(username)
+                    history.push('/')
+                }
+            })
+        } catch (error) {
+            console.log("hello")
+        }
     }
 
     useEffect(() => {
