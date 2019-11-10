@@ -2,8 +2,9 @@ compile_pdf:
   image: tianon/latex
   script:
     - cd dokumentacija
-    - latexmk -pdf OPP_ProjektnaDokumentacija_v5.tex
+    - latexmk -pdf OPP_2019_BashCrash.tex
+    - cp OPP_2019_BashCrash.pdf ..
   artifacts:
     paths:
-      - dokumentacija/OPP_ProjektnaDokumentacija_v5.pdf
+      - OPP_2019_BashCrash.pdf
  
