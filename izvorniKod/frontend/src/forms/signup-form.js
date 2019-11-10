@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Formik, Form, Field } from 'formik'
 import { observer } from 'mobx-react'
+import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { AuthStore } from '../store/AuthStore'
 
@@ -8,6 +9,27 @@ import { AuthStore } from '../store/AuthStore'
 const Myform = observer(() => {
     let history = useHistory()
     
+    async function signup(event) {
+        try {
+            await axios({
+                method: 'POST',
+                url: '/users/sign-up',
+                data: {
+                    "username" : `${event.UserName}`,
+                    "password" : `${event.Password}`,
+                    "email": `${event.Email}`
+                }
+            }).then((e) => {
+                if(e.status==200){
+                    console.log("hellos")
+                    history.push('/login')
+                }
+            })
+        } catch (error) {
+            console.log("hello")
+        }
+    }
+
     useEffect(() => {
         if(AuthStore.getLoggedIn()===''){
             const username = localStorage.getItem('username') || ''
@@ -19,7 +41,7 @@ const Myform = observer(() => {
     return(
         <Formik
             initialValues={{UserName: '', Email: '', Password: ''}}
-            onSubmit={values => alert(JSON.stringify(values))}
+            onSubmit={signup}
         >
             <Form>
                 <div style={{display: 'flex', flexDirection: 'row'}}>
