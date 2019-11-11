@@ -3,6 +3,7 @@ import { observer } from 'mobx-react'
 import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { AuthStore } from '../store/AuthStore'
+import './form.css'
 
 const Loginform = observer(() => {
     const [username, setUsername] = useState("")
@@ -48,20 +49,19 @@ const Loginform = observer(() => {
     })
 
     return (
-        <form onSubmit={login} style={{display: 'flex', flexDirection: 'column'}} >
-            <label>
-                Username:
-                <input type='text' value={username} onChange={usernameChanged}/>
-            </label>
-            <label>
-                Password:
-                <input type='password' value={password} onChange={passwordChanged}/>
-            </label>
-            <div style={{display: 'flow', flexDirection: 'row'}}>
-                <input type='submit' value='submit' style={{width: '100px'}}/>
-                <Link to="/signup">Signup</Link>
-            </div>
-        </form>
+        <div id="container">
+            <h1 class="h3 mb-3 font-weight-normal">Prijava</h1>
+            <form onSubmit={login} style={{display: 'flex', flexDirection: 'column' }} class='form-primary' >
+                <label for='username' class='sr-only'>Korisničko ime</label>
+                <input type='text' id='username' value={username} onChange={usernameChanged} required class='form-control' placeholder='Korisničko ime' />
+                <label for='password' class='sr-only'>Lozinka</label>
+                <input type='password' id='password' value={password} onChange={passwordChanged} required class='form-control' placeholder='Lozinka' />
+                <div style={{display: 'flow', flexDirection: 'row'}}>
+                    <input type='submit' value='Prijava' style={{width: '100px'}} class='btn btn-lg btn-primary btn-block' />
+                    <Link to="/signup">Registracija</Link>
+                </div>
+            </form>
+        </div>
     )
 })
 

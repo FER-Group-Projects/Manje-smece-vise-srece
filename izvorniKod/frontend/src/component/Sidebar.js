@@ -4,17 +4,17 @@ import { AuthStore } from '.././store/AuthStore'
 import { observer } from 'mobx-react'
 
 const KonteinerButton = observer(() => {
-    if(AuthStore.getLoggedIn()!=='') return <button>Kontejner</button>
+    if(AuthStore.getLoggedIn()!=='') return <button class='btn btn-lg btn-primary btn-block'>Kontejner</button>
     return null
 })
 
 const LoginButton = observer(({ goToLogin }) => {
-    if(AuthStore.getLoggedIn()==='') return <button onClick={goToLogin}>Login</button>
+    if(AuthStore.getLoggedIn()==='') return <button class='btn btn-lg btn-primary btn-block' onClick={goToLogin}>Prijava</button>
     return null
 })
 
 const LogoutButton = observer(({ logout }) => {
-    if(AuthStore.getLoggedIn()!=='') return <button onClick={logout}>Logout</button>
+    if(AuthStore.getLoggedIn()!=='') return <button class='btn btn-lg btn-primary btn-block' onClick={logout}>Odjava</button>
     return null
 })
 

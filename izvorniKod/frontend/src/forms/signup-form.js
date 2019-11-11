@@ -43,21 +43,26 @@ const Myform = observer(() => {
             initialValues={{UserName: '', Email: '', Password: ''}}
             onSubmit={signup}
         >
-            <Form>
-                <div style={{display: 'flex', flexDirection: 'row'}}>
-                    <label >Korisničko ime:</label>
-                    <Field name='UserName' type='text'/>
-                </div>
-                <div style={{display: 'flex', flexDirection: 'row'}}>
-                    <label >Email:</label>
-                    <Field name='Email' type='text' />
-                </div>
-                <div style={{display: 'flex', flexDirection: 'row'}}>
-                    <label >Zaporka:</label>
-                    <Field name='Password' type='password' />
-                </div>
-                <button type='submit'>Submit</button>
-            </Form>
+            <div id="container">
+                <h1 class="h3 mb-3 font-weight-normal">Registracija</h1>
+
+                <Form>
+                    <div style={{display: 'flex', flexDirection: 'row'}}>
+                        <label class='sr-only' >Korisničko ime:</label>
+                        <Field name='UserName' type='text'class='form-control' placeholder='Korisničko ime' required />
+                    </div>
+                    <div style={{display: 'flex', flexDirection: 'row'}}>
+                        <label class='sr-only' >Email:</label>
+                        <Field name='Email' type='email' class='form-control' placeholder='Email' required />
+                    </div>
+                    <div style={{display: 'flex', flexDirection: 'row'}}>
+                        <label class='sr-only' >Lozinka:</label>
+                        <Field name='Password' type='password' class='form-control' placeholder='Lozinka' required />
+                    </div>
+                    <button type='submit' class='btn btn-lg btn-primary btn-block'>Registracija</button>
+                </Form>
+
+            </div>
 
         </Formik>
     )
