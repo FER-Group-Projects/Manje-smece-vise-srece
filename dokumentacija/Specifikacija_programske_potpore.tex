@@ -2,20 +2,23 @@
 		
 	\section{Funkcionalni zahtjevi}
 			
-			\textbf{\textit{dio 1. revizije}}\\
-			
-			\textit{Navesti \textbf{dionike} koji imaju \textbf{interes u ovom sustavu} ili  \textbf{su nositelji odgovornosti}. To su prije svega korisnici, ali i administratori sustava, naručitelji, razvojni tim.}\\
-				
-			\textit{Navesti \textbf{aktore} koji izravno \textbf{koriste} ili \textbf{komuniciraju sa sustavom}. Oni mogu imati inicijatorsku ulogu, tj. započinju određene procese u sustavu ili samo sudioničku ulogu, tj. obavljaju određeni posao. Za svakog aktora navesti funkcionalne zahtjeve koji se na njega odnose.}\\
-			
-			
 			\noindent \textbf{Dionici:}
 			
 			\begin{packed_enum}
 				
-				\item Dionik 1
-				\item Dionik 2				
-				\item ...
+				\item Direktor službe
+				\item Korisnici stranice
+				
+				\begin{packed_enum}
+				
+						\item Neregistrirani korisnici
+						\item Registrirani korisnici
+						
+				\end{packed_enum}
+				
+				\item Službenici	
+				\item Razvojni tim	
+				
 				
 			\end{packed_enum}
 			
@@ -23,30 +26,57 @@
 			
 			
 			\begin{packed_enum}
-				\item  \underbar{Aktor 1 (inicijator) može:}
+				\item  \underbar{Neregistrirani/neprijavljeni korisnik (inicijator) može:}
 				
 				\begin{packed_enum}
 					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
-					\begin{packed_enum}
-						
-						\item  podfunkcionalnost 1 
-						\item  podfunkcionalnost 2
-				
-					\end{packed_enum}
-					\item  funkcionalnost 3
+					\item na karti pregledati pozicije kontejnera
+					\item pronaći kontejner pomoću njegovog ID-a ili adrese
+					\item vidjeti trenutno i stanje kontejnera do 3 mjeseca unatrag
+					\item registrirati se u sustav te stvoriti novi korisnički račun za koji su mu potrebni korisničko ime, lozinka i e-mail adresa
 					
 				\end{packed_enum}
 			
-				\item  \underbar{Aktor 2 (sudionik) može:}
+				\item  \underbar{Registrirani korisnik (inicijator) može:}
 				
 				\begin{packed_enum}
 					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
+					\item pregledavati i mijenjati svoje osobne podatke
+					\item izbrisati svoj korisnički račun
+					\item ocijeniti stanje i pisati komentare o kontejneru
+					\item postaviti fotografije kontejnera
+					\item odabrati kontejnere za praćenje njihovog stanja
 					
 				\end{packed_enum}
+				
+					\item \underbar{Službenik (inicijator) može:}
+				
+				\begin{packed_enum}
+				
+					\item označiti da je ispraznio kontejner 
+					\item premjestiti kontejner
+					\item povući kontejner u skladište
+				
+				\end{packed_enum}	
+				
+				\item \underbar{Direktor službe (inicijator) može:}		
+				
+				\begin{packed_enum}
+				
+					\item dodati i izbrisati korisnika iz svoje službe
+					\item dodati, izbrisati i premjestiti kontejner 				
+				
+				\end{packed_enum}
+				
+				\item	\underbar{Baza podataka (sudionik):}
+				
+				\begin{packed_enum}
+				
+					\item pohranjuje sve podatke o korisnicima i njihovim ovlastima
+					\item pohranjuje sve podatke o kontejnerima 
+				
+				\end{packed_enum}
+				
 			\end{packed_enum}
 			
 			\eject 
@@ -54,67 +84,535 @@
 			
 				
 			\subsection{Obrasci uporabe}
+			
+			
+			\subsubsection{Opis obrazaca uporabe}
+			
+			\noindent \underbar{\textbf{UC1 - Pretraživanje i pregled kontejnera putem ID-a}}
+			\begin{packed_item}
 				
-				\textbf{\textit{dio 1. revizije}}
+				\item \textbf{Glavni sudionik:} Svi korisnici
+				\item  \textbf{Cilj:} Pregledati kontejnere i njihovo stanje kroz vremenski period
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} -
+				\item  \textbf{Opis osnovnog tijeka:}
 				
-				\subsubsection{Opis obrazaca uporabe}
-					\textit{Funkcionalne zahtjeve razraditi u obliku obrazaca uporabe. Svaki obrazac je potrebno razraditi prema donjem predlošku. Ukoliko u nekom koraku može doći do odstupanja, potrebno je to odstupanje opisati i po mogućnosti ponuditi rješenje kojim bi se tijek obrasca vratio na osnovni tijek.}\\
+				\item[] \begin{packed_enum}
 					
-
-					\noindent \underbar{\textbf{UC$<$broj obrasca$>$ -$<$ime obrasca$>$}}
-					\begin{packed_item}
-	
-						\item \textbf{Glavni sudionik: }$<$sudionik$>$
-						\item  \textbf{Cilj:} $<$cilj$>$
-						\item  \textbf{Sudionici:} $<$sudionici$>$
-						\item  \textbf{Preduvjet:} $<$preduvjet$>$
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-	
-							\item $<$opis korak jedan$>$
-							\item $<$opis korak dva$>$
-							\item $<$opis korak tri$>$
-							\item $<$opis korak četiri$>$
-							\item $<$opis korak pet$>$
-						\end{packed_enum}
-						
-						\item  \textbf{Opis mogućih odstupanja:}
-						
-						\item[] \begin{packed_item}
-	
-							\item[2.a] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
-							\item[] \begin{packed_enum}
-								
-								\item $<$opis rješenja mogućeg scenarija korak 1$>$
-								\item $<$opis rješenja mogućeg scenarija korak 2$>$
-								
-							\end{packed_enum}
-							\item[2.b] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
-							\item[3.a] $<$opis mogućeg scenarija odstupanja  u koraku 3$>$
-							
-						\end{packed_item}
-					\end{packed_item}
-				
+					\item Korisnik u tražilicu upisuje ID kontejnera
+					\item Prikazuju se informacije o kontejneru
 					
-				\subsubsection{Dijagrami obrazaca uporabe}
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
 					
-					\textit{Prikazati odnos aktora i obrazaca uporabe odgovarajućim UML dijagramom. Nije nužno nacrtati sve na jednom dijagramu. Modelirati po razinama apstrakcije i skupovima srodnih funkcionalnosti.}
-				\eject		
+					\item[2.a] Neispravan/nepostojeći ID
+					\item[] \begin{packed_enum}
+						
+						\item Sustav obavještava korisnike o neuspjelom pokušaju te navodi korisnika na upis valjanog ID-a
+						\item Korisnik upisuje ispravan ID ili odustaje od pretraživanja
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC2 - Pretraživanje i pregled kontejnera odabirom na karti/putem adrese}}
+			\begin{packed_item}
 				
-			\subsection{Sekvencijski dijagrami}
+				\item \textbf{Glavni sudionik:} Svi korisnici
+				\item  \textbf{Cilj:} Pregledati kontejnere i njihovo stanje kroz vremenski period 
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} -
+				\item  \textbf{Opis osnovnog tijeka:}
 				
-				\textbf{\textit{dio 1. revizije}}\\
+				\item[] \begin{packed_enum}
+					
+					\item Karta je prikazana prilikom učitavanja aplikacije
+					\item Korisnik na karti odabire kontejner 
+					\item Prikazuju se informacije o kontejneru 
+					
+				\end{packed_enum}
+			\end{packed_item}
+			
+			
+			\noindent \underbar{\textbf{UC3 - Registracija}}
+			\begin{packed_item}
 				
-				\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
-				\eject
-	
-		\section{Ostali zahtjevi}
+				\item \textbf{Glavni sudionik:} Neregistrirani korisnici
+				\item  \textbf{Cilj:} Stvoriti korisnički račun za pristup sustavu
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} -
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Korisnik odabire opciju za registraciju
+					\item Korisnik unosi potrebne korisničke podatke 
+					\item Korisnik prima obavijest o uspješnoj registraciji
+					
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[3.a] Odabir već zauzetog korisničkog imena i/ili e-maila, unos korisničkog podatka u nedozvoljenom formatu ili pružanje neispravnoga e-maila 
+					\item[] \begin{packed_enum}
+						
+						\item Sustav obavještava korisnika o neuspjelom upisu i vraća ga na stranicu za registraciju
+						\item Korisnik mijenja potrebne podatke te završava unos ili odustaje od registracije
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			
+			\noindent\underbar{\textbf{UC4 - Prijava u sustav}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik:} Registrirani korisnici, zaposlenici, direktor
+				\item  \textbf{Cilj:} Dobiti pristup korisničkom sučelju
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Korisnik je registriran
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Unos korisničkog imena i lozinke
+					\item Potvrda o ispravnosti unesenih podataka
+					\item Pristup funkcijama
+					
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Neispravno korisničko ime ili lozinka
+					\item[] \begin{packed_enum}
+						
+						\item Sustav obavještava korisnike o neuspješnom upisu 
+						\item Korisnik upisuje ispravne podatke ili odustaje od prijave
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC5 - Pregled osobnih podataka}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik:} Registrirani korisnici, zaposlenici, direktor
+				\item  \textbf{Cilj:} Pregledati osobne podatke
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Korisnik je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Korisnik odabire opciju "Osobni podatci"
+					\item Prikazuju se osobni podatci korisnika
+					
+				\end{packed_enum}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC6 - Objava slike kontejnera}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik:} Registrirani korisnik
+				\item  \textbf{Cilj:} Objaviti trenutno stanje kontejnera
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Korisnik je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Korisnik odabere kontejner
+					\item Korisnik učitava sliku kontejnera
+					\item Korisnik objavljuje sliku kontejnera
+					
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Korisnik učita sliku, ali ju ne objavi
+					\item[] \begin{packed_enum}
+						
+						\item Sustav obavještava korisnika da slika nije objavljena prije obustavljanja radnje
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC7 - Ocjenjivanje kontejnera}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik:} Registrirani korisnik
+				\item  \textbf{Cilj:} Ocijeniti trenutno stanje kontejnera
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Korisnik je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Korisnik odabere kontejner
+					\item Korisnik daje ocjenu kontejneru
+					
+				\end{packed_enum}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC8 - Komentiranje kontejnera}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik:} Registrirani korisnik
+				\item  \textbf{Cilj:} Komentirati stanje kontejnera
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Korisnik je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Korisnik odabere kontejner
+					\item Korisnik piše komentar
+					\item Korisnik objavljuje komentar
+					
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Korisnik napiše komentar, ali ga ne objavi
+					\item[] \begin{packed_enum}
+						
+						\item Sustav obavještava korisnika da komentar nije objavljen prije obustavljanja radnje
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
 		
-			\textbf{\textit{dio 1. revizije}}\\
-		 
-			 \textit{Nefunkcionalni zahtjevi i zahtjevi domene primjene dopunjuju funkcionalne zahtjeve. Oni opisuju \textbf{kako se sustav treba ponašati} i koja \textbf{ograničenja} treba poštivati (performanse, korisničko iskustvo, pouzdanost, standardi kvalitete, sigurnost...). Primjeri takvih zahtjeva u Vašem projektu mogu biti: podržani jezici korisničkog sučelja, vrijeme odziva, najveći mogući podržani broj korisnika, podržane web/mobilne platforme, razina zaštite (protokoli komunikacije, kriptiranje...)... Svaki takav zahtjev potrebno je navesti u jednoj ili dvije rečenice.}
-			 
-			 
-			 
-	
+			\noindent \underbar{\textbf{UC9 - Dodavanje  korisnika}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: } Direktor
+				\item  \textbf{Cilj:} Dodati novog korisnika
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Direktor je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Direktor u aplikaciji odabire opciju dodavanja novog korisnika
+					\item Direktor upisuje ime, prezime, ID novog korisnika (i ostale podatke koji idu u bazu podataka)
+					\item Direktor potvrđuje svoj unos
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Korisnik već postoji u bazi
+					\item[] \begin{packed_enum}
+						
+						\item Sustav obavještava direktora o tome da već postoji korisnik s tim ID-om
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			
+			\noindent \underbar{\textbf{UC10 - Brisanje  korisnika}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: } Direktor
+				\item  \textbf{Cilj:} Izbrisati postojećeg korisnika
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Direktor je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Direktor u aplikaciji pretražuje korisnike
+					\item Direktor odabire opciju brisanja korisnika
+					\item Direktor potvrđuje svoj izbor
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Ne postoji korisnik koji zadovoljava uvjete pretrage
+					\item[] \begin{packed_enum}
+						
+						\item Sustav ispisuje poruku da korisnik nije pronađen
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC11 - Dodavanje  kontejnera}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: } Direktor
+				\item  \textbf{Cilj:} Dodati novi kontejner
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Direktor je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Direktor u aplikaciji odabire opciju dodavanja novog kontejnera
+					\item Direktor upisuje adresu i ID novog kontejnera 
+					\item Direktor potvrđuje svoj unos
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Na odabranoj adresi već postoji kontejner
+					\item[] \begin{packed_enum}
+						
+						\item Pitati direktora želi li postaviti još jedan kontejner na tu adresu
+						\item Direktor odabire opciju da ili ne
+						
+					\end{packed_enum}
+					\item[2.b] Već postoji kontejner s tim ID-om
+					\item[] \begin{packed_enum}
+						
+						\item Ispisati poruku da već postoji kontejner s tim ID-om
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC12 - Brisanje  kontejnera}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: } Direktor
+				\item  \textbf{Cilj:} Dodati novog korisnika
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Direktor je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Direktor u aplikaciji pretražuje kontejner po ID-u ili ulici i odabire opciju za brisanje kontejnera
+					\item Direktor potvrđuje svoj unos
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Kontejner s traženim ID-em ne postoji
+					\item[] \begin{packed_enum}
+						
+						\item Ispisati poruku da traženi kontejner nije pronađen
+						
+					\end{packed_enum}
+					\item[2.b] U traženoj ulici nema niti jednog kontejnera
+					\item[] \begin{packed_enum}
+						
+						\item Ispisati da u traženoj ulici nema niti jednog kontejnera
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC13 - Premještanje  kontejnera}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: } Direktor
+				\item  \textbf{Cilj:} Premjestiti kontejner s jedne lokacije na drugu
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Direktor je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Direktor u aplikaciji pretražuje kontejner po ID-u ili ulici i odabire opciju za premještanje kontejnera
+					\item Direktor upisuje adresu gdje želi da kontejner bude premješten
+					\item Direktor potvrđuje svoj unos
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Traženi ID kontejnera ne postoji
+					\item[] \begin{packed_enum}
+						
+						\item Ispisati poruku da traženi kontejner nije pronađen
+						
+					\end{packed_enum}
+					\item[2.b] U traženoj ulici nema niti jednog kontejnera
+					\item[] \begin{packed_enum}
+						
+						\item Ispisati da u traženoj ulici nema niti jednog kontejnera
+					\end{packed_enum}
+					\item[2.c] Na odabranoj adresi već postoji kontejner
+					
+					\item[] \begin{packed_enum}
+						
+						\item Pitati direktora želi li postaviti još jedan kontejner na tu adresu
+						\item Direktor odabire opciju da ili ne
+						
+					\end{packed_enum}
+					
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC14 - Pregled rute}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik:} Zaposlenici
+				\item  \textbf{Cilj:} Pregledati rutu uz prikazivanje svih kontejnera na ruti
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Zaposlenik je prijavljen
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Zaposlenik pritisne na gumb moja ruta
+					\item Prikazuju mu se informacije ruti zaposlenika
+					
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Neispravana ili nepostojeća ruta
+					\item[] \begin{packed_enum}
+						
+						\item Sustav obavještava zaposlenika o nepostojećoj ruti
+
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\clearpage
+			\eject
+			
+			\subsubsection{Dijagrami obrazaca uporabe}
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.0\linewidth]{slike/Funkcionalnost_korisnika_aplikacije.png}
+				\caption{Dijagram obrazaca uporabe, funkcionalnost korisnika aplikacije}
+				\label{fig:Funkcionalnost korisnika aplikacije}
+			\end{figure}
+			
+			\clearpage
+			
+			\eject
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.0\linewidth]{slike/Funkcionalnost_direktora_i_zaposlenika.png}
+				\caption{Dijagram obrazaca uporabe, funkcionalnost direktora i zaposlenika}
+				\label{fig:Funkcionalnost direktora i zaposlenika}
+			\end{figure}
+			
+			\clearpage
+			
+			\eject		
+
+			\subsection{Sekvencijski dijagrami}
+			
+			\noindent {\textbf{UC1 - Pretraživanje i pregled kontejnera putem ID-a}}
+			
+			\noindent Korisnik upisuje ID kontejnera za koji želi pregledati podatke. Poslužitelj prosljeđuje upisani ID bazi koja provjerava je li ID ispravan te postoji li kontejner s tim ID-om. Ako postoji, poslužitelj dohvaća podatke o kontejneru i prikazuje ih korisniku. Ako je ID neispravan ili kontejner s tim ID-om ne postoji u bazi, sustav obavještava korisnika te ga navodi na ispravan unos ID-a. Proces se ponavlja dok korisnik ne unese ispravan ID za koji postoji kontejner ili dok ne odustane od pretraživanja.
+			
+			
+			\eject
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.0\linewidth]{slike/Seq-UC1.png}
+				\caption{Sekvencijski dijagram za UC1}
+				\label{fig:UC1-Seq}
+			\end{figure}
+			
+			\clearpage
+			\eject
+			
+			\noindent {\textbf{UC8 - Komentiranje kontejnera}}
+			
+			\noindent Korisnik odabire kontejner koji želi komentirati. Poslužitelj dohvaća i prikazuje željeni kontejner. Korisnik počinje pisati komentar i u jednom trenutku prekida s komentiranjem. Ako je korisnik objavio komentar, poslužitelj ga upisuje u bazu te korisniku šalje potvrdu o uspješnoj objavi. Ako korisnik prekine komentiranje, a nije objavio komentar, sustav ga o tome obavještava i upita ga želi li nastaviti s komentiranjem. Proces se ponavlja dok korisnik ne objavi komentar ili dok ne odustane od komentiranja.
+			
+			\eject
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.0\linewidth]{slike/UC8-seq.jpg}
+				\caption{Sekvencijski dijagram za UC8}
+				\label{fig:UC8-Seq}
+			\end{figure}
+			
+			\clearpage
+			
+			\eject
+			
+			\noindent {\textbf{Obrazac uporabe UC9 - Dodavanje korisnika}}
+			
+			
+			\noindent	Direktor želi dodati novog korisnika. U aplikaciji bira opciju za unos korisnika, gdje predaje sve njegove podatke, što uključuje i njegov ID. Nakon toga aplikacija njegov ID prosljeđuje do baze podataka gdje se provjerava postoji li već korisnik s tim ID-em. Ukoliko ne postoji, Direktor dobiva opciju za potvrdu unosa te ako izabere tu opciju, novi se korisnik unosi u bazu. Ako korisnik s tim ID-em već postoji, ispisuje se odgovarajuća poruka. Ako Direktor nije potvrdio unos, postupak će se prekinuti.
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.0\linewidth]{slike/Sekvencijski dijagram za dodavanje korisnika.png}
+				\caption{Sekvencijski dijagram za UC9}
+				\label{fig:sekvencijski-dijagram-za-dodavanje-korisnika}
+			\end{figure}
+			
+			\clearpage	 
+			\noindent {\textbf{Obrazac uporabe UC13 - Premještanje kontejnera}}
+			
+			
+			\noindent
+			Direktor želi premjestiti određeni kontejner. U aplikaciji traži kontejner po ID-u ili ulici i odabire opciju za premještanje tog kontejnera. Provjerava se postoji li kontejner s traženim ID-em ili u traženoj ulici. Nakon toga Direktor odabire adresu na koju će kontejner biti premješten. Ako na toj adresi već postoji kontejner onda se treba prikazati opcija kojom Direktor potvrđuje namjeru da se 2 kontejnera nalaze na toj adresi. Nakon toga mijenja se adresa kontejnera u bazi podataka. Ako kontejner ne postoji, ispisuje se odgovarajuća poruka. Ako Direktor nije potvrdio unos, postupak će se prekinuti.
+			
+			\clearpage	 
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.1\linewidth]{slike/Sekvencijski dijagram za premjestanje kontejnera.png}
+				\caption{Sekvencijski dijagram za UC13}
+				\label{fig:sekvencijski-dijagram-za-premjestanje-kontejnera}
+			\end{figure}
+			
+			\clearpage	 
+
+			\section{Ostali zahtjevi}
+
+			\begin{packed_item}
+				\item Sustav treba biti izveden kao responzivna web aplikacija prilagođena mobilnim uređajima, te se prikladno skalirati za ekrane računala
+				\item Sustav treba omogućiti rad više korisnika u stvarnom vremenu
+				\item Pogreške pri izvođenju se ne smiju direktno prikazivati korisniku
+				\item Sustav treba provjeravati ispravnost unesenih podataka, te ne smije dopustiti korisniku da unese podatke koji bi narušili funkcionalnost sustava
+				\item Korisničko sučelje sustava mora biti na hrvatskom jeziku, te podržavati hrvatsku abecedu pri unosu i prikazu podataka
+				\item Korisničko sučelje mora biti intuitivno i jednostavno za korištenje
+				\item Korisniku treba omogućiti pronalazak kontejnera u manje od 10 akcija
+				\item Učitavanje stranice ne smije trajati duže od 6 sekundi
+				\\
+				\item Korisničko ime i e-mail adresa korisnika moraju biti jedinstveni
+				\item Lozinke se ne smiju spremati u bazu podataka kao nešifrirani tekst \engl{plaintext}, nego moraju biti šifrirane algoritmom raspršivanja
+				\item Nakon registracije ili promjene e-mail adrese, potrebno je potvrditi vlasništvo e-mail adrese
+				\item E-mail obavijesti (osim slanja upita za potvrdu e-maila) se ne smiju slati na nepotvrđene e-mail adrese.
+			\end{packed_item}
+			
+			
+			\clearpage

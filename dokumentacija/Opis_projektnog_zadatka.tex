@@ -1,126 +1,76 @@
 \chapter{Opis projektnog zadatka}
 		
-		\textbf{\textit{dio 1. revizije}}\\
+		Cilj ovog projekta je razviti programsku podršku za web aplikaciju \textit{"Manje smeće više sreće"} koja će građanima omogućiti ocjenjivanje i komentiranje stanja kontejnera te će djelatnicima komunalnih službi omogućiti praćenje tih recenzija.
+		Aplikacija bi time povećala povezanost građana s djelatnicima komunalnih službi, što bi omogućilo rješavanje problema odvoza smeća na efikasniji i brži način. 
+		Osim toga, aplikacija bi omogućila građanima transparentniji uvid u rad komunalnih službi.
 		
-		\textit{Na osnovi projektnog zadatka detaljno opisati korisničke zahtjeve. Što jasnije opisati cilj projektnog zadatka, razraditi problematiku zadatka, dodati nove aspekte problema i potencijalnih rješenja. Očekuje se minimalno 3, a poželjno 4-5 stranica opisa.	Teme koje treba dodatno razraditi u ovom poglavlju su:}
-		\begin{packed_item}
-			\item \textit{potencijalna korist ovog projekta}
-			\item \textit{postojeća slična rješenja (istražiti i ukratko opisati razlike u odnosu na zadani zadatak). Dodajte slike koja predočavaju slična rješenja.}
-			\item \textit{skup korisnika koji bi mogao biti zainteresiran za ostvareno rješenje.}
-			\item \textit{mogućnost prilagodbe rješenja }
-			\item \textit{opseg projektnog zadatka}
-			\item \textit{moguće nadogradnje projektnog zadatka}
-		\end{packed_item}
+		Prilikom pokretanja sustava, prikazuje se karta s ucrtanim kontejnerima koji se nalaze u blizini korisnika te traka za pretraživanje kontejnera.
+		Neregistriranom korisniku, odabirom kontejnera na karti, otvaraju se opće informacije o istom; ID kontejnera, adresa te povijest stanja koja je vidljiva kroz recenzije korisnika i slike koje su korisnici objavljivali.
 		
-		\textit{Za pomoć pogledati reference navedene u poglavlju „Popis literature“, a po potrebi konzultirati sadržaj na internetu koji nudi dobre smjernice u tom pogledu.}
-		\eject
+		Osim pregleda kontejnera odabirom na karti, korisnicima je ponuđena opcija pretraživanja putem jedinstvenog ID-a koji je prikazan na kontejneru.
+		Upisom valjanog ID-a, otvaraju se opće informacije o kontejneru, a u suprotnom korisnik dobiva odgovarajuću poruku.
 		
-		\section{Primjeri u LaTeXu}
-		
-		\textit{Ovo potpoglavlje izbrisati.}\\
-
-		U nastavku se nalaze različiti primjeri kako koristiti osnovne funkcionalnosti LaTeXa koje su potrebne za izradu dokumentacije. Za dodatnu pomoć obratiti se asistentu na projektu ili potražiti upute na sljedećim web sjedištima:
-		\begin{itemize}
-			\item Upute za izradu diplomskog rada u LaTeXu - \url{https://www.fer.unizg.hr/_download/repository/LaTeX-upute.pdf}
-			\item LaTeX projekt - \url{https://www.latex-project.org/help/}
-			\item StackExchange za Tex - \url{https://tex.stackexchange.com/}\\
-		
-		\end{itemize} 	
-
-
-		
-		%Ovo poglavlje je potrebno prilikom predaje obrisati
-		
-		\underbar{podcrtani tekst}, 
-		\textbf{podebljani tekst}, 
-		\textit{nagnuti tekst}\\
-		\normalsize primjer
-		\large primjer
-		\Large primjer
-		\LARGE {primjer}
-		\huge {primjer}
-		\Huge primjer
-		\normalsize
-				
+		Neregistriranom korisniku omogućeno je prijavljivanje u sustav s postojećim računom ili registracija novog računa.
+		Za registraciju novog računa potrebni su sljedeći podatci:
 		\begin{packed_item}
 			
-			\item  primjer
-			\item  primjer
-			\item  primjer
-			\item[] \begin{packed_enum}
-				
-				\item primjer
-				\item primjer
-			\end{packed_enum}
+			\item  korisničko ime
+			\item  lozinka
+			\item  e-mail adresa
 			
 		\end{packed_item}
 		
-		\noindent primjer url-a: \url{https://www.fer.unizg.hr/predmet/opp/projekt}
+		Registracijom u sustav, korisnik dobiva mogućnost ocjenjivanja i komentiranja stanja kontejnera kao građanin. 
+		Korisnik, osim kao građanin, može biti djelatnik ili direktor komunalne službe.
 		
+		\underbar{\textit{Građanin}} je registrirani korisnik koji ima mogućnost ocjenjivanja i komentiranja stanja kontejnera. 
+		Nakon što je odabrao kontejner, građaninu je omogućeno davanje numeričke ocjene punoće kontejnera te ocjene neurednosti kontejnera.
+		Osim navedenog, omogućeno mu je ostavljanje tekstualnih komentara, te slika samog kontejnera kako bi po potrebi bolje prikazao stanje kontejnera.
+		Građaninu je omogućeno praćenje kontejnera čime dobiva e-mail obavijesti pri promjeni stanja kontejnera te pregled kontejnera koje trenutno prati i mogućnost prestanka praćenja pojedinih kontejnera. 
+		Obavijesti o promjeni stanja kontejnera zahtijevaju potvrđenu e-mail adresu kako ne bi slali e-mail poruke na krivu adresu. 
 		
-		\begin{longtabu} to \textwidth {|X[8, l]|X[8, l]|X[16, l]|} %definicija sirine polja
-			
-			\hline \multicolumn{3}{|c|}{\textbf{naslov unutar tablice}}	 \\[3pt] \hline
-			\endfirsthead
-			
-			\hline \multicolumn{3}{|c|}{\textbf{naslov unutar tablice}}	 \\[3pt] \hline
-			\endhead
-			
-			\hline 
-			\endlastfoot
-			
-			\rowcolor{LightGreen}IDKorisnik & INT	&  	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  	\\ \hline
-			korisnickoIme	& VARCHAR &   	\\ \hline 
-			email & VARCHAR &   \\ \hline 
-			ime & VARCHAR	&  		\\ \hline 
-			\cellcolor{LightBlue} primjer	& VARCHAR &   	\\ \hline 
-			
-			
-		\end{longtabu}
+		\underbar{\textit{Djelatnik}} komunalne službe kroz aplikaciju ima pristup dodijeljenim kontejnerima svoje komunalne službe.
+		Omogućen mu je pregled svojih kontejnera i njihovih stanja, te može označiti da je ispraznio određeni kontejner čime se šalje obavijest svim pretplaćenom korisnicima tog kontejnera. 
+		Osim toga, omogućen mu je prikaz svoje rute koju aplikacija generira na temelju dodijeljenih kontejnera i njihovih stanja. Područje grada podijeljeno je na zone za koje su zadužene ekipe komunalnih djelatnika. 
 		
-
-		\begin{table}[H]
+		\underbar{\textit{Direktor}} komunalne službe ima širi spektar mogućnosti rada u aplikaciji. 
+		Njemu je omogućen pregled svih kontejnera, zaposlenika, zona i ruta svoje komunalne službe. 
+		Odabirom kontejnera, omogućeno mu je brisanje, premještanje i označavanje da je kontejner poslan u skladište.
+		Omogućeno mu je dodavanje kontejnera na nekoj od lokacija po izboru pri čemu mora ručno postaviti adresu i koordinate kontejnera. Uz dodavanje, omogućeno mu je i brisanje kontejnera te premještanje kontejnera na neku drugu lokaciju.
+		Osim toga, direktoru je omogućeno dodavanje i uklanjanje djelatnika iz svoje službe.
+		
+		Kontejneri u sebi imaju senzor koji detektira je li kontejner očišćen ili nije. Pomoću tog senzora moguće je otkriti koliko dugo neki kontejner nije očišćen, ali nije moguće otkriti treba li kontejner čišćenje ili ne, zato su potrebni građani i njihove recenzije kako bi ovaj sustav bio efikasan i kvalitetan.
+		
+		Svi kontejneri u ovom projektu bit će smješteni u gradu Zagrebu te se očekuje da će korisnici aplikacije biti građani grada Zagreba i da će oni imati najveću korist od same aplikacije. U budućnosti je, međutim, moguće da proširenje na cijelu Hrvatsku ili šire, što bi omogućilo više korisnika koji će imati izravnu korist od ove aplikacije kao i veću uštedu u pogledu vremena, ali i novca, za komunalne radnike na čijem će području biti ostvaren rad ove aplikacije.
+		
+		Jedna od sličnih aplikacija koja se bavi sličnim problemima je aplikacija Zagrebačkog holdinga. Njihova aplikacija se, naravno, bavi puno većim opsegom poslova nego što je specificirano u ovom projektnom zadatku, ali se u domeni održavanja kontejnera poklapa s domenom ovog projektnog zadatka. Ključna razlika između ovog projekta i aplikacije Zagrebačkog holdinga je transparentnost, odnosno nedostatak iste. Na njihovoj aplikaciji nije moguće pratiti kada je (i je li) neki kontejner očišćen niti se može ocijeniti stanje pojednog kontejnera. Zagrebački holding, također, nema način na koji će pratiti koliko je neki kontejner očišćen te se, prema tome, odvoz smeća uvijek vrši u isto vrijeme i na istim kontejnerima, što može biti neefikasno. Jedan od ciljeva ove aplikacije je, uz transparentnost, veća efikasnost nego što je trenutno efikasnost aplikacije Zagrebačkog holdinga. Uz to, naravno, važno je dati građanima mogućnost pridonijeti cijelom tom procesu jer su ipak oni u središtu ove aplikacije. 
+		
+		Evolucija je neizostavni dio aplikacija programske potpore. Kao takva, aplikacija je podložna promjeni i nadogradnjama, stoga će u nastavku biti navedene poneke nove mogućnost i svojstva za svaku vrstu korisnika aplikacije.
+		
+		Moguće buduće nadogradnje projektnog zadatka za građanina uključuju:
+		\begin{packed_item}
 			
+			\item pronalazak kontejnera preko QR koda
+			\item opcije zaboravio sam lozinku/zapamti kako bi proces prijave bio što lakši i bolji
+			\item potvrđivanje e-mail adrese preko tokena u e-mail poruci
+			\item obavijesti unutar aplikacije za praćene kontejnere (uz obavijesti preko e-maila)
 			
+		\end{packed_item}
+		
+		Moguće buduće nadogradnje projektnog zadatka za djelatnika komunalne službe uključuju:
+		\begin{packed_item}
 			
-			\begin{longtabu} to \textwidth {|X[8, l]|X[8, l]|X[16, l]|} %definicija sirine polja
-				
-				\hline 
-				\endfirsthead
-				
-				\hline 
-				\endhead
-				
-				\hline 
-				\endlastfoot
-				
-				\rowcolor{LightGreen}IDKorisnik & INT	&  	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  	\\ \hline
-				korisnickoIme	& VARCHAR &   	\\ \hline 
-				email & VARCHAR &   \\ \hline 
-				ime & VARCHAR	&  		\\ \hline 
-				\cellcolor{LightBlue} primjer	& VARCHAR &   	\\ \hline 
-				
-				
-			\end{longtabu}
+			\item brzo skeniranje QR koda kako bi se potvrdilo da je taj kontejner sa sigurnošću ispražnjen
+			\item generiranje optimalne rute čišćenja kontejnera koja će se mijenjati dinamički tijekom vožnje
+			\item paljenje točkice na ekranu kada se skenira QR kod kontejnera
+			
+		\end{packed_item}
 	
-			\caption{\label{tab:referencatablica} Naslov ispod tablice.}
-		\end{table}
-		
-		\begin{figure}[H]
-			\includegraphics[scale=0.4]{slike/aktivnost.PNG}
-			\centering
-			\caption{Primjer slike s potpisom}
-			\label{fig:promjene}
-		\end{figure}
-		
-		\begin{figure}[H]
-			\includegraphics[width=\linewidth]{slike/aktivnost.PNG}
-			\caption{Primjer slike s potpisom 2}
-			\label{fig:promjene2}
-		\end{figure}
-		
-		
-		
+		Moguće buduće nadogradnje projektnog zadatka za direktora komunalne službe uključuju:
+		\begin{packed_item}
+			
+			\item karta s lokacijama kontejnera na osobnoj aplikaciji na kojoj će biti oznake u boji ovisno o stanju kontejnera
+			\item očitavanje trenutne lokacije te dodavanje kontejnera na trenutnoj lokaciji
+			
+		\end{packed_item}
 		\eject
-		
-	

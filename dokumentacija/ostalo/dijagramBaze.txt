@@ -1,0 +1,73 @@
+// https://dbdiagram.io/d/5dbafaceedf08a25543d5ed8
+Table Korisnik {
+  "ID korisnika" integer [pk, increment] // auto-increment
+  "ID komunalne službe u kojoj je zaposlen" integer [null, ref: > "Komunalna služba"."ID komunalne službe"]
+  "Korisničko ime" varchar
+  "Email adresa" varchar
+  "Je li email adresa potvrđena" boolean
+  Lozinka varchar
+  
+  
+  Indexes {
+    "Korisničko ime" [unique]
+    "Email adresa" [unique]
+  }
+}
+
+Table "Komunalna služba" {
+  "ID direktora" integer [not null, ref: > Korisnik."ID korisnika"]
+  "ID komunalne službe" integer [pk, increment]
+  "Ime komunalne službe" varchar
+  "Opis komunalne službe" varchar
+ }
+ 
+Table "Država" {
+  "ID države" integer [pk, increment]
+  "Ime države" varchar
+}
+
+Table Grad {
+  "ID grada" integer [pk, increment]
+  "ID države" integer [ref: > "Država"."ID države"]
+  "Ime grada" varchar
+}
+
+Table Zona {
+  "ID zone" integer [pk, increment]
+  "ID grada" integer [ref: > Grad."ID grada"]
+  "Ime zone" varchar
+}
+ 
+Table Kontejner {
+  "ID kontejnera" integer [pk, increment]
+  "ID komunalne službe" integer [ref: > "Komunalna služba"."ID komunalne službe"]
+  "ID zone" integer [ref: > Zona."ID zone"]
+  "Adresa kontejnera" varchar
+  "Geografska dužina kontejnera" numeric
+  "Geografska širina kontejnera" numeric
+}
+
+Table Recenzija {
+  "ID recenzije" integer [pk, increment]
+  "ID korisnika" integer [ref: > Korisnik."ID korisnika"]
+  "ID kontejnera" integer [ref: > Kontejner."ID kontejnera"]
+  "Ocjena punoće" integer
+  "Ocjena urednosti" integer
+  Komentar varchar
+  Slika longblob
+  "Vrijeme objave" timestamp
+}
+
+Table Pretplata {
+  "ID korisnika" integer [ref: > Korisnik."ID korisnika"]
+  "ID kontejnera" integer [ref: > Kontejner."ID kontejnera"]
+  Indexes {
+    ("ID korisnika", "ID kontejnera") [pk]
+  }
+}
+
+Table Senzor {
+  "ID senzora" integer [pk, increment]
+  "ID kontejnera" integer [ref: > Kontejner."ID kontejnera"]
+  "Token" varchar
+}
