@@ -1,6 +1,7 @@
 cache:
   paths:
     - /root/.m2/repository
+    - izvorniKod/frontend/node_modules/
  
 stages:
   - build
@@ -24,6 +25,14 @@ build_backend:
     - cd izvorniKod/manje-smece-vise-srece-backend
     - mvn clean package
 
+build_frontend:
+  stage: build
+  image: node:12.13.0
+  script:
+    - cd izvorniKod/frontend
+    - npm install
+    - CI=false npm run-script build
+
 test_backend:
   stage: test
   image: maven:3.3.9-jdk-8
@@ -40,5 +49,17 @@ deploy_backend:
     - apt-get install -y ruby-dev
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_BACKEND_NAME --api-key=$HEROKU_BACKEND_API_KEY
+  only:
+    - master
+
+deploy_frontend:
+  stage: deploy
+  image: ruby:latest
+  script:
+    - cd izvorniKod/frontend
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_FRONTEND_NAME --api-key=$HEROKU_FRONTEND_API_KEY
   only:
     - master
