@@ -347,10 +347,10 @@
 				
 				\item[] \begin{packed_item}
 					
-					\item[2.a] ID korisnika ne postoji u bazi
+					\item[2.a] Ne postoji korisnik koji zadovoljava uvjete pretrage
 					\item[] \begin{packed_enum}
 						
-						\item Sustav ispisuje poruku da taj korisnik nije pronađen
+						\item Sustav ispisuje poruku da korisnik nije pronađen
 						
 					\end{packed_enum}
 					
@@ -413,7 +413,7 @@
 				
 				\item[] \begin{packed_item}
 					
-					\item[2.a] Traženi ID kontejnera ne postoji
+					\item[2.a] Kontejner s traženim ID-em ne postoji
 					\item[] \begin{packed_enum}
 						
 						\item Ispisati poruku da traženi kontejner nije pronađen
@@ -569,7 +569,7 @@
 			\noindent {\textbf{Obrazac uporabe UC9 - Dodavanje korisnika}}
 			
 			
-			\noindent	Direktor želi dodati novog korisnika. U aplikaciji bira opciju za unos korisnika, gdje predaje sve njegove podatke, što uključuje i njegov ID. Nakon toga aplikacija njegov ID prosljeđuje do baze podataka gdje se provjerava postoji li već korisnik s tim ID-om, ako ne onda Direktor dobiva opciju za potvrdu unosa i ako izabere tu opciju, novi korisnik se unosi u bazu. Ako već korisnik s tim ID-om postoji ispisuje se odgovarajuća poruka. Ako direktor nije potvrdio unos, postupak će se prekinuti. Na kraju svega se aplikacija vraća u prvotno stanje.
+			\noindent	Direktor želi dodati novog korisnika. U aplikaciji bira opciju za unos korisnika, gdje predaje sve njegove podatke, što uključuje i njegov ID. Nakon toga aplikacija njegov ID prosljeđuje do baze podataka gdje se provjerava postoji li već korisnik s tim ID-em. Ukoliko ne postoji, Direktor dobiva opciju za potvrdu unosa te ako izabere tu opciju, novi se korisnik unosi u bazu. Ako korisnik s tim ID-em već postoji, ispisuje se odgovarajuća poruka. Ako Direktor nije potvrdio unos, postupak će se prekinuti.
 			
 			\begin{figure}
 				\centering
@@ -583,7 +583,7 @@
 			
 			
 			\noindent
-			Direktor želi premjestiti određeni kontejner. U aplikaciji traži kontejner po ID-u ili ulici i odabire opciju za premještanje tog kontejnera. Provjerava se postoji li kontejner s tim ID-om ili u toj ulici. Nakon toga odabire adresu na koju će kontejner biti premješten. Ako na toj adresi već postoji kontejner onda se treba prikazati dijalog da direktor potvrdi da želi da se 2 kontejnera nalaze na toj adresi. Nakon toga se mijenja adresa kontejnera u bazi podataka i aplikacija se vraća u prvotno stanje.
+			Direktor želi premjestiti određeni kontejner. U aplikaciji traži kontejner po ID-u ili ulici i odabire opciju za premještanje tog kontejnera. Provjerava se postoji li kontejner s traženim ID-em ili u traženoj ulici. Nakon toga Direktor odabire adresu na koju će kontejner biti premješten. Ako na toj adresi već postoji kontejner onda se treba prikazati opcija kojom Direktor potvrđuje namjeru da se 2 kontejnera nalaze na toj adresi. Nakon toga mijenja se adresa kontejnera u bazi podataka. Ako kontejner ne postoji, ispisuje se odgovarajuća poruka. Ako Direktor nije potvrdio unos, postupak će se prekinuti.
 			
 			\clearpage	 
 			
