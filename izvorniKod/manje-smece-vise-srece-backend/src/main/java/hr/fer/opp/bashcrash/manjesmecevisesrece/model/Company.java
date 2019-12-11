@@ -43,4 +43,11 @@ public class Company {
         this.description = description;
     }
 
+    public UserModel getDirector() {
+        return director;
+    }
+
+    public void setDirector(UserModel director) {
+        this.director = director;
+    }
 }

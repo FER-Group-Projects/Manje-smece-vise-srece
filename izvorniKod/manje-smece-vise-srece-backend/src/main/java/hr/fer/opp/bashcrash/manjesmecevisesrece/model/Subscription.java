@@ -18,4 +18,27 @@ public class Subscription {
     @JoinColumn(name = "author_id")
     private UserModel author;
 
+    public SubscriptionKey getId() {
+        return id;
+    }
+
+    public void setId(SubscriptionKey id) {
+        this.id = id;
+    }
+
+    public WasteContainer getWasteContainer() {
+        return wasteContainer;
+    }
+
+    public void setWasteContainer(WasteContainer wasteContainer) {
+        this.wasteContainer = wasteContainer;
+    }
+
+    public UserModel getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(UserModel author) {
+        this.author = author;
+    }
 }

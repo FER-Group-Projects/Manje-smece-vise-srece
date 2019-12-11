@@ -1,10 +1,22 @@
 package hr.fer.opp.bashcrash.manjesmecevisesrece.dto;
 
+import hr.fer.opp.bashcrash.manjesmecevisesrece.model.UserModel;
+
 public class UserDTO {
 
     private String username;
     private String email;
     private String password;
+
+    public UserDTO(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    public UserDTO(UserModel userModel) {
+        this(userModel.getUsername(), userModel.getEmail(), "");
+    }
 
     public String getUsername() {
         return username;
