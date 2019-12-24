@@ -5,6 +5,7 @@ import Loginform from './forms/login-form'
 import App from './routes/router'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.css'
+import '@fortawesome/fontawesome-free/css/all.css'
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
