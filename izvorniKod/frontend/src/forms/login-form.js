@@ -30,23 +30,18 @@ const Loginform = observer(() => {
             }).then((e) => {
                 if(e.status==200){
                     localStorage.setItem('username', 'username')
-                    console.log("hellos")
                     AuthStore.setLoggedIn(username)
                     history.push('/')
                 }
             })
         } catch (error) {
-            console.log("hello")
+            console.log({error})
         }
     }
 
     useEffect(() => {
-        if(AuthStore.getLoggedIn()===''){
-            const username = localStorage.getItem('username') || ''
-            AuthStore.setLoggedIn(username)
-        }
         if(AuthStore.getLoggedIn()!=='') history.push('/')
-    })
+    },[])
 
     return (
         <div id="container">
