@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react'
-import Sidebar from './Sidebar'
+import React, { Component } from 'react'
+import SimpleMap from './MapComponent'
 
 const MainWindow = () => {
-    return (
-        <div style={{display: 'flex', flexDirection: 'column', width: '20%'}}>
-            <Sidebar />
-        </div>
-    )
+
+  return (
+      <SimpleMap/>
+  )
 }
 
 export default MainWindow

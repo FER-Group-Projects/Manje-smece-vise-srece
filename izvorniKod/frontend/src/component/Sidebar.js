@@ -1,21 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { AuthStore } from '.././store/AuthStore'
 import { observer } from 'mobx-react'
+import { FaSearch } from 'react-icons/fa'
 
-const KonteinerButton = observer(() => {
-    if(AuthStore.getLoggedIn()!=='') return <button class='btn btn-lg btn-primary btn-block'>Kontejner</button>
-    return null
+const SearchKontejnerButton = observer(({ changePage }) => {
+    return <button class='btn btn-lg btn-primary btn-block' onClick={changePage}><FaSearch/></button>
 })
 
 const LoginButton = observer(({ goToLogin }) => {
-    if(AuthStore.getLoggedIn()==='') return <button class='btn btn-lg btn-primary btn-block' onClick={goToLogin}>Prijava</button>
-    return null
+    return <button class='btn btn-lg btn-primary btn-block' onClick={goToLogin}>Prijava</button>
 })
 
 const LogoutButton = observer(({ logout }) => {
-    if(AuthStore.getLoggedIn()!=='') return <button class='btn btn-lg btn-primary btn-block' onClick={logout}>Odjava</button>
-    return null
+    return <button class='btn btn-lg btn-primary btn-block' onClick={logout}>Odjava</button>
 })
 
 
@@ -26,6 +24,10 @@ const Sidebar = () => {
         history.push('/login')
     }
 
+    const goToSerachKontejner = () => {
+        history.push('/trazi-kontejner')
+    }
+
     const logout = () => {
         AuthStore.setLoggedIn('')
         localStorage.removeItem('username')
@@ -33,17 +35,18 @@ const Sidebar = () => {
     }
 
     useEffect(() => {
-        if(AuthStore.getLoggedIn()===''){
-            const username = localStorage.getItem('username') || ''
-            AuthStore.setLoggedIn(username)
-        }
-    },[])
-
+        const username = localStorage.getItem('username') || ''
+        AuthStore.setLoggedIn(username)
+    })
+    
     return (
-        <div style={{display: 'flex', flexDirection: 'column'}}>
-            <LoginButton goToLogin={goToLogin}/>
-            <LogoutButton logout={logout}/>
-            <KonteinerButton />
+        <div style={{display: 'flex', flexDirection: 'column', width: '50px'}}>
+            {AuthStore.getLoggedIn()=='' &&
+            <LoginButton goToLogin={goToLogin}/>}
+            {AuthStore.getLoggedIn()!=='' &&
+            <LogoutButton logout={logout}/>}
+            {AuthStore.getLoggedIn()!=='' &&
+            <SearchKontejnerButton changePage={goToSerachKontejner}/>}
         </div>
     )
 }
