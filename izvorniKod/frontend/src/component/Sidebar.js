@@ -1,37 +1,61 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { AuthStore } from '.././store/AuthStore'
 import { observer } from 'mobx-react'
-import { FaSearch } from 'react-icons/fa'
+import { FaSearch, FaStar, FaLaravel, FaDumpster, FaUser } from 'react-icons/fa'
+import { IoIosGrid } from 'react-icons/io'
+import { AuthStore } from '.././store/AuthStore'
 
 const SearchKontejnerButton = observer(({ changePage }) => {
     return <button class='btn btn-lg btn-primary btn-block' onClick={changePage}><FaSearch/></button>
 })
 
-const LoginButton = observer(({ goToLogin }) => {
-    return <button class='btn btn-lg btn-primary btn-block' onClick={goToLogin}>Prijava</button>
+const FavoriteKontejnerButton = observer(({ changePage }) => {
+    return <button class='btn btn-lg btn-primary btn-block' onClick={changePage}><FaStar/></button>
 })
 
-const LogoutButton = observer(({ logout }) => {
-    return <button class='btn btn-lg btn-primary btn-block' onClick={logout}>Odjava</button>
+const MojeZoneButton = observer(({ changePage }) => {
+    return <button class='btn btn-lg btn-primary btn-block' onClick={changePage}><IoIosGrid/></button>
 })
 
+const MojeRuteButton = observer(({ changePage }) => {
+    return <button class='btn btn-lg btn-primary btn-block' onClick={changePage}><FaLaravel/></button>
+})
+
+const KontejneriButton = observer(({ changePage }) => {
+    return <button class='btn btn-lg btn-primary btn-block' onClick={changePage}><FaDumpster/></button>
+})
+
+const ZoneButton = observer(({ changePage }) => {
+    return <button class='btn btn-lg btn-primary btn-block' onClick={changePage}><IoIosGrid/></button>
+})
+
+const SluzbeniciButton = observer(({ changePage }) => {
+    return <button class='btn btn-lg btn-primary btn-block' onClick={changePage}><FaUser/></button>
+})
 
 const Sidebar = () => {
     let history = useHistory()
 
-    const goToLogin = () => {
-        history.push('/login')
-    }
-
-    const goToSerachKontejner = () => {
+    const goToSearchKontejner = () => {
         history.push('/trazi-kontejner')
     }
-
-    const logout = () => {
-        AuthStore.setLoggedIn('')
-        localStorage.removeItem('username')
-        history.push('/')
+    const goToFavoriteKontejner = () => {
+        history.push('/moji-kontejneri')
+    }
+    const goToMojeZone = () => {
+        history.push('/moje-zone')
+    }
+    const goToMojeRute = () => {
+        history.push('/moje-rute')
+    }
+    const goToKontejneri = () => {
+        history.push('/kontejneri')
+    }
+    const goToZone = () => {
+        history.push('/zone')
+    }
+    const goToSluzbenici = () => {
+        history.push('/sluzbenici')
     }
 
     useEffect(() => {
@@ -41,12 +65,25 @@ const Sidebar = () => {
     
     return (
         <div style={{display: 'flex', flexDirection: 'column', width: '50px'}}>
-            {AuthStore.getLoggedIn()=='' &&
-            <LoginButton goToLogin={goToLogin}/>}
+            <SearchKontejnerButton changePage={goToSearchKontejner}/>
             {AuthStore.getLoggedIn()!=='' &&
-            <LogoutButton logout={logout}/>}
+                <FavoriteKontejnerButton changePage={goToFavoriteKontejner}/>
+            }
             {AuthStore.getLoggedIn()!=='' &&
-            <SearchKontejnerButton changePage={goToSerachKontejner}/>}
+                <MojeZoneButton changePage={goToMojeZone}/>
+            }
+            {AuthStore.getLoggedIn()!=='' &&
+                <MojeRuteButton changePage={goToMojeRute}/>
+            }
+            {AuthStore.getLoggedIn()!=='' &&
+                <KontejneriButton changePage={goToKontejneri}/>
+            }
+            {AuthStore.getLoggedIn()!=='' &&
+                <ZoneButton changePage={goToZone}/>
+            }
+            {AuthStore.getLoggedIn()!=='' &&
+                <SluzbeniciButton changePage={goToSluzbenici}/>
+            }
         </div>
     )
 }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import SimpleMap from './MapComponent'
+import GarbageMap from './MapComponent'
 
 const MainWindow = () => {
 
   return (
-      <SimpleMap/>
+      <GarbageMap/>
   )
 }
 
