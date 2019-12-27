@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-export default class SimpleMap extends Component {
+export default class GarbageMap extends Component {
   static defaultProps = {
     center: {
       lat: 45.815399,

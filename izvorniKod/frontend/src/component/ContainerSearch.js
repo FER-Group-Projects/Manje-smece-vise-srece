@@ -1,5 +1,5 @@
 import React from 'react'
-import SimpleMap from './MapComponent'
+import GarbageMap from './MapComponent'
 import { FaSearch } from 'react-icons/fa'
 
 const ContainerSearch = () => {
@@ -14,7 +14,7 @@ const ContainerSearch = () => {
                     </span>
                 </div>
             </div>
-            <SimpleMap/>
+            <GarbageMap/>
         </div>
     )
 }
