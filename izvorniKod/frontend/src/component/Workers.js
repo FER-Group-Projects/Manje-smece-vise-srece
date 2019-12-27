@@ -1,10 +1,20 @@
 import React from 'react'
-import GarbageMap from './MapComponent'
+import Cards from './Cards'
 
 const Workers = () => {
 
     return(
-        <GarbageMap/>
+        <Cards workers={[
+            {Username: 'štefek'},
+            {Username: 'štefek'},
+            {Username: 'štefek'},
+            {Username: 'štefek'},
+            {Username: 'štefek'},
+            {Username: 'štefek'},
+            {Username: 'štefek'},
+            {Username: 'štefek'},
+            {Username: 'štefek'},
+        ]}/>
     )
 }
 
