@@ -1,10 +1,15 @@
 import React from 'react'
-import GarbageMap from './MapComponent'
+import Cards from './Cards'
 
 const Containers = () => {
 
     return(
-        <GarbageMap/>
+        <Cards containers={[
+            {ID:123456, Adresa: 'Ban jelacic 22', Ocjena: 3.4},
+            {ID:123456, Adresa: 'Ban jelacic 22', Ocjena: 3.4},
+            {ID:123456, Adresa: 'Ban jelacic 22', Ocjena: 3.4},
+            {ID:123456, Adresa: 'Ban jelacic 22', Ocjena: 3.4},
+        ]}/>
     )
 }
 

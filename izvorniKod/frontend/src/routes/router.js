@@ -32,6 +32,15 @@ function App() {
                 <div style={{display: 'flex', flexDirection: 'row'}}>
                     <Sidebar/>
                     <Switch>
+                        <Route path="/sluzbenici">
+                            <Workers />
+                        </Route>
+                        <Route path="/zone">
+                            <Zones />
+                        </Route>
+                        <Route path="/kontejneri">
+                            <Containers />
+                        </Route>
                         <Route path="/moje-rute">
                             <MyRoutes />
                         </Route>

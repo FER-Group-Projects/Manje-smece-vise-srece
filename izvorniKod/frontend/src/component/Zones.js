@@ -1,10 +1,17 @@
 import React from 'react'
-import GarbageMap from './MapComponent'
+import Cards from './Cards'
 
 const Zones = () => {
 
     return(
-        <GarbageMap/>
+        <Cards zones={[
+            {ID:1234, Ime: 'Z1', },
+            {ID:1234, Ime: 'Z1', },
+            {ID:1234, Ime: 'Z1', },
+            {ID:1234, Ime: 'Z1', },
+            {ID:1234, Ime: 'Z1', },
+            {ID:1234, Ime: 'Z1', },
+        ]}/>
     )
 }
 
