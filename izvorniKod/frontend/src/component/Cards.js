@@ -1,13 +1,13 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import './bootstrap.css'
 import { MdDelete, MdEdit, MdAddCircleOutline } from 'react-icons/md'
 
 const Cards = (props) => {
     let history = useHistory()
 
     return(
-        <div style={{display:'flex', flexFlow:'row wrap',height:'fit-content', margin:'10px', marginTop:'0px'}}>
+        <div style={{display:'flex', flexFlow:'row wrap',
+                height:'fit-content', margin:'10px', marginTop:'0px'}}>
             {
                 props.containers &&
                 props.containers.map((value) => 
@@ -15,12 +15,16 @@ const Cards = (props) => {
                         display:'flex', flexDirection:'column',
                         borderRadius:'15px', backgroundColor:'#007bff',
                         height:'150px', margin:'5px',width:'300px', 
-                        marginTop:'0px'
+                        marginTop:'0px', justifyContent: 'center'
                         }}>
                         <div style={
-                            {display:'flex', flexDirection:'row'}}>
+                            {display:'flex', flexDirection:'row'}}
+                            onClick={()=> history.push(`/kontejner/${value.ID}`)}>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Dumpster-non.JPG/220px-Dumpster-non.JPG" style={{width:'100px', height:'100px', margin:'10px'}}/>
-                            <div style={{display:'flex', flexDirection:'column', margin:'10px', textAlign:'left'}}>
+                            <div style={{display:'flex', flexDirection:'column',
+                             margin:'10px', textAlign:'left',
+                             overflow:'hidden'
+                             }}>
                                 <span>ID: <span style={{textAlign:'right'}}>{value.ID}</span></span>
                                 <span>Adresa: <span>{value.Adresa}</span></span>
                                 <span>Ocjena: <span>{value.Ocjena}</span>/5</span>

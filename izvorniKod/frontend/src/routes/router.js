@@ -5,13 +5,18 @@ import Signupform  from '.././forms/signup-form'
 import MainWindow from '.././component/MainWindow'
 import ContainerSearch from '../component/ContainerSearch'
 import FavoriteContainers from '../component/FavoriteContainers'
-import Zones from '../component/Zones'
-import Workers from '../component/Workers'
-import Containers from '../component/Containers'
+import Zones from '../component/Zones/Zones'
+import ZonesAdd from '../component/Zones/ZonesAdd'
+import Workers from '../component/Workers/Workers'
+import WorkersAdd from '../component/Workers/WorkersAdd'
+import Containers from '../component/Container/Containers'
 import MyZones from '../component/MyZones'
 import MyRoutes from '../component/MyRoutes'
 import Sidebar from '../component/Sidebar'
 import Header from '../component/Header'
+import ContainerInfo from '../component/Container/ContainerInfo'
+import ContainerEdit from '../component/Container/ContainerEdit'
+import ContainerAdd from '../component/Container/ContainerAdd'
 import { AuthStore } from 'store/AuthStore'
 
 function App() {
@@ -32,11 +37,26 @@ function App() {
                 <div style={{display: 'flex', flexDirection: 'row'}}>
                     <Sidebar/>
                     <Switch>
+                        <Route path="/sluzbenici/dodaj">
+                            <WorkersAdd />
+                        </Route>
                         <Route path="/sluzbenici">
                             <Workers />
                         </Route>
+                        <Route path="/zone/dodaj">
+                            <ZonesAdd />
+                        </Route>
                         <Route path="/zone">
                             <Zones />
+                        </Route>
+                        <Route path="/kontejner/edit/:id">
+                            <ContainerEdit />
+                        </Route>
+                        <Route path="/kontejner/dodaj">
+                            <ContainerAdd />
+                        </Route>
+                        <Route path="/kontejner/:id">
+                            <ContainerInfo />
                         </Route>
                         <Route path="/kontejneri">
                             <Containers />

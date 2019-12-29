@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react';
+import { FaDumpster } from 'react-icons/fa'
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const Kontejner = ({}) => <FaDumpster/>;
 
 export default class GarbageMap extends Component {
   static defaultProps = {
@@ -29,10 +30,9 @@ export default class GarbageMap extends Component {
         >
             {
                 this.props.containers.map((container) => 
-                    <AnyReactComponent
+                    <Kontejner
                         lat={container.lat}
                         lng={container.lng}
-                        text={`hello`}
                     />)
             }
             <svg height="210" width="500" 
