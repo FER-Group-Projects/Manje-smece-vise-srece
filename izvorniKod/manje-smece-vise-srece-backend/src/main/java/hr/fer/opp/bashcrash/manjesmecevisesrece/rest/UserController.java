@@ -10,7 +10,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -21,12 +20,10 @@ import java.util.stream.Collectors;
 @RequestMapping("/users")
 public class UserController {
 
-    @Autowired
     private UserRepository userRepository;
-
-    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
     public UserController(UserRepository userRepository,
                           BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
@@ -35,6 +32,10 @@ public class UserController {
 
     @PostMapping("/sign-up")
     public void signUp(@RequestBody UserDTO userDTO) {
+        if (userRepository.existsByEmailOrUsername(userDTO.getEmail(), userDTO.getUsername())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
         UserModel userModel = new UserModel();
 
         userModel.setUsername(userDTO.getUsername());
@@ -42,6 +43,12 @@ public class UserController {
         userModel.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
 
         userRepository.save(userModel);
+    }
+
+    @Secured("USER")
+    @GetMapping("/current-user")
+    public UserDTO logIn() {
+        return new UserDTO((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
 
     @Secured("ADMIN")
