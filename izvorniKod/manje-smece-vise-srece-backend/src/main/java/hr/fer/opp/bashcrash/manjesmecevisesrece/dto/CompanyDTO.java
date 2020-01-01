@@ -5,13 +5,13 @@ import hr.fer.opp.bashcrash.manjesmecevisesrece.model.Company;
 public class CompanyDTO {
 
     private Integer id;
-    private UserDTO directory;
+    private UserDTO director;
     private String companyName;
     private String description;
 
-    public CompanyDTO(Integer id, UserDTO directory, String companyName, String description) {
+    public CompanyDTO(Integer id, UserDTO director, String companyName, String description) {
         this.id = id;
-        this.directory = directory;
+        this.director = director;
         this.companyName = companyName;
         this.description = description;
     }
@@ -28,12 +28,12 @@ public class CompanyDTO {
         this.id = id;
     }
 
-    public UserDTO getDirectory() {
-        return directory;
+    public UserDTO getDirector() {
+        return director;
     }
 
-    public void setDirectory(UserDTO directory) {
-        this.directory = directory;
+    public void setDirector(UserDTO director) {
+        this.director = director;
     }
 
     public String getCompanyName() {
