@@ -6,12 +6,14 @@ import hr.fer.opp.bashcrash.manjesmecevisesrece.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,13 +65,14 @@ public class UserController {
 
     @Secured("USER")
     @GetMapping("/{username}")
-    public UserDTO getUserInformation(@PathVariable String username) {
-        String loggedInUsername = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserModel userModel = userRepository.findByUsername(username);
+    public UserDTO getUserInformation(@PathVariable String username, @AuthenticationPrincipal Principal principal) {
+        String loggedInUsername = principal.getName();
 
         if (!loggedInUsername.equals(username)) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
+
+        UserModel userModel = userRepository.findByUsername(username);
 
         if (userModel == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -80,13 +83,14 @@ public class UserController {
 
     @Secured("USER")
     @PutMapping("/{username}")
-    public void updateUserInformation(@PathVariable String username, @RequestBody UserDTO userDTO) {
-        String loggedInUsername = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserModel userModel = userRepository.findByUsername(username);
+    public void updateUserInformation(@PathVariable String username, @RequestBody UserDTO userDTO, @AuthenticationPrincipal Principal principal) {
+        String loggedInUsername = principal.getName();
 
         if (!loggedInUsername.equals(username)) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
+
+        UserModel userModel = userRepository.findByUsername(username);
 
         if (userModel == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);

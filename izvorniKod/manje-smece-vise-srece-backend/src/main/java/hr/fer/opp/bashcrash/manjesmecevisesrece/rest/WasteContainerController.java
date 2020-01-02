@@ -19,14 +19,16 @@ import java.util.stream.Collectors;
 @RequestMapping("/waste-containers")
 public class WasteContainerController {
 
-    @Autowired
     private WasteContainerRepository wasteContainerRepository;
-
-    @Autowired
     private CompanyRepository companyRepository;
+    private ZoneRepository zoneRepository;
 
     @Autowired
-    private ZoneRepository zoneRepository;
+    public WasteContainerController(WasteContainerRepository wasteContainerRepository, CompanyRepository companyRepository, ZoneRepository zoneRepository) {
+        this.wasteContainerRepository = wasteContainerRepository;
+        this.companyRepository = companyRepository;
+        this.zoneRepository = zoneRepository;
+    }
 
     @GetMapping("/all")
     public List<WasteContainerDTO> listAllWasteContainers() {
