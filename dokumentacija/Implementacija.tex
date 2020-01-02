@@ -17,11 +17,266 @@
 %			
 %			 \textit{U ovom poglavlju je potrebno opisati provedbu ispitivanja implementiranih funkcionalnosti na razini komponenti i na razini cijelog sustava s prikazom odabranih ispitnih slučajeva. Studenti trebaju ispitati temeljnu funkcionalnost i rubne uvjete.}
 	
-			
+			\clearpage
 			\subsection{Ispitivanje komponenti}
 %			\textit{Potrebno je provesti ispitivanje jedinica (engl. unit testing) nad razredima koji implementiraju temeljne funkcionalnosti. Razraditi \textbf{minimalno 6 ispitnih slučajeva} u kojima će se ispitati redovni slučajevi, rubni uvjeti te izazivanje pogreške (engl. exception throwing). Poželjno je stvoriti i ispitni slučaj koji koristi funkcionalnosti koje nisu implementirane. Potrebno je priložiti izvorni kôd svih ispitnih slučajeva te prikaz rezultata izvođenja ispita u razvojnom okruženju (prolaz/pad ispita). }
+			\newcounter{testcase}
+			\refstepcounter{testcase}
 			
+			Ispitivanje komponenti \engl{unit testing} se kontinuirano prati koristeći GitLab CI/CD\footnote{\url{https://docs.gitlab.com/ee/ci/}}. 
+			U nastavku su prikazani ispitni slučajevi komponenti koji se prate, njihovi očekivani i trenutni rezultati, a na kraju potpoglavlja je prikazan rezultatizvođenja ispita u razvojnom okruženju.  \\
 			
+			\noindent \textbf{Ispitni slučaj \thetestcase: Registracija korisnika sprema korisnika u bazu podataka} \\
+			\noindent \textbf{Ulaz:}
+			\begin{packed_enum}
+				\item Pozivanje metode za registraciju korisnika s ispravnim podacima.
+			\end{packed_enum}
+			\noindent \textbf{Očekivani rezultat:}
+			\begin{packed_enum}
+				\item[1.a] Korisnik je spremljen u bazu podataka.
+			\end{packed_enum}
+			\noindent \textbf{Izvorni kod:}
+			\begin{listing}[H]
+\begin{minted}{java}
+@Test
+void testRegistrationSavesUser() {
+    UserDTO firstUser = new UserDTO("username", "email@email.com", "password");
+
+    userController.signUp(firstUser);
+
+    // User was saved
+    verify(userRepository, times(1))
+            .save(any());
+}
+\end{minted}
+				\caption{Izvorni kod za ispitni slučaj \thetestcase}
+				\label{unittestcase1}
+			\end{listing}
+			\noindent \textbf{Rezultat:} Očekivani rezultat je zadovoljen. Registracija korisnika s ispravnim podacima je uspješno spremila tog korisnika u bazu podataka. 
+			\refstepcounter{testcase}
+			\clearpage
+
+			\noindent \textbf{Ispitni slučaj \thetestcase: Registracija dva korisnika s istom e-mail adresom} \\
+			\noindent \textbf{Ulaz:}
+			\begin{packed_enum}
+				\item Pozivanje metode za registraciju korisnika.
+				\item Pozivanje metode za registraciju korisnika s istom e-mail adresom.
+			\end{packed_enum}
+			\noindent \textbf{Očekivani rezultat:}
+			\begin{packed_enum}
+				\item[1.a] Korisnik je spremljen u bazu podataka.
+				\item[2.a] Izazvana je iznimka zbog duplicirane e-mail adrese.
+			\end{packed_enum}
+			\noindent \textbf{Izvorni kod:}
+			\begin{listing}[H]
+\begin{minted}{java}
+@Test
+void testRegistrationWithDuplicateEmailAddress() {
+	UserDTO firstUser = new UserDTO("username1", "email@email.com"
+                                         "password1");
+	UserDTO secondUser = new UserDTO("username2", "email@email.com",
+                                         "password2");
+		
+	userController.signUp(firstUser);
+	
+	// First user was saved
+	verify(userRepository, times(1))
+	    .save(any());
+	
+	// Second user causes an exception
+	assertThrows(Exception.class, () -> userController.signUp(secondUser));
+}
+\end{minted}
+				\caption{Izvorni kod za ispitni slučaj \thetestcase}
+				\label{testRegistrationWithDuplicateEmailAddress}
+			\end{listing}
+			\noindent \textbf{Rezultat:} Očekivani rezultat je zadovoljen. Registracija prvog korisnika uspješno sprema tog korisnika u bazu podataka, dok registracija drugog korisnika rezultira iznimkom. 
+			\refstepcounter{testcase}
+			\clearpage
+
+			\noindent \textbf{Ispitni slučaj \thetestcase: Registracija dva korisnika s istim korisničkim imenom} \\
+			\noindent \textbf{Ulaz:}
+			\begin{packed_enum}
+				\item Pozivanje metode za registraciju korisnika.
+				\item Pozivanje metode za registraciju korisnika s istim korisničkim imenom.
+			\end{packed_enum}
+			\noindent \textbf{Očekivani rezultat:}
+			\begin{packed_enum}
+				\item[1.a] Korisnik je spremljen u bazu podataka.
+				\item[2.a] Izazvana je iznimka zbog dupliciranog korisničkog imena.
+			\end{packed_enum}
+			\noindent \textbf{Izvorni kod:}
+			\begin{listing}[H]
+\begin{minted}{java}
+@Test
+void testRegistrationWithDuplicateUsername() {
+	UserDTO firstUser = new UserDTO("username", "email1@email.com"
+                                         "password1");
+	UserDTO secondUser = new UserDTO("username", "email2@email.com",
+                                         "password2");
+		
+	userController.signUp(firstUser);
+	
+	// First user was saved
+	verify(userRepository, times(1))
+	    .save(any());
+	
+	// Second user causes an exception
+	assertThrows(Exception.class, () -> userController.signUp(secondUser));
+}
+\end{minted}
+				\caption{Izvorni kod za ispitni slučaj \thetestcase}
+				\label{test5}
+			\end{listing}
+			\noindent \textbf{Rezultat:} Očekivani rezultat je zadovoljen. Registracija prvog korisnika uspješno sprema tog korisnika u bazu podataka, dok registracija drugog korisnika rezultira iznimkom. 
+			\refstepcounter{testcase}
+			\clearpage
+			
+			\noindent \textbf{Ispitni slučaj \thetestcase: Korisnik smije dohvatiti vlastite osobne podatke} \\
+			\noindent \textbf{Ulaz:}
+			\begin{packed_enum}
+				\item Pozivanje metode za dohvat osobnih podataka za trenutno prijavljenog korisnika.
+			\end{packed_enum}
+			\noindent \textbf{Očekivani rezultat:}
+			\begin{packed_enum}
+				\item[1.a] Vraćeni su osobni podaci prijavljenog korisnika.
+			\end{packed_enum}
+			\noindent \textbf{Izvorni kod:}
+
+			\begin{listing}[H]
+\begin{minted}{java}
+@Test
+void testUserCanFetchItsOwnData() {
+    userController.getUserInformation("logged_in_user",
+            () -> "logged_in_user");
+
+    // Verify interaction with database
+    verify(userRepository, times(1))
+            .findByUsername(anyString());
+}
+\end{minted}
+				\caption{Izvorni kod za ispitni slučaj \thetestcase}
+				\label{test2}
+			\end{listing}
+			\noindent \textbf{Rezultat:} Očekivani rezultat je zadovoljen. Dohvaćeni su osobni podaci prijavljenog korisnika.
+			\refstepcounter{testcase}
+			\clearpage
+
+			\noindent \textbf{Ispitni slučaj \thetestcase: Korisnik ne smije moći dohvatiti osobne podatke drugog korisnika} \\
+			\noindent \textbf{Ulaz:}
+			\begin{packed_enum}
+				\item Pozivanje metode za dohvat osobnih podataka za korisnika koji nije trenutno prijavljen.
+			\end{packed_enum}
+			\noindent \textbf{Očekivani rezultat:}
+			\begin{packed_enum}
+				\item[1.a] Izazvana je iznimka zbog pokušaja dohvata tuđih podataka.
+			\end{packed_enum}
+			\noindent \textbf{Izvorni kod:}
+
+			\begin{listing}[H]
+\begin{minted}{java}
+@Test
+void testUserCannotFetchOthersData() {
+    assertThrows(Exception.class, () ->
+            userController.getUserInformation("different_user", 
+                    () -> "logged_in_user"));
+
+    // Verify no interaction with database
+    verify(userRepository, times(0))
+            .findByUsername(anyString());
+}
+\end{minted}
+				\caption{Izvorni kod za ispitni slučaj \thetestcase}
+				\label{test2}
+			\end{listing}
+			\noindent \textbf{Rezultat:} Očekivani rezultat je zadovoljen. Izazvana je iznimka pri pokušaju dohvata osobnih podataka drugog korisnika.
+			\refstepcounter{testcase}
+			\clearpage
+
+			\noindent \textbf{Ispitni slučaj \thetestcase: Dohvat podataka o postojećem kontejneru} \\
+			\noindent \textbf{Ulaz:}
+			\begin{packed_enum}
+				\item Pozivanje metode za dohvat podataka o kontejneru s valjanim identifikatorom kontejnera.
+			\end{packed_enum}
+			\noindent \textbf{Očekivani rezultat:}
+			\begin{packed_enum}
+				\item[1.a] Vraćeni su podaci o kontejneru s tim identifikatorom.
+			\end{packed_enum}
+			\noindent \textbf{Izvorni kod:}
+
+			\begin{listing}[H]
+\begin{minted}{java}
+@Test
+void testFetchingInformationAboutExistingWasteContainer() {
+    wasteContainerController.findByID(EXISTING_WASTE_CONTAINER_ID);
+
+    // Verify interaction with database
+    verify(wasteContainerRepository, times(1))
+            .findById(EXISTING_WASTE_CONTAINER_ID);
+}
+\end{minted}
+				\caption{Izvorni kod za ispitni slučaj \thetestcase}
+				\label{test2}
+			\end{listing}
+			\noindent \textbf{Rezultat:} Očekivani rezultat je zadovoljen. Dohvaćeni su podaci o kontejneru s tim identifikatorom.
+			\refstepcounter{testcase}
+			\clearpage
+			
+			\noindent \textbf{Ispitni slučaj \thetestcase: Dohvat podataka o nepostojećem kontejneru} \\
+			\noindent \textbf{Ulaz:}
+			\begin{packed_enum}
+				\item Pozivanje metode za dohvat podataka o kontejneru s nevaljanim identifikatorom kontejnera.
+			\end{packed_enum}
+			\noindent \textbf{Očekivani rezultat:}
+			\begin{packed_enum}
+				\item[1.a] Izazvana je iznimka zbog pokušaja dohvata podataka o kontejneru koji ne postoji.
+			\end{packed_enum}
+			\noindent \textbf{Izvorni kod:}
+
+			\begin{listing}[H]
+\begin{minted}{java}
+@Test
+void testFetchingInformationAboutNonExistantWasteContainer() {
+    assertThrows(Exception.class,
+            () -> 
+	       wasteContainerController.findByID(NON_EXISTANT_WASTE_CONTAINER_ID));
+
+    // Verify interaction with database
+    verify(wasteContainerRepository, times(1))
+            .findById(NON_EXISTANT_WASTE_CONTAINER_ID);
+}
+\end{minted}
+				\caption{Izvorni kod za ispitni slučaj \thetestcase}
+				\label{test3}
+			\end{listing}
+			\noindent \textbf{Rezultat:} Očekivani rezultat je zadovoljen. Dohvat podataka o nepostojećem kontejneru je izazvao iznimku.
+			\refstepcounter{testcase}
+
+\begin{listing}[H]
+	\begin{minted}[linenos,breaklines,fontsize=\footnotesize,frame=lines]{text}
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ manje-smece-vise-srece-backend ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running hr.fer.opp.bashcrash.manjesmecevisesrece.rest.WasteContainerControllerTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.656 s - in hr.fer.opp.bashcrash.manjesmecevisesrece.rest.WasteContainerControllerTest
+[INFO] Running hr.fer.opp.bashcrash.manjesmecevisesrece.rest.UserControllerTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.118 s - in hr.fer.opp.bashcrash.manjesmecevisesrece.rest.UserControllerTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.019 s
+[INFO] Finished at: 2020-01-02T23:31:26+01:00
+[INFO] ------------------------------------------------------------------------
+	\end{minted}
+	\caption{Prikaz rezultata izvođenja ispita u razvojnom okruženju}
+\end{listing}
 			
 			\subsection{Ispitivanje sustava}
 			
