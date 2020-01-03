@@ -18,6 +18,7 @@
 \usepackage[classicReIm]{kpfonts}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
+\usepackage{minted}
 
 \usepackage{float}
 \usepackage{setspace}
@@ -71,6 +72,16 @@
 \rfoot{\today}
 \renewcommand{\headrulewidth}{0.2pt}
 \renewcommand{\footrulewidth}{0.2pt}
+
+\setminted[java]{
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+}
+\renewcommand{\listingscaption}{Programski isječak}
+
 
 
 \begin{document}
