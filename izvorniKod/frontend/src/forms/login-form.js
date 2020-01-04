@@ -31,7 +31,17 @@ const Loginform = observer(() => {
                 if(e.status==200){
                     localStorage.setItem('username', 'username')
                     AuthStore.setLoggedIn(username)
+                    AuthStore.setToken(e.headers.authorization)
                     history.push('/')
+
+                    return axios({
+                        method: 'GET',
+                        url: '/users/current-user'
+                    })
+                }
+            }).then((e) => {
+                if(e.status==200){
+                    AuthStore.setRoles(e.data.authorities)
                 }
             })
         } catch (error) {
