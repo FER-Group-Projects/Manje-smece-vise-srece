@@ -1,16 +1,25 @@
 import React from 'react'
 import Cards from '../Cards'
+import axios from "axios";
 
-const Containers = () => {
+class Containers extends React.Component {
+    constructor() {
+        super()
+        this.state = { containers: [] }
+    }
 
-    return(
-        <Cards containers={[
-            {ID:123456, Adresa: 'Ban jelacic 22dasdasdasdasdasdasd', Ocjena: 3.4},
-            {ID:123456, Adresa: 'Ban jelacic 22', Ocjena: 3.4},
-            {ID:123456, Adresa: 'Ban jelacic 22', Ocjena: 3.4},
-            {ID:123456, Adresa: 'Ban jelacic 22', Ocjena: 3.4},
-        ]}/>
-    )
+    componentDidMount() {
+        axios.get('/waste-containers/all')
+        .then((e) => {
+            this.setState({containers: e.data.map((container) => ({ID: container.id, Adresa: container.address}))})
+        }).catch(err => console.log(err));
+    }
+
+    render() {
+        return (
+            <Cards containers={this.state.containers}/>
+        )
+    }
 }
 
 export default Containers
