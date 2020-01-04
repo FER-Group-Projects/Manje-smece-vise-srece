@@ -3,24 +3,25 @@ import axios from 'axios'
 
 class store {
     loggedIn = observable({loggedIn: ''})
-    token = ''
-    roles = []
+    token = observable({token: ''})
+    roles = observable({roles: []})
 
     setToken(token) {
-        this.token = token
-        axios.defaults.headers.common['Authorization'] = token
+        localStorage.setItem('token', token)
+        this.token.token = token
     }
 
     getToken() {
-        return this.token
+        return this.token.token
     }
 
     setRoles(roles) {
-        this.roles = roles
+        localStorage.setItem('roles', roles)
+        this.roles.roles = roles
     }
 
     getRoles() {
-        return this.roles
+        return this.roles.roles
     }
 
     setLoggedIn(username) {
