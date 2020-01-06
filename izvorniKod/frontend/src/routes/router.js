@@ -18,6 +18,7 @@ import ContainerInfo from '../component/Container/ContainerInfo'
 import ContainerEdit from '../component/Container/ContainerEdit'
 import ContainerAdd from '../component/Container/ContainerAdd'
 import { AuthStore } from 'store/AuthStore'
+import SettingsForm from "../forms/settings-form";
 
 function App() {
     const [loading, setLoading] = useState(true)
@@ -78,6 +79,9 @@ function App() {
                         </Route>
                         <Route path="/login">
                             <Loginform />
+                        </Route>
+                        <Route path="/settings">
+                            <SettingsForm />
                         </Route>
                         <Route path="/">
                             <MainWindow />
