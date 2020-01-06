@@ -6,15 +6,11 @@ import { MdCancel } from 'react-icons/md'
 import axios from 'axios'
 
 const ContainerEdit = () => {
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const history = useHistory()
     const axiosInstance = axios.create()
 
     useEffect(() => {
-        //ako bu nekaj potrebno loadati
-        setTimeout(() => {
-            setLoading(false)
-        },2000)
     },[])
 
     if(loading) return <div>loading...</div>
@@ -38,8 +34,7 @@ const ContainerEdit = () => {
                             address: value.adresa,
                         }
                         console.log('post-data:', postData)
-                        const response = await axios.post('/waste-containers/create',postData)
-                        console.log(response)
+                        return axios.post('/waste-containers/create',postData)
                     }
                     else{
                         console.log('wrong')

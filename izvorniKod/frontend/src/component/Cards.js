@@ -14,7 +14,7 @@ const Cards = (props) => {
         })
         .then((res) => {
             if (res.status == 200) {
-                history.push('/kontejneri')
+                props.refreshContainers()
             }
         })
     }
