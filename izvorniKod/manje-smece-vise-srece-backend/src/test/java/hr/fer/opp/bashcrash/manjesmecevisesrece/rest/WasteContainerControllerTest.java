@@ -1,9 +1,6 @@
 package hr.fer.opp.bashcrash.manjesmecevisesrece.rest;
 
-import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.CompanyRepository;
-import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.UserRepository;
-import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.WasteContainerRepository;
-import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.ZoneRepository;
+import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.*;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,6 +18,7 @@ class WasteContainerControllerTest {
     private CompanyRepository companyRepository;
     private ZoneRepository zoneRepository;
     private WasteContainerController wasteContainerController;
+    private ReviewRepository reviewRepository;
 
     private int EXISTING_WASTE_CONTAINER_ID = 1;
     private int NON_EXISTANT_WASTE_CONTAINER_ID = 5;
@@ -31,8 +29,9 @@ class WasteContainerControllerTest {
         wasteContainerRepository = Mockito.mock(WasteContainerRepository.class);
         companyRepository = Mockito.mock(CompanyRepository.class);
         zoneRepository = Mockito.mock(ZoneRepository.class);
+        reviewRepository = Mockito.mock(ReviewRepository.class);
 
-        wasteContainerController = new WasteContainerController(userRepository, wasteContainerRepository, companyRepository, zoneRepository);
+        wasteContainerController = new WasteContainerController(userRepository, wasteContainerRepository, companyRepository, zoneRepository, reviewRepository);
 
         WasteContainer wasteContainer = new WasteContainer();
         Company company = new Company();

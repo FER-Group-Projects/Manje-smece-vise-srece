@@ -1,9 +1,6 @@
 package hr.fer.opp.bashcrash.manjesmecevisesrece.rest;
 
-import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.CompanyRepository;
-import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.UserRepository;
-import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.WasteContainerRepository;
-import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.ZoneRepository;
+import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.*;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.dto.WasteContainerDTO;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.model.UserModel;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.model.WasteContainer;
@@ -27,13 +24,15 @@ public class WasteContainerController {
     private WasteContainerRepository wasteContainerRepository;
     private CompanyRepository companyRepository;
     private ZoneRepository zoneRepository;
+    private ReviewRepository reviewRepository;
 
     @Autowired
-    public WasteContainerController(UserRepository userRepository, WasteContainerRepository wasteContainerRepository, CompanyRepository companyRepository, ZoneRepository zoneRepository) {
+    public WasteContainerController(UserRepository userRepository, WasteContainerRepository wasteContainerRepository, CompanyRepository companyRepository, ZoneRepository zoneRepository, ReviewRepository reviewRepository) {
         this.userRepository = userRepository;
         this.wasteContainerRepository = wasteContainerRepository;
         this.companyRepository = companyRepository;
         this.zoneRepository = zoneRepository;
+        this.reviewRepository = reviewRepository;
     }
 
     @GetMapping("/all")
@@ -42,6 +41,19 @@ public class WasteContainerController {
                 .findAll()
                 .stream()
                 .map(WasteContainerDTO::new)
+                .map(dto -> {
+                    double grade =
+                            reviewRepository
+                                    .getAllByWasteContainer_Id(dto.getId())
+                                    .stream()
+                                    .mapToDouble(r -> (r.getTidinessGrade() + r.getCleannessGrade()) / 2.0)
+                                    .average()
+                                    .orElse(0);
+
+                    dto.setGrade(grade);
+
+                    return dto;
+                })
                 .collect(Collectors.toList());
     }
 
@@ -53,7 +65,19 @@ public class WasteContainerController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
-        return new WasteContainerDTO(wasteContainerOptional.get());
+        double grade =
+                reviewRepository
+                .getAllByWasteContainer_Id(wasteContainerId)
+                .stream()
+                .mapToDouble(r -> (r.getTidinessGrade() + r.getCleannessGrade()) / 2.0)
+                .average()
+                .orElse(0);
+
+        WasteContainerDTO wasteContainerDTO = new WasteContainerDTO(wasteContainerOptional.get());
+
+        wasteContainerDTO.setGrade(grade);
+
+        return wasteContainerDTO;
     }
 
     @Secured({"ROLE_DIRECTOR", "ROLE_ADMIN"})

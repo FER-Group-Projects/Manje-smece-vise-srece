@@ -10,19 +10,21 @@ public class WasteContainerDTO {
     private String address;
     private double latitude;
     private double longitude;
+    private double grade;
 
-    public WasteContainerDTO(Integer id, CompanyDTO company, ZoneDTO zone, String address, double latitude, double longitude) {
+    public WasteContainerDTO(Integer id, CompanyDTO company, ZoneDTO zone, String address, double latitude, double longitude, double grade) {
         this.id = id;
         this.company = company;
         this.zone = zone;
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.grade = grade;
     }
 
     public WasteContainerDTO(WasteContainer wasteContainerModel) {
         this(wasteContainerModel.getId(), new CompanyDTO(wasteContainerModel.getCompany()), new ZoneDTO(wasteContainerModel.getZone()),
-                wasteContainerModel.getAddress(), wasteContainerModel.getLatitude(), wasteContainerModel.getLongitude());
+                wasteContainerModel.getAddress(), wasteContainerModel.getLatitude(), wasteContainerModel.getLongitude(), -1);
     }
 
     public Integer getId() {
@@ -71,5 +73,13 @@ public class WasteContainerDTO {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public double getGrade() {
+        return grade;
+    }
+
+    public void setGrade(double grade) {
+        this.grade = grade;
     }
 }
