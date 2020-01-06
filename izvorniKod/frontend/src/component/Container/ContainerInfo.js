@@ -18,7 +18,7 @@ const ContainerInfo = () => {
                 setContainer({
                     ID: res.data.id,
                     adresa: res.data.address,
-                    ocjena: 3.4,
+                    ocjena: res.data.grade.toFixed(1),
                     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Dumpster-non.JPG/220px-Dumpster-non.JPG",
                     komentari: []
                 })
@@ -114,7 +114,7 @@ const ContainerInfo = () => {
                                     <label style={{margin:'0.5rem'}}>Vaša Ocjena</label>
                                 </div>
                                 <Field name='userOcjena' type="number" placeholer='5.0'
-                                    style={{width:'100%'}} required='true'
+                                    style={{width:'100%'}} required='true' max='5' min='0'
                                 />
                             </div>
                             <div style={{display: 'flex', flexDirection: 'row',

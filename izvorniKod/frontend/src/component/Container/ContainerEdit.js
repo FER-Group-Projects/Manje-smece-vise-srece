@@ -21,7 +21,7 @@ const ContainerEdit = () => {
                 setContainer({
                     ID: res.data.id,
                     adresa: res.data.address,
-                    ocjena: 3.4,
+                    ocjena: res.data.grade.toFixed(1),
                     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Dumpster-non.JPG/220px-Dumpster-non.JPG",
                 })
                 setLoading(false)

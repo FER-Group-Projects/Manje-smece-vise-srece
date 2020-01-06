@@ -15,7 +15,7 @@ class Containers extends React.Component {
     loadContainers(that) {
         axios.get('/waste-containers/all')
             .then((e) => {
-                that.setState({containers: e.data.map((container) => ({ID: container.id, Adresa: container.address}))})
+                that.setState({containers: e.data.map((container) => ({ID: container.id, Adresa: container.address, Ocjena: container.grade.toFixed(1)}))})
             }).catch(err => console.log(err));
     }
 
