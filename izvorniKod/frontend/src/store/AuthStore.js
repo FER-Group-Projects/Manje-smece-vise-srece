@@ -33,6 +33,10 @@ class store {
     }
 
     getRoles() {
+        if (this.roles.roles.length == 0) {
+            this.roles.roles = localStorage.getItem('roles')
+        }
+
         return this.roles.roles
     }
 
