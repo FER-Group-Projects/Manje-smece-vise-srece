@@ -1,27 +1,65 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import { FaSave } from 'react-icons/fa'
 import { MdDelete } from 'react-icons/md'
+import axios from 'axios'
 
 const ContainerEdit = () => {
     const [loading, setLoading] = useState(true)
     const [container, setContainer] = useState({})
     const { id } = useParams()
+    const history = useHistory()
+    const axiosInstance = axios.create()
 
     useEffect(() => {
-        //get data
-        //pretend data
-        setTimeout(() => {
-            setContainer({
-                ID: id,
-                adresa: "Bana Jelacica 55",
-                ocjena: 3.4,
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Dumpster-non.JPG/220px-Dumpster-non.JPG",
-            })
-            setLoading(false)
-        },2000)
+        axios('/waste-containers/' + id, {
+            method: 'GET'
+        }).then((res) => {
+            if (res.status === 200) {
+                setContainer({
+                    ID: res.data.id,
+                    adresa: res.data.address,
+                    ocjena: 3.4,
+                    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Dumpster-non.JPG/220px-Dumpster-non.JPG",
+                })
+                setLoading(false)
+            }
+        })
     },[])
+
+    async function saveContainer(values) {
+        await axiosInstance.get(`https://eu1.locationiq.com/v1/search.php?key=d3be9eb6cca657&q=${values.adresa}&format=json`)
+            .then((res) => {
+                if(res.status==200){
+                    return axios('/waste-containers/' + id, {
+                        method: 'PUT',
+                        data: {
+                            address: values.adresa,
+                            latitude: res.data[0].lat,
+                            longitude: res.data[0].lon
+                        }
+                    })
+                }
+            })
+            .then((res) => {
+                if (res.status == 200) {
+                    history.push('/kontejneri')
+                }
+            })
+    }
+
+    async function deleteContainer() {
+        axios('/waste-containers/' + id, {
+            method: 'DELETE'
+        })
+        .then((res) => {
+            if (res.status == 200) {
+                history.push('/kontejneri')
+            }
+        })
+    }
 
     if(loading) return <div>loading...</div>
 
@@ -32,7 +70,7 @@ const ContainerEdit = () => {
                 adresa: container.adresa,
                 ocjena: container.ocjena,
                 img: container.img}}
-            onSubmit={(value) => console.log(value)}
+            onSubmit={saveContainer}
         >
                 <Form>
                     <div style={{display: 'flex', flexFlow: 'row wrap', 
@@ -72,7 +110,7 @@ const ContainerEdit = () => {
                                     <FaSave style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}} />
                                 </button>
                                 <MdDelete style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
-                                    onClick={() => console.log('obrisi me!!')}/>
+                                    onClick={deleteContainer}/>
                             </div>
                         </div>
                     </div>
