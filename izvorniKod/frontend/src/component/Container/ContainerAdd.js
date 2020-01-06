@@ -8,6 +8,7 @@ import axios from 'axios'
 const ContainerEdit = () => {
     const [loading, setLoading] = useState(true)
     const history = useHistory()
+    const axiosInstance = axios.create()
 
     useEffect(() => {
         //ako bu nekaj potrebno loadati
@@ -26,7 +27,7 @@ const ContainerEdit = () => {
                 ocjena: '',
                 img: ''}}
             onSubmit={async (value) => {
-                await axios.get(`https://eu1.locationiq.com/v1/search.php?key=d3be9eb6cca657&q=${value.adresa}&format=json`)
+                await axiosInstance.get(`https://eu1.locationiq.com/v1/search.php?key=d3be9eb6cca657&q=${value.adresa}&format=json`)
                     .then((res) => {
                     if(res.status==200){
                         console.log(res)
