@@ -53,7 +53,7 @@ public class UserController {
         return new UserDTO((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
 
-    @Secured("ROLE_ADMIN")
+    @Secured({"ROLE_ADMIN", "ROLE_DIRECTOR"})
     @GetMapping("/all")
     public List<UserDTO> listAllUsers() {
         return userRepository
