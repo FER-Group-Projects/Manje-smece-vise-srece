@@ -9,15 +9,19 @@ class Containers extends React.Component {
     }
 
     componentDidMount() {
+        this.loadContainers(this)
+    }
+
+    loadContainers(that) {
         axios.get('/waste-containers/all')
-        .then((e) => {
-            this.setState({containers: e.data.map((container) => ({ID: container.id, Adresa: container.address}))})
-        }).catch(err => console.log(err));
+            .then((e) => {
+                that.setState({containers: e.data.map((container) => ({ID: container.id, Adresa: container.address, Ocjena: container.grade.toFixed(1)}))})
+            }).catch(err => console.log(err));
     }
 
     render() {
         return (
-            <Cards containers={this.state.containers}/>
+            <Cards containers={this.state.containers} refreshContainers={() => this.loadContainers(this)}/>
         )
     }
 }

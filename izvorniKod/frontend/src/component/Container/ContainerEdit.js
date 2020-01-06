@@ -46,17 +46,19 @@ const ContainerEdit = () => {
 
 
     useEffect(() => {
-        //get data
-        //pretend data
-        setTimeout(() => {
-            setContainer({
-                ID: id,
-                adresa: "Bana Jelacica 55",
-                ocjena: 3.4,
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Dumpster-non.JPG/220px-Dumpster-non.JPG",
-            })
-            setLoading(false)
-        },2000)
+        axios('/waste-containers/' + id, {
+            method: 'GET'
+        }).then((res) => {
+            if (res.status === 200) {
+                setContainer({
+                    ID: res.data.id,
+                    adresa: res.data.address,
+                    ocjena: res.data.grade.toFixed(1),
+                    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Dumpster-non.JPG/220px-Dumpster-non.JPG",
+                })
+                setLoading(false)
+            }
+        })
     },[])
 
     if(loading) return <div>loading...</div>

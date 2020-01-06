@@ -106,12 +106,17 @@ const Cards = (props) => {
                             <span>ID: <span style={{textAlign:'right'}}>{value.ID}</span></span>
                             <span>Ime: <span>{value.Ime}</span></span>
                         </div>
-                    <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', marginBottom:'5px'}}>
-                        {/* <MdEdit style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}} 
-                            onClick={() => history.push(`/kontejner/edit/${value.ID}`)}/> */}
-                        <MdDelete style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
-                            onClick={() => console.log('obrisi me!!')}/>
-                    </div>
+                    {
+                        AuthStore.isDirectorOrAdmin() &&
+                        (
+                            <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', marginBottom:'5px'}}>
+                                {/* <MdEdit style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
+                                    onClick={() => history.push(`/kontejner/edit/${value.ID}`)}/> */}
+                                <MdDelete style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
+                                    onClick={() => console.log('obrisi me!!')}/>
+                            </div>
+                        )
+                    }
                 </div>
                 )
             }
@@ -127,12 +132,17 @@ const Cards = (props) => {
                         <div style={{display:'flex', flexDirection:'column', margin:'10px', textAlign:'left'}}>
                             <span>Username: <span style={{textAlign:'right'}}>{value.Username}</span></span>
                         </div>
-                    <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', marginBottom:'5px'}}>
-                        {/* <MdEdit style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}} 
+                    {
+                        AuthStore.isDirectorOrAdmin() &&
+                        (
+                            <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', marginBottom:'5px'}}>
+                                {/* <MdEdit style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
                             onClick={() => history.push(`/kontejner/edit/${value.ID}`)}/> */}
-                        <MdDelete style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
-                            onClick={() => console.log('obrisi me!!')}/>
-                    </div>
+                                <MdDelete style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
+                                          onClick={() => console.log('obrisi me!!')}/>
+                            </div>
+                        )
+                    }
                 </div>
                 )
             }
