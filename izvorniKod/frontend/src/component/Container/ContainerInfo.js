@@ -1,52 +1,55 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import { FaSave } from 'react-icons/fa'
+import axios from "axios";
+import {AuthStore} from "../../store/AuthStore";
 
 const ContainerInfo = () => {
     const [loading, setLoading] = useState(true)
-    const [container, setContainer] = useState({})
+    const [container, setContainer] = useState({ID: 0, adresa: '', ocjena: -1, img: '', komentari: []})
     const {id} = useParams()
 
     useEffect(() => {
-        //pretend to fetch containerInfo
-        //create pretend data
-        setTimeout(() => {
-            setContainer({
-                ID: id,
-                adresa: "Bana Jelacica 55",
-                ocjena: 3.4,
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Dumpster-non.JPG/220px-Dumpster-non.JPG",
-                komentari: [
-                    {
-                        id: 1,
-                        autor: "user",
-                        komentar: "nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches nice job bitches ",
-                        time: "12.04.2019 17:15"
-                    },
-                    {
-                        id: 2,
-                        autor: "user1",
-                        komentar: "nice job 'bitches'",
-                        time: "12.04.2019 17:15"
-                    },
-                    {
-                        id: 3,
-                        autor: "user2",
-                        komentar: "nice 'job' bitches",
-                        time: "12.04.2019 17:15"
-                    },
-                    {
-                        id: 4,
-                        autor: "user3",
-                        komentar: "'nice' job bitches",
-                        time: "12.04.2019 17:15"
-                    }
-                ]
-            })
-            setLoading(false)
-        }, 2000)
+        axios('/waste-containers/' + id, {
+            method: 'GET'
+        }).then((res) => {
+            if (res.status === 200) {
+                setContainer({
+                    ID: res.data.id,
+                    adresa: res.data.address,
+                    ocjena: res.data.grade.toFixed(1),
+                    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Dumpster-non.JPG/220px-Dumpster-non.JPG",
+                    komentari: []
+                })
+                setLoading(false)
+
+                loadComments()
+            }
+        })
     },[])
+
+    function loadComments() {
+        axios.get('/reviews/for-waste-container/' + id)
+        .then((res) => {
+            if (res.status === 200) {
+                const komentari = res.data.map((rev) => ({
+                    id: rev.id,
+                    autor: rev.author,
+                    komentar: rev.comment,
+                    vrijeme: new Date(rev.postedAt).toLocaleDateString()
+                }))
+
+                setContainer(prevState => {
+                    let copy = Object.assign({}, prevState)
+
+                    copy.komentari = komentari
+
+                    return copy
+                })
+            }
+        })
+    }
 
     if(loading) return <div>loading...</div>
 
@@ -57,8 +60,20 @@ const ContainerInfo = () => {
                 adresa: container.adresa,
                 ocjena: container.ocjena,
                 userOcjena: null,
-                img: container.img}}
-            onSubmit={(value) => console.log(value)}
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Dumpster-non.JPG/220px-Dumpster-non.JPG"}}
+            onSubmit={(value) => {
+                axios('/reviews/for-waste-container/' + id + '/create', {
+                    method: 'POST',
+                    data: {
+                        grade: value.userOcjena,
+                        comment: value.userKomentar
+                    }
+                }).then((res) => {
+                    if (res.status === 200) {
+                        loadComments()
+                    }
+                })
+            }}
         >
                 <Form>
                     <div style={{display: 'flex', flexFlow: 'row wrap', 
@@ -98,8 +113,17 @@ const ContainerInfo = () => {
                                 <div style={{backgroundColor:'darkgrey'}}>
                                     <label style={{margin:'0.5rem'}}>Vaša Ocjena</label>
                                 </div>
-                                <Field name='userOcjena' type="text" placeholer='5.0'
-                                    style={{width:'100%'}}
+                                <Field name='userOcjena' type="number" placeholer='5.0'
+                                    style={{width:'100%'}} required='true' max='5' min='0'
+                                />
+                            </div>
+                            <div style={{display: 'flex', flexDirection: 'row',
+                                marginBottom:'10px', width:'260px'}}>
+                                <div style={{backgroundColor:'darkgrey'}}>
+                                    <label style={{margin:'0.5rem'}}>Vaš Komentar</label>
+                                </div>
+                                <Field name='userKomentar' type="text" placeholer='Komentar'
+                                       style={{width:'100%'}} required='true'
                                 />
                             </div>
                             <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly'}}>
@@ -117,11 +141,14 @@ const ContainerInfo = () => {
                                     <div key={value.id} style={{display:'flex', flexDirection:'column', 
                                             borderBottom:'1px solid grey', width: '100%'}}>
                                         <div style={{backgroundColor:'lightgrey', width:'100%', textAlign: 'left'}}>
-                                            <span style={{margin:'0.5rem', width:'100%'}}>
+                                            <span style={{padding:'0.5rem', width:'50%', float: 'left'}}>
                                                 {value.autor}
                                             </span>
+                                            <span style={{padding:'0.5rem', width:'50%', float: 'right', textAlign: 'right'}}>
+                                                {value.vrijeme}
+                                            </span>
                                         </div>
-                                        <div style={{marginLeft:'1rem', overflow:'hidden', textAlign: 'left'}}>
+                                        <div style={{marginLeft:'1rem', overflow:'hidden', textAlign: 'left', clear: 'both'}}>
                                             <span style={{tetAlign:'left'}}>
                                                 {value.komentar}
                                             </span>
