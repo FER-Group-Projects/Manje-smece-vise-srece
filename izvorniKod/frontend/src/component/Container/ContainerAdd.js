@@ -8,6 +8,7 @@ import axios from 'axios'
 const ContainerEdit = () => {
     const [loading, setLoading] = useState(true)
     const history = useHistory()
+    const axiosInstance = axios.create()
 
     useEffect(() => {
         //ako bu nekaj potrebno loadati
@@ -26,10 +27,22 @@ const ContainerEdit = () => {
                 ocjena: '',
                 img: ''}}
             onSubmit={async (value) => {
-                await axios.get(`https://eu1.locationiq.com/v1/search.php?key=d3be9eb6cca657&q=${value.adresa}&format=json`)
-                    .then((res) => {
+                await axiosInstance.get(`https://eu1.locationiq.com/v1/search.php?key=d3be9eb6cca657&q=${value.adresa}&format=json`)
+                    .then(async (res) => {
                     if(res.status==200){
-                        console.log(res)
+                        const {data} = res
+                        console.log(typeof(data[0].lat))
+                        const postData = {
+                            latitude: parseFloat(data[0].lat),
+                            longitude: parseFloat(data[0].lon),
+                            address: value.adresa,
+                        }
+                        console.log('post-data:', postData)
+                        const response = await axios.post('/waste-containers/create',postData)
+                        console.log(response)
+                    }
+                    else{
+                        console.log('wrong')
                     }
                 })
             }}

@@ -69,19 +69,19 @@ const Sidebar = () => {
             {AuthStore.getLoggedIn()!=='' &&
                 <FavoriteKontejnerButton changePage={goToFavoriteKontejner}/>
             }
-            {AuthStore.getLoggedIn()!=='' &&
+            {AuthStore.isEmployee() &&
                 <MojeZoneButton changePage={goToMojeZone}/>
             }
-            {AuthStore.getLoggedIn()!=='' &&
+            {AuthStore.isEmployee() &&
                 <MojeRuteButton changePage={goToMojeRute}/>
             }
-            {AuthStore.getLoggedIn()!=='' &&
+            {AuthStore.isDirectorOrAdmin() &&
                 <KontejneriButton changePage={goToKontejneri}/>
             }
-            {AuthStore.getLoggedIn()!=='' &&
+            {AuthStore.isDirectorOrAdmin() &&
                 <ZoneButton changePage={goToZone}/>
             }
-            {AuthStore.getLoggedIn()!=='' &&
+            {AuthStore.isDirectorOrAdmin() &&
                 <SluzbeniciButton changePage={goToSluzbenici}/>
             }
         </div>

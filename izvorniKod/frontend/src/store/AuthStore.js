@@ -6,6 +6,23 @@ class store {
     token = observable({token: ''})
     roles = observable({roles: []})
 
+    isEmployee() {
+        console.log(this.getRoles())
+        return this.getRoles().includes('EMPLOYEE')
+    }
+
+    isDirector() {
+        return this.getRoles().includes('DIRECTOR')
+    }
+
+    isAdmin() {
+        return this.getRoles().includes('DIRECTOR')
+    }
+
+    isDirectorOrAdmin() {
+        return this.isDirector() || this.isAdmin()
+    }
+
     setToken(token) {
         localStorage.setItem('token', token)
         this.token.token = token
@@ -21,6 +38,10 @@ class store {
     }
 
     getRoles() {
+        if (this.roles.roles.length == 0) {
+            this.roles.roles = localStorage.getItem('roles')
+        }
+
         return this.roles.roles
     }
 
