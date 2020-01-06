@@ -45,6 +45,11 @@ const ContainerEdit = () => {
                         console.log('wrong')
                     }
                 })
+                    .then((res) => {
+                        if (res.status == 200) {
+                            history.push('/kontejneri')
+                        }
+                    })
             }}
         >
                 <Form>
