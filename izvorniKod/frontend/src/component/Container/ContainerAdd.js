@@ -30,9 +30,21 @@ const ContainerEdit = () => {
                 await axiosInstance.get(`https://eu1.locationiq.com/v1/search.php?key=d3be9eb6cca657&q=${value.adresa}&format=json`)
                     .then((res) => {
                     if(res.status==200){
-                        console.log(res)
+                        return axios('/waste-containers/create', {
+                            method: 'POST',
+                            data: {
+                                address: value.adresa,
+                                latitude: res.data[0].lat,
+                                longitude: res.data[0].lon
+                            }
+                        })
                     }
                 })
+                    .then((res) => {
+                        if (res.status == 200) {
+                            history.push('/kontejneri')
+                        }
+                    })
             }}
         >
                 <Form>

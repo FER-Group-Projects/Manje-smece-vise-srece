@@ -6,6 +6,18 @@ class store {
     token = observable({token: ''})
     roles = observable({roles: []})
 
+    isDirector() {
+        return this.getRoles().includes('DIRECTOR')
+    }
+
+    isAdmin() {
+        return this.getRoles().includes('DIRECTOR')
+    }
+
+    isDirectorOrAdmin() {
+        return this.isDirector() || this.isAdmin()
+    }
+
     setToken(token) {
         localStorage.setItem('token', token)
         this.token.token = token

@@ -1,9 +1,22 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { MdDelete, MdEdit, MdAddCircleOutline } from 'react-icons/md'
+import axios from "axios";
+import {AuthStore} from "../store/AuthStore";
 
 const Cards = (props) => {
     let history = useHistory()
+
+    async function deleteContainer(id) {
+        axios('/waste-containers/' + id, {
+            method: 'DELETE'
+        })
+            .then((res) => {
+                if (res.status == 200) {
+                    props.refreshContainers()
+                }
+            })
+    }
 
     return(
         <div style={{display:'flex', flexFlow:'row wrap',
@@ -31,12 +44,17 @@ const Cards = (props) => {
                                 <span>Ocjena: <span>{value.Ocjena}</span>/5</span>
                             </div>
                         </div>
-                        <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly'}}>
-                            <MdEdit style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
-                                onClick={() => history.push(`/kontejner/edit/${value.ID}`)}/>
-                            <MdDelete style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
-                                onClick={() => console.log('obrisi me!!')}/>
-                        </div>
+                        {
+                            AuthStore.isDirectorOrAdmin() &&
+                            (
+                                <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly'}}>
+                                    <MdEdit style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
+                                            onClick={() => history.push(`/kontejner/edit/${value.ID}`)}/>
+                                    <MdDelete style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
+                                              onClick={() => deleteContainer(value.ID)}/>
+                                </div>
+                            )
+                        }
                     </div>
                 )
             }
@@ -53,12 +71,17 @@ const Cards = (props) => {
                             <span>ID: <span style={{textAlign:'right'}}>{value.ID}</span></span>
                             <span>Ime: <span>{value.Ime}</span></span>
                         </div>
-                    <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', marginBottom:'5px'}}>
-                        {/* <MdEdit style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}} 
-                            onClick={() => history.push(`/kontejner/edit/${value.ID}`)}/> */}
-                        <MdDelete style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
-                            onClick={() => console.log('obrisi me!!')}/>
-                    </div>
+                    {
+                        AuthStore.isDirectorOrAdmin() &&
+                        (
+                            <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', marginBottom:'5px'}}>
+                                {/* <MdEdit style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
+                                    onClick={() => history.push(`/kontejner/edit/${value.ID}`)}/> */}
+                                <MdDelete style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
+                                    onClick={() => console.log('obrisi me!!')}/>
+                            </div>
+                        )
+                    }
                 </div>
                 )
             }
@@ -74,17 +97,22 @@ const Cards = (props) => {
                         <div style={{display:'flex', flexDirection:'column', margin:'10px', textAlign:'left'}}>
                             <span>Username: <span style={{textAlign:'right'}}>{value.Username}</span></span>
                         </div>
-                    <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', marginBottom:'5px'}}>
-                        {/* <MdEdit style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}} 
+                    {
+                        AuthStore.isDirectorOrAdmin() &&
+                        (
+                            <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', marginBottom:'5px'}}>
+                                {/* <MdEdit style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
                             onClick={() => history.push(`/kontejner/edit/${value.ID}`)}/> */}
-                        <MdDelete style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
-                            onClick={() => console.log('obrisi me!!')}/>
-                    </div>
+                                <MdDelete style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
+                                          onClick={() => console.log('obrisi me!!')}/>
+                            </div>
+                        )
+                    }
                 </div>
                 )
             }
             {
-                props.containers &&
+                props.containers && AuthStore.isDirectorOrAdmin() &&
                 <div style={{
                     display:'flex', flexDirection:'column',
                     borderRadius:'15px', backgroundColor:'#FFFFFF',
@@ -97,7 +125,7 @@ const Cards = (props) => {
                 </div>
             }
             {
-                props.zones &&
+                props.zones && AuthStore.isDirectorOrAdmin() &&
                 <div style={{
                     display:'flex', flexDirection:'column',
                     borderRadius:'15px', backgroundColor:'#FFFFFF',
@@ -110,7 +138,7 @@ const Cards = (props) => {
                 </div>
             }
             {
-                props.workers &&
+                props.workers && AuthStore.isDirectorOrAdmin() &&
                 <div style={{
                     display:'flex', flexDirection:'column',
                     borderRadius:'15px', backgroundColor:'#FFFFFF',
