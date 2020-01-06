@@ -1,6 +1,7 @@
 package hr.fer.opp.bashcrash.manjesmecevisesrece.rest;
 
 import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.CompanyRepository;
+import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.UserRepository;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.WasteContainerRepository;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.ZoneRepository;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.model.*;
@@ -15,6 +16,7 @@ import static org.mockito.Mockito.*;
 
 class WasteContainerControllerTest {
 
+    private UserRepository userRepository;
     private WasteContainerRepository wasteContainerRepository;
     private CompanyRepository companyRepository;
     private ZoneRepository zoneRepository;
@@ -25,11 +27,12 @@ class WasteContainerControllerTest {
 
     @BeforeEach
     void setUp() {
+        userRepository = Mockito.mock(UserRepository.class);
         wasteContainerRepository = Mockito.mock(WasteContainerRepository.class);
         companyRepository = Mockito.mock(CompanyRepository.class);
         zoneRepository = Mockito.mock(ZoneRepository.class);
 
-        wasteContainerController = new WasteContainerController(wasteContainerRepository, companyRepository, zoneRepository);
+        wasteContainerController = new WasteContainerController(userRepository, wasteContainerRepository, companyRepository, zoneRepository);
 
         WasteContainer wasteContainer = new WasteContainer();
         Company company = new Company();

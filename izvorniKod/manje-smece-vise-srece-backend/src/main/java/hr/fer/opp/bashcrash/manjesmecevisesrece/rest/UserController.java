@@ -47,13 +47,13 @@ public class UserController {
         userRepository.save(userModel);
     }
 
-    @Secured("USER")
+    @Secured("ROLE_USER")
     @GetMapping("/current-user")
     public UserDTO logIn() {
         return new UserDTO((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
 
-    @Secured("ADMIN")
+    @Secured("ROLE_ADMIN")
     @GetMapping("/all")
     public List<UserDTO> listAllUsers() {
         return userRepository
@@ -63,7 +63,7 @@ public class UserController {
                 .collect(Collectors.toList());
     }
 
-    @Secured("USER")
+    @Secured("ROLE_USER")
     @GetMapping("/{username}")
     public UserDTO getUserInformation(@PathVariable String username, @AuthenticationPrincipal Principal principal) {
         String loggedInUsername = principal.getName();
@@ -81,7 +81,7 @@ public class UserController {
         return new UserDTO(userModel);
     }
 
-    @Secured("USER")
+    @Secured("ROLE_USER")
     @PutMapping("/{username}")
     public void updateUserInformation(@PathVariable String username, @RequestBody UserDTO userDTO, @AuthenticationPrincipal Principal principal) {
         String loggedInUsername = principal.getName();
@@ -103,7 +103,7 @@ public class UserController {
         userRepository.save(userModel);
     }
 
-    @Secured("ADMIN")
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("/{username}")
     public void deleteUser(@PathVariable String username) {
         UserModel userModel = userRepository.findByUsername(username);

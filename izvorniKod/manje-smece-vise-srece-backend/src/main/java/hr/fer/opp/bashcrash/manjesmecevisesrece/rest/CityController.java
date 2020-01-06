@@ -46,7 +46,7 @@ public class CityController {
         return new CityDTO(optionalCity.get());
     }
 
-    @Secured("ADMIN")
+    @Secured("ROLE_ADMIN")
     @PostMapping("/create")
     public void createCity(@RequestBody CityDTO cityDTO) {
         City city = new City();
@@ -61,7 +61,7 @@ public class CityController {
         cityRepository.save(city);
     }
 
-    @Secured("ADMIN")
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("/{id}")
     public void deleteCity(@PathVariable int id) {
         cityRepository.deleteById(id);

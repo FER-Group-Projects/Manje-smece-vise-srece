@@ -1,16 +1,20 @@
 package hr.fer.opp.bashcrash.manjesmecevisesrece.rest;
 
 import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.CompanyRepository;
+import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.UserRepository;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.WasteContainerRepository;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.ZoneRepository;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.dto.WasteContainerDTO;
+import hr.fer.opp.bashcrash.manjesmecevisesrece.model.UserModel;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.model.WasteContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,12 +23,14 @@ import java.util.stream.Collectors;
 @RequestMapping("/waste-containers")
 public class WasteContainerController {
 
+    private UserRepository userRepository;
     private WasteContainerRepository wasteContainerRepository;
     private CompanyRepository companyRepository;
     private ZoneRepository zoneRepository;
 
     @Autowired
-    public WasteContainerController(WasteContainerRepository wasteContainerRepository, CompanyRepository companyRepository, ZoneRepository zoneRepository) {
+    public WasteContainerController(UserRepository userRepository, WasteContainerRepository wasteContainerRepository, CompanyRepository companyRepository, ZoneRepository zoneRepository) {
+        this.userRepository = userRepository;
         this.wasteContainerRepository = wasteContainerRepository;
         this.companyRepository = companyRepository;
         this.zoneRepository = zoneRepository;
@@ -50,26 +56,35 @@ public class WasteContainerController {
         return new WasteContainerDTO(wasteContainerOptional.get());
     }
 
-    @Secured("hasAny(DIRECTOR,ADMIN)")
+    @Secured({"ROLE_DIRECTOR", "ROLE_ADMIN"})
     @PostMapping("/create")
-    public void createWasteContainer(@RequestBody WasteContainerDTO wasteContainerDTO) {
+    public void createWasteContainer(@RequestBody WasteContainerDTO wasteContainerDTO, @AuthenticationPrincipal Principal principal) {
+        String loggedInUsername = principal.getName();
+
+        UserModel userModel = userRepository.findByUsername(loggedInUsername);
+
+        if (userModel == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
         WasteContainer wasteContainer = new WasteContainer();
 
         wasteContainer.setAddress(wasteContainerDTO.getAddress());
         wasteContainer.setLatitude(wasteContainerDTO.getLatitude());
         wasteContainer.setLongitude(wasteContainerDTO.getLongitude());
+        wasteContainer.setCompany(userModel.getCompany());
 
-        if (wasteContainer.getCompany() != null) {
-            wasteContainer.setCompany(companyRepository.findById(wasteContainerDTO.getCompany().getId()).get());
-        }
         if (wasteContainer.getZone() != null) {
             wasteContainer.setZone(zoneRepository.findById(wasteContainerDTO.getZone().getId()).get());
+        }
+        else {
+            wasteContainer.setZone(zoneRepository.findAll().get(0));
         }
 
         wasteContainerRepository.save(wasteContainer);
     }
 
-    @Secured("hasAny(DIRECTOR,ADMIN)")
+    @Secured({"ROLE_DIRECTOR", "ROLE_ADMIN"})
     @PutMapping("/{id}")
     public void updateWasteContainer(@RequestBody WasteContainerDTO wasteContainerDTO, @PathVariable int id) {
         Optional<WasteContainer> optionalWasteContainer = wasteContainerRepository.findById(id);
@@ -84,17 +99,10 @@ public class WasteContainerController {
         wasteContainer.setLatitude(wasteContainerDTO.getLatitude());
         wasteContainer.setLongitude(wasteContainerDTO.getLongitude());
 
-        if (wasteContainer.getCompany() != null) {
-            wasteContainer.setCompany(companyRepository.findById(wasteContainerDTO.getCompany().getId()).get());
-        }
-        if (wasteContainer.getZone() != null) {
-            wasteContainer.setZone(zoneRepository.findById(wasteContainerDTO.getZone().getId()).get());
-        }
-
         wasteContainerRepository.save(wasteContainer);
     }
 
-    @Secured("hasAny(DIRECTOR,ADMIN)")
+    @Secured({"ROLE_DIRECTOR", "ROLE_ADMIN"})
     @DeleteMapping("/{id}")
     public void deleteWasteContainer(@PathVariable int id) {
         Optional<WasteContainer> wasteContainer = wasteContainerRepository.findById(id);

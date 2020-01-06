@@ -47,7 +47,7 @@ public class ZoneController {
         return new ZoneDTO(optionalZone.get());
     }
 
-    @Secured("ADMIN")
+    @Secured("ROLE_ADMIN")
     @PostMapping("/create")
     public void createZone(@RequestBody ZoneDTO zoneDTO) {
         Zone zone = new Zone();
@@ -62,7 +62,7 @@ public class ZoneController {
         zoneRepository.save(zone);
     }
 
-    @Secured("ADMIN")
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("/{id}")
     public void deleteZone(@PathVariable int id) {
         zoneRepository.deleteById(id);

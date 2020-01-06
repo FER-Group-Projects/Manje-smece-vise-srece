@@ -16,7 +16,7 @@ import static hr.fer.opp.bashcrash.manjesmecevisesrece.security.SecurityConstant
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

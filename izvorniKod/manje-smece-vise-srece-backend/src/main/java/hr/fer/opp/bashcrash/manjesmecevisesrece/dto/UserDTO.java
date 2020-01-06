@@ -31,6 +31,7 @@ public class UserDTO {
                 .getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
+                .map(s -> s.replace("ROLE_", ""))
                 .collect(Collectors.toList());
     }
 

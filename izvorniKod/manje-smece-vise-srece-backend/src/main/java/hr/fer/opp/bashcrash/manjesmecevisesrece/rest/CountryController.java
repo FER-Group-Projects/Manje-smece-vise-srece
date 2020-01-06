@@ -40,7 +40,7 @@ public class CountryController {
         return new CountryDTO(optionalCountry.get());
     }
 
-    @Secured("ADMIN")
+    @Secured("ROLE_ADMIN")
     @PostMapping("/create")
     public void createCountry(@RequestBody CountryDTO countryDTO) {
         Country country = new Country();
@@ -54,7 +54,7 @@ public class CountryController {
         countryRepository.save(country);
     }
 
-    @Secured("ADMIN")
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("/{id}")
     public void deleteCountry(@PathVariable int id) {
         countryRepository.deleteById(id);

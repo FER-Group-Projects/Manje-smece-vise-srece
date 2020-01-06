@@ -36,20 +36,20 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        authorities.add(new SimpleGrantedAuthority("USER"));
+        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
         if (applicationUserModel.isAdministrator()) {
-            authorities.add(new SimpleGrantedAuthority("ADMIN"));
+            authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         }
 
         if (applicationUserModel.getCompany() != null) {
-            authorities.add(new SimpleGrantedAuthority("EMPLOYEE"));
+            authorities.add(new SimpleGrantedAuthority("ROLE_EMPLOYEE"));
 
             if (Objects.equals(applicationUserModel.getCompany().getDirector().getId(), applicationUserModel.getId())) {
-                authorities.add(new SimpleGrantedAuthority("DIRECTOR"));
+                authorities.add(new SimpleGrantedAuthority("ROLE_DIRECTOR"));
             }
         }
-
+        System.out.println(applicationUserModel.getUsername() + " " + authorities);
         return new User(applicationUserModel.getUsername(), applicationUserModel.getPassword(), authorities);
     }
 }
