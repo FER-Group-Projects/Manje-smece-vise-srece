@@ -285,7 +285,8 @@ void testFetchingInformationAboutNonExistantWasteContainer() {
 	\end{minted}
 	\caption{Prikaz rezultata izvođenja ispita u razvojnom okruženju}
 \end{listing}
-			
+			\clearpage
+
 			\subsection{Ispitivanje sustava}
 			
 %			 \textit{Potrebno je provesti i opisati ispitivanje sustava koristeći radni okvir Selenium\footnote{\url{https://www.seleniumhq.org/}}. Razraditi \textbf{minimalno 4 ispitna slučaja} u kojima će se ispitati redovni slučajevi, rubni uvjeti te poziv funkcionalnosti koja nije implementirana/izaziva pogrešku kako bi se vidjelo na koji način sustav reagira kada nešto nije u potpunosti ostvareno. Ispitni slučaj se treba sastojati od ulaza (npr. korisničko ime i lozinka), očekivanog izlaza ili rezultata, koraka ispitivanja i dobivenog izlaza ili rezultata.\\ }
@@ -296,7 +297,144 @@ void testFetchingInformationAboutNonExistantWasteContainer() {
 %			 	\item \textit{\textbf{Selenium WebDriver} - podrška za pisanje ispita u jezicima Java, C\#, PHP koristeći posebno programsko sučelje.}
 %			 \end{itemize}
 %		 	 \textit{Detalji o korištenju alata Selenium bit će prikazani na posebnom predavanju tijekom semestra.}
-			
+			\noindent \textbf{Ispitni slučaj \thetestcase: Prijava i odjava korisnika} \\
+			\noindent \textbf{Ulaz:}
+			\begin{packed_enum}
+				\item Otvaranje početne stranice u web pregledniku.
+				\item Pritisak na ikonu korisnika u gornjem desnom kutku.
+				\item Odabir opcije "Prijava" iz padajućeg izbornika.
+				\item Upisivanje korisničkog imena i lozinke te pritisak gumba "Prijava".
+				\item Pritisak na ikonu korisnika u gornjem desnom kutku.
+				\item Odabir opcije "Odjava" iz padajućeg izbornika.
+			\end{packed_enum}
+			\noindent \textbf{Očekivani rezultat:}
+			\begin{packed_enum}
+				\item[1.a] Prikazuje se početna stranica s kartom.
+				\item[1.b] Na karti su prikazani kontejneri koji su uneseni u aplikaciju.
+				\item[2.\ \ ] Prikazuje se padajući izbornik s opcijama "Prijava" i "Registracija".
+				\item[3.\ \ ] Prikazuje se forma za prijavu korisnika s tekstualnim poljima za unos korisničkog imena i lozinke.
+				\item[4.a] Prikazuje se početna stranica s dodatnim gumbima sa strane.
+				\item[4.b] Korisnik je uspješno prijavljen.
+				\item[5.\ \ ] Prikazuje se padajući izbornik s opcijama "Postavke" i "Odjava".
+				\item[6.a] Prikazuje se početna stranica bez dodatnih gumbi sa strane.
+				\item[6.b] Korisnik je odjavljen.
+			\end{packed_enum}
+			\noindent \textbf{Izvorni kod:}
+
+			\begin{listing}[H]
+\begin{minted}{java}
+TODO
+\end{minted}
+				\caption{Izvorni kod za ispitni slučaj \thetestcase}
+				\label{test3}
+			\end{listing}
+			\noindent \textbf{Rezultat:} TODO
+			\refstepcounter{testcase}
+			\clearpage
+
+			\noindent \textbf{Ispitni slučaj \thetestcase: Pregled osobnih podataka} \\
+			\noindent \textbf{Ulaz:}
+			\begin{packed_enum}
+				\item Otvaranje početne stranice u web pregledniku te prijava u sustav\footnotemark.
+				\item Pritisak na ikonu korisnika u gornjem desnom kutku.
+				\item Odabir opcije "Postavke" iz padajućeg izbornika.
+				\item Odjava iz sustava\footnotemark[\value{footnote}].
+
+				\footnotetext{Postupak prijave i odjave korisnika u sustav je prikazan u ispitnom slučaju 8.}
+			\end{packed_enum}
+			\noindent \textbf{Očekivani rezultat:}
+			\begin{packed_enum}
+				\item[1.a] Prikazuje se početna stranica.
+				\item[1.b] Korisnik je prijavljen.
+				\item[2.\ \ ] Prikazuje se padajući izbornik s opcijama "Postavke" i "Odjava".
+				\item[3.\ \ ] Prikazuju se osobni podaci korisnika.
+				\item[4.\ \ ] Korisnik je odjavljen iz sustava.
+			\end{packed_enum}
+			\noindent \textbf{Izvorni kod:}
+
+			\begin{listing}[H]
+\begin{minted}{java}
+TODO
+\end{minted}
+				\caption{Izvorni kod za ispitni slučaj \thetestcase}
+				\label{test3}
+			\end{listing}
+			\noindent \textbf{Rezultat:} TODO
+			\refstepcounter{testcase}
+			\clearpage
+
+			\noindent \textbf{Ispitni slučaj \thetestcase: Komentiranje kontejnera} \\
+			\noindent \textbf{Ulaz:}
+			\begin{packed_enum}
+				\item Otvaranje početne stranice u web pregledniku te prijava u sustav\footnotemark.
+				\item Pritisak na ikonu povećala u lijevom izborniku.
+				\item Upisivanje ispravnog identifikatora kontejnera, pritisak na ikonu povećala.
+				\item Pritisak na ikonu kontejnera s tim identifikatorom.
+				\item Upisivanje komentara kontejnera, ocjenjivanje kontejnera i pritisak na ikonu diskete.
+				\item Odjava iz sustava\footnotemark[\value{footnote}].
+
+				\footnotetext{Postupak prijave i odjave korisnika u sustav je prikazan u ispitnom slučaju 8.}
+			\end{packed_enum}
+			\noindent \textbf{Očekivani rezultat:}
+			\begin{packed_enum}
+				\item[1.a] Prikazuje se početna stranica.
+				\item[1.b] Korisnik je prijavljen.
+				\item[2.\ \ ] Prikazuje se tekstualno polje za upis identifikatora kontejnera.
+				\item[3.\ \ ] Odabrani kontejner se centrira na karti.
+				\item[4.\ \ ] Prikazuje se stranica kontejnera s objavljenim recenzijama tog kontejnera.
+				\item[5.a] Komentar je objavljen.
+				\item[5.b] Ocjena je zabilježena.
+				\item[6.\ \ ] Korisnik je odjavljen iz sustava.
+			\end{packed_enum}
+			\noindent \textbf{Izvorni kod:}
+
+			\begin{listing}[H]
+\begin{minted}{java}
+TODO
+\end{minted}
+				\caption{Izvorni kod za ispitni slučaj \thetestcase}
+				\label{test3}
+			\end{listing}
+			\noindent \textbf{Rezultat:} TODO
+			\refstepcounter{testcase}
+
+			\clearpage
+
+			\noindent \textbf{Ispitni slučaj \thetestcase: Upravljanje kontejnerima} \\
+			\noindent \textbf{Ulaz:}
+			\begin{packed_enum}
+				\item Otvaranje početne stranice u web pregledniku te prijava u sustav\footnotemark.
+				\item Pritisak na ikonu kontejnera u lijevom izborniku.
+				\item Pritisak na ikonu plusa.
+				\item Upisivanje podataka o kontejneru i pritisak na ikonu diskete.
+				\item Pritisak na ikonu kante za smeće u kartici novostvorenog kontejnera.
+				\item Odjava iz sustava\footnotemark[\value{footnote}].
+
+				\footnotetext{Postupak prijave i odjave korisnika u sustav je prikazan u ispitnom slučaju 8.}
+			\end{packed_enum}
+			\noindent \textbf{Očekivani rezultat:}
+			\begin{packed_enum}
+				\item[1.a] Prikazuje se početna stranica.
+				\item[1.b] Korisnik je prijavljen.
+				\item[2.\ \ ] Prikazuje se popis kontejnera koji su uneseni u aplikaciju.
+				\item[3.\ \ ] Prikazuje se forma za unos podataka o novom kontejneru.
+				\item[4.a] Kontejner je spremljen u bazu podataka.
+				\item[4.b] Prikazuje se popis kontejnera koji sadrži novostvoreni kontejner.
+				\item[5.a] Kontejner je izbrisan iz baze podataka.
+				\item[5.b] Prikazuje se popis kontejnera koji ne sadrži obrisani kontejner.
+				\item[6.\ \ ] Korisnik je odjavljen iz sustava.
+			\end{packed_enum}
+			\noindent \textbf{Izvorni kod:}
+
+			\begin{listing}[H]
+\begin{minted}{java}
+TODO
+\end{minted}
+				\caption{Izvorni kod za ispitni slučaj \thetestcase}
+				\label{test3}
+			\end{listing}
+			\noindent \textbf{Rezultat:} TODO
+			\refstepcounter{testcase}
 			\eject 
 		
 		
@@ -307,14 +445,14 @@ void testFetchingInformationAboutNonExistantWasteContainer() {
 			 % \textit{Potrebno je umetnuti \textbf{specifikacijski} dijagram razmještaja i opisati ga. Moguće je umjesto specifikacijskog dijagrama razmještaja umetnuti dijagram razmještaja instanci, pod uvjetom da taj dijagram bolje opisuje neki važniji dio sustava.}
 			
 			Dijagrami razmještaja opisuju topologiju sustava te su usredotočeni na odnos sklopovskih i programskih dijelova. Sustav je baziran na arhitekturi "klijent - poslužitelj". Klijenti preko web preglednika pristupaju web aplikaciji dok se na poslužiteljskom računalu nalaze web poslužitelj i poslužitelj baze podataka. Komunikacija između klijenta i poslužitelja odvija se preko HTTP veze.
-			
+
 			\begin{figure} [H]
 			    \centering
 			    \includegraphics[width=1.0\linewidth]{slike/Deployment_Diagram.png}
                 \caption{Dijagram razmještaja}
                 \label{fig:Dijagram razmještaja}
 		    \end{figure}
-			\eject 
+			\eject
 		
 		\section{Upute za puštanje u pogon}
 		
