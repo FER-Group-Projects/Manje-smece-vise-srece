@@ -44,7 +44,7 @@ public class WasteContainerController {
                 .map(dto -> {
                     double grade =
                             reviewRepository
-                                    .getAllByWasteContainer_Id(dto.getId())
+                                    .getAllByWasteContainer_IdOrderByPostedAtDesc(dto.getId())
                                     .stream()
                                     .mapToDouble(r -> (r.getTidinessGrade() + r.getCleannessGrade()) / 2.0)
                                     .average()
@@ -67,7 +67,7 @@ public class WasteContainerController {
 
         double grade =
                 reviewRepository
-                .getAllByWasteContainer_Id(wasteContainerId)
+                .getAllByWasteContainer_IdOrderByPostedAtDesc(wasteContainerId)
                 .stream()
                 .mapToDouble(r -> (r.getTidinessGrade() + r.getCleannessGrade()) / 2.0)
                 .average()

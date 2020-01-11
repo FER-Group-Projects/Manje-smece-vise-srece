@@ -33,7 +33,7 @@ public class ReviewController {
     @GetMapping("/for-waste-container/{id}")
     public List<ReviewDTO> listAllReviewsForWasteContainer(@PathVariable("id") int id) {
         return reviewRepository
-                .getAllByWasteContainer_Id(id)
+                .getAllByWasteContainer_IdOrderByPostedAtDesc(id)
                 .stream()
                 .map(ReviewDTO::new)
                 .collect(Collectors.toList());

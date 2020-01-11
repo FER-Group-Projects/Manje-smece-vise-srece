@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
-    List<Review> getAllByWasteContainer_Id(int wasteContainerId);
+    List<Review> getAllByWasteContainer_IdOrderByPostedAtDesc(int wasteContainerId);
 
 }
