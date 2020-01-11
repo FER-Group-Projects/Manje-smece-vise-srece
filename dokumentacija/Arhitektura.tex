@@ -278,22 +278,31 @@
 			
 		\section{Dijagram razreda}
 		
-			Na slici \ref{fig:dijagramRazreda} su prikazani trenutno implementirani razredi vezani za autentikaciju korisnika, odnosno registraciju, prijavu i odjavu korisnika.
+			Na slikama \ref{fig:controllers}, \ref{fig:DTO} i \ref{fig:models} su prikazani razredi \textit{backenda}.
+			Razredi su podijeljeni u dijagrame prema njihovim odgovornostima: controller razredi odgovaraju na upite \textit{frontenda} te koriste razrede models za komunikaciju s bazom podataka i razrede DTO \engl{Data Transfer Object} za komunikaciju s \textit{frontendom} u JSON formatu.
+			Radi preglednosti na dijagramima razreda su prikazane samo veze između razreda prikazanih na istom dijagramu.
+		
 			
 			\begin{figure}[H]
-				\includegraphics[width=1.0\linewidth]{slike/dijagramRazreda.png}
+				\includegraphics[width=1.0\linewidth]{slike/Controllers.png}
 				\centering
-				\caption{Dijagram razreda - trenutno implementirani razredi}
-				\label{fig:dijagramRazreda}
+				\caption{Dijagram razreda - dio Controllers}
+				\label{fig:controllers}
 			\end{figure}
 		
-			Model razredi preslikavaju strukturu baze podataka u aplikaciji. Preko njih se vrši komunikacija s bazom podataka.
 			
 			\begin{figure}[H]
-				\includegraphics[width=1.0\linewidth]{slike/dijagramRazredaModels.png}
+				\includegraphics[width=1.0\linewidth]{slike/DTO.png}
+				\centering
+				\caption{Dijagram razreda - dio DTO}
+				\label{fig:DTO}
+			\end{figure}
+
+			\begin{figure}[H]
+				\includegraphics[width=1.0\linewidth]{slike/Models.png}
 				\centering
 				\caption{Dijagram razreda - dio Models}
-				\label{fig:dijagramRazredaModels}
+				\label{fig:models}
 			\end{figure}
 		
 %			\textbf{\textit{dio 2. revizije}}\\			
