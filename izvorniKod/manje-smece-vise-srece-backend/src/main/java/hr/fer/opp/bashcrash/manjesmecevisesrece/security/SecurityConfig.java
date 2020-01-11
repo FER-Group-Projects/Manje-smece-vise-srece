@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -15,7 +16,7 @@ import static hr.fer.opp.bashcrash.manjesmecevisesrece.security.SecurityConstant
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -34,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/h2-console/*").permitAll()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
+                .antMatchers(HttpMethod.GET, "/zones/*", "/waste-containers/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").loginProcessingUrl("/login").successForwardUrl("/login/success").failureForwardUrl("/login/failure").permitAll()
@@ -41,7 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().logoutUrl("/logout")
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
-                .addFilter(new JWTAuthorizationFilter(authenticationManager()));
+                .addFilter(new JWTAuthorizationFilter(authenticationManager(), userDetailsService))
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.headers().frameOptions().disable();
     }
