@@ -1,11 +1,8 @@
 package hr.fer.opp.bashcrash.manjesmecevisesrece.rest;
 
 import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.CityRepository;
-import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.CountryRepository;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.dao.ZoneRepository;
-import hr.fer.opp.bashcrash.manjesmecevisesrece.dto.CityDTO;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.dto.ZoneDTO;
-import hr.fer.opp.bashcrash.manjesmecevisesrece.model.City;
 import hr.fer.opp.bashcrash.manjesmecevisesrece.model.Zone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
