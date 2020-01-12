@@ -29,7 +29,8 @@ const Loginform = observer(() => {
                 }
             }).then((e) => {
                 if(e.status==200){
-                    localStorage.setItem('username', 'username')
+                    console.log(e)
+                    localStorage.setItem('username',username)
                     AuthStore.setLoggedIn(username)
                     AuthStore.setToken(e.headers.authorization)
                     history.push('/')

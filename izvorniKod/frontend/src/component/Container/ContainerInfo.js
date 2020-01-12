@@ -33,11 +33,14 @@ const ContainerInfo = () => {
         axios.get('/reviews/for-waste-container/' + id)
         .then((res) => {
             if (res.status === 200) {
+                console.log(res)
                 const komentari = res.data.map((rev) => ({
                     id: rev.id,
                     autor: rev.author,
                     komentar: rev.comment,
-                    vrijeme: new Date(rev.postedAt).toLocaleDateString()
+                    vrijeme: new Date(rev.postedAt).toLocaleDateString() +
+                        ' ' + new Date(rev.postedAt).toLocaleTimeString(),
+                    ocjena: rev.grade
                 }))
 
                 setContainer(prevState => {
@@ -108,29 +111,33 @@ const ContainerInfo = () => {
                                     style={{width:'100%'}}
                                 />
                             </div>
-                            <div style={{display: 'flex', flexDirection: 'row', 
-                                marginBottom:'10px', width:'260px'}}>
-                                <div style={{backgroundColor:'darkgrey'}}>
-                                    <label style={{margin:'0.5rem'}}>Vaša Ocjena</label>
+                            {AuthStore.getLoggedIn()!=='' &&
+                            <>
+                                <div style={{display: 'flex', flexDirection: 'row', 
+                                    marginBottom:'10px', width:'260px'}}>
+                                    <div style={{backgroundColor:'darkgrey'}}>
+                                        <label style={{margin:'0.5rem'}}>Vaša Ocjena</label>
+                                    </div>
+                                    <Field name='userOcjena' type="number" placeholer='5.0'
+                                        style={{width:'100%'}} required='true' max='5' min='0'
+                                    />
                                 </div>
-                                <Field name='userOcjena' type="number" placeholer='5.0'
-                                    style={{width:'100%'}} required='true' max='5' min='0'
-                                />
-                            </div>
-                            <div style={{display: 'flex', flexDirection: 'row',
-                                marginBottom:'10px', width:'260px'}}>
-                                <div style={{backgroundColor:'darkgrey'}}>
-                                    <label style={{margin:'0.5rem'}}>Vaš Komentar</label>
+                                <div style={{display: 'flex', flexDirection: 'row',
+                                    marginBottom:'10px', width:'260px'}}>
+                                    <div style={{backgroundColor:'darkgrey'}}>
+                                        <label style={{margin:'0.5rem'}}>Vaš Komentar</label>
+                                    </div>
+                                    <Field name='userKomentar' type="text" placeholer='Komentar'
+                                        style={{width:'100%'}} required='true'
+                                    />
                                 </div>
-                                <Field name='userKomentar' type="text" placeholer='Komentar'
-                                       style={{width:'100%'}} required='true'
-                                />
-                            </div>
-                            <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly'}}>
-                                <button type="submit" style={{outline: 0,border: 0,background: 'none'}}>
-                                    <FaSave style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}} />
-                                </button>
-                            </div>
+                                <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly'}}>
+                                    <button type="submit" style={{outline: 0,border: 0,background: 'none'}}>
+                                        <FaSave style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}} />
+                                    </button>
+                                </div>
+                            </>
+                            }
                         </div>
                         <div style={{backgroundColor:'darkgrey', width:'100%'}}>
                             <label style={{margin:'0.5rem'}}>Komentari</label>
@@ -148,9 +155,12 @@ const ContainerInfo = () => {
                                                 {value.vrijeme}
                                             </span>
                                         </div>
-                                        <div style={{marginLeft:'1rem', overflow:'hidden', textAlign: 'left', clear: 'both'}}>
-                                            <span style={{tetAlign:'left'}}>
+                                        <div style={{marginLeft:'1rem', overflow:'hidden', textAlign: 'left', clear: 'both', display: 'flex', justifyContent: 'space-between'}}>
+                                            <span >
                                                 {value.komentar}
+                                            </span>
+                                            <span>
+                                                ocjena: {value.ocjena}
                                             </span>
                                         </div>
                                     </div>

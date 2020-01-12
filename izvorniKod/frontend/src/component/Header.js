@@ -26,10 +26,7 @@ const Header = () => {
     }
 
     const logout = () => {
-        AuthStore.setLoggedIn('')
-        localStorage.removeItem('username')
-        localStorage.removeItem('roles')
-        localStorage.removeItem('token')
+        AuthStore.logout()
         history.push('/')
     }
 

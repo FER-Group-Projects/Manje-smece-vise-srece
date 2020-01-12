@@ -33,7 +33,7 @@ const SluzbeniciButton = observer(({ changePage }) => {
     return <button class='btn btn-lg btn-primary btn-block' onClick={changePage}><FaUser/></button>
 })
 
-const Sidebar = () => {
+const Sidebar = observer(() => {
     let history = useHistory()
 
     const goToSearchKontejner = () => {
@@ -86,6 +86,6 @@ const Sidebar = () => {
             }
         </div>
     )
-}
+})
 
 export default Sidebar

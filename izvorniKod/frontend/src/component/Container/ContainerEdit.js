@@ -4,6 +4,7 @@ import { Formik, Form, Field } from 'formik'
 import axios from 'axios'
 import { FaSave } from 'react-icons/fa'
 import { MdDelete } from 'react-icons/md'
+import { AuthStore } from 'store/AuthStore'
 // import axios from 'axios'
 
 const ContainerEdit = () => {
@@ -47,6 +48,7 @@ const ContainerEdit = () => {
 
 
     useEffect(() => {
+        if(AuthStore.getLoggedIn()=='') history.push('/')
         axios('/waste-containers/' + id, {
             method: 'GET'
         }).then((res) => {

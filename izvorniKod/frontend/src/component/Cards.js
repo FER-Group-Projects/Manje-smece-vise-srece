@@ -18,6 +18,25 @@ const Cards = (props) => {
             }
         })
     }
+    function _deleteWorker(username){
+        let dirID = null
+        let comID= null
+        axios.get('/users/current-user').then((res) => {
+            dirID=res.data.username
+            axios.get('/companies/all').then((res) => {
+                res.data.map((company) => {
+                    if(company.director.username==dirID) {
+                        comID=company.id
+                    }})
+                axios.get(`/users/${username}`).then((user) => {
+                    axios.post(`/companies/${comID}/remove-employee/${user.ID}`).then(()=>{
+                        console.log('user removed')
+                    })
+                })
+            })
+        })
+                
+    }
 
     return(
         <div style={{display:'flex', flexFlow:'row wrap',
@@ -130,7 +149,7 @@ const Cards = (props) => {
                     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 1px 2px 0px, rgba(0, 0, 0, 0.19) 0px 1px 5px 0px'
                     }}>
                         <div style={{display:'flex', flexDirection:'column', margin:'10px', textAlign:'left'}}>
-                            <span>Username: <span style={{textAlign:'right'}}>{value.Username}</span></span>
+                            <span>Username: <span style={{textAlign:'right'}}>{value.username}</span></span>
                         </div>
                     {
                         AuthStore.isDirectorOrAdmin() &&
@@ -139,7 +158,7 @@ const Cards = (props) => {
                                 {/* <MdEdit style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
                             onClick={() => history.push(`/kontejner/edit/${value.ID}`)}/> */}
                                 <MdDelete style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
-                                          onClick={() => console.log('obrisi me!!')}/>
+                                          onClick={() => _deleteWorker(value.ID)}/>
                             </div>
                         )
                     }

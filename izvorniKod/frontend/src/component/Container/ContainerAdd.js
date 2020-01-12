@@ -4,6 +4,7 @@ import { Formik, Form, Field } from 'formik'
 import { FaSave } from 'react-icons/fa'
 import { MdCancel } from 'react-icons/md'
 import axios from 'axios'
+import { AuthStore } from 'store/AuthStore'
 
 const ContainerEdit = () => {
     const [loading, setLoading] = useState(true)
@@ -11,7 +12,7 @@ const ContainerEdit = () => {
     const axiosInstance = axios.create()
 
     useEffect(() => {
-        //ako bu nekaj potrebno loadati
+        if(!AuthStore.isDirectorOrAdmin()) history.push('/')
         setTimeout(() => {
             setLoading(false)
         },2000)
