@@ -11,7 +11,19 @@ const Kontejner = (props) =>
     lng={props.lng}
     >
     <FaDumpster/>
-    {props.$hover && <div>{props.ID}</div>}
+    {props.$hover && 
+      <div style={{display:'flex', flexDirection: 'column',
+        justifyContent:'center', alignItems:'center',
+        backgroundColor: 'white', border:'1px solid grey',
+        borderRadius:'15px', width:'100px'}}>
+        <span>
+          Broj kontejner: {props.ID}
+        </span>
+        <span>
+          Adresa: {props.address}
+        </span>
+      </div>
+    }
   </div>
 
 
@@ -72,6 +84,7 @@ const GarbageMap = observer((props) => {
                       ID={container.ID}
                       lat={container.lat}
                       lng={container.lng}
+                      address={container.address}
                   />)
           }
           {/* <svg height="210" width="500" 

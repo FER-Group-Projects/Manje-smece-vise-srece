@@ -38,7 +38,7 @@ const ContainerSearch = () => {
         <div class="input-group flex-nowrap"
           style={{zIndex: 2, marginLeft: '100px', width:'150px', position: 'absolute'}}>
           <input type="text" 
-            class="form-control" placeholder="ID" 
+            class="form-control" placeholder="Broj kontejnera" 
             aria-label="Username" aria-describedby="addon-wrapping"
             onChange={_handleChange}
             />

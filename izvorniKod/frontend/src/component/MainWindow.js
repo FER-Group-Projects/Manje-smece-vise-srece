@@ -11,7 +11,9 @@ class MainWindow extends Component {
   componentDidMount() {
     axios.get('/waste-containers/all')
         .then((e) => {
-          this.setState({containers: e.data.map((container) => ({ID: container.id,lat: container.latitude, lng: container.longitude}))})
+          this.setState({containers: e.data.map((container) => 
+            ({ID: container.id,lat: container.latitude, 
+              lng: container.longitude, address: container.address}))})
         }).catch(err => console.log(err))
   }
 
