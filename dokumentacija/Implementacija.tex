@@ -454,6 +454,7 @@ TODO
 		    \end{figure}
 			\eject
 		
+
 		\section{Upute za puštanje u pogon}
 		
 			% \textbf{\textit{dio 2. revizije}}\\
@@ -462,6 +463,141 @@ TODO
 			
 			
 			 % \textit{Dovršenu aplikaciju potrebno je pokrenuti na javno dostupnom poslužitelju. Studentima se preporuča korištenje neke od sljedećih besplatnih usluga: \href{https://aws.amazon.com/}{Amazon AWS}, \href{https://azure.microsoft.com/en-us/}{Microsoft Azure} ili \href{https://www.heroku.com/}{Heroku}. Mobilne aplikacije trebaju biti objavljene na F-Droid, Google Play ili Amazon App trgovini.}
+			 
+		   	\noindent \underbar{\textbf{Backend:}}
+		   	\begin{packed_enum}
+				
+					\item \textbf{Instalacija programske podrške}(Java, Apache Maven, PostgreSQL)
+    					\begin{packed_item}
+                			\item \textbf{Java} (\url{https://www.oracle.com/technetwork/java/javase/downloads/index.html})
+                			\item \textbf{Apache Maven} (\url{https://maven.apache.org/install.html})
+                			\item \textbf{PostgreSQL} (\url{https://www.postgresql.org/download/})
+    		      \end{packed_item}
+					\item \textbf{Postavljanje baze podataka}(Stvaranje korisnika te baze podataka)
+					
+    					\begin{figure}[H]
+    					\includegraphics[scale=1]{slike/backend/psqlsetup.png}
+    					\centering
+    					\caption{Postavljanje baze podataka}
+    					\label{fig:PSQL-setup}
+    		            \end{figure}
+    		            
+		            \item \textbf{Konfiguracija \textit{pom.xml} i \textit{application.properties} datoteka}
+		                \begin{packed_item}
+                			\item {U pom.xml potrebno je dodati:} 
+                			    \begin{figure}[H]
+            					\includegraphics[scale=0.7]{slike/backend/pompostgres.png}
+            					\centering
+            					\caption{Konfiguracija pom.xml datoteke}
+            					\label{fig:pom.xml-setup}
+            		            \end{figure}
+                			\item {U application.properties potrebno je dodati:}
+                			    \begin{figure}[H]
+            					\includegraphics[scale=0.8]{slike/backend/propertiesdb.png}
+            					\centering
+            					\caption{Konfiguracija application.properties datoteke}
+            					\label{fig:app.prop-setup}
+            		            \end{figure}
+    		            \end{packed_item}
+    		            
+    		      \item \textbf{Pozicioniranje u radni direktorij backend-a putem cmd terminala}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=1]{slike/backend/backendposition.png}
+    					\centering
+    					\caption{Pozicioniranje u radni direktorij}
+    					\label{fig:pozicioniranje}
+    		            \end{figure}
+    		        
+    		      \item \textbf{mvn install}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.9]{slike/backend/backendinstall.png}
+    					\centering
+    					\caption{mvn install}
+    					\label{fig:mvn-install}
+    		            \end{figure}
+    		            
+    		      \item \textbf{mvn package}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.9]{slike/backend/backendpackage.png}
+    					\centering
+    					\caption{mvn package}
+    					\label{fig:mvn package}
+    		            \end{figure}
+    		            
+    		      \item \textbf{java -jar target/manje-smece-vise-srece-backend-0.0.1-SNAPSHOT.jar}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.9]{slike/backend/backendjar.png}
+    					\centering
+    					\caption{Pokretanje}
+    					\label{fig:pokretanje}
+    		            \end{figure}
+  	   
+				
+				\end{packed_enum}
+		   	
+		   	\noindent \underbar{\textbf{Frontend:}}
+		   		\begin{packed_enum}
+				
+					\item \textbf{Instalacija programske podrške}(Node.js)
+    					\begin{packed_item}
+                			\item \textbf{Node.js}(\url{https://nodejs.org/en/download/})
+                		
+    		      \end{packed_item}
+					\item \textbf{Konfiguracija package.json datoteke}
+					\begin{packed_item}
+                			\item \textbf{U package.json datoteku potrebno je dodati: }
+                		
+    		      \end{packed_item}
+					
+    					\begin{figure}[H]
+    					\includegraphics[scale=1]{slike/backend/proxy.png}
+    					\centering
+    					\caption{proxy}
+    					\label{fig:proxy}
+    		            \end{figure}
+    		            
+    		  \item \textbf{Pozicioniranje u radni direktorij frontenda-a putem cmd terminala}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=1]{slike/frontend/prva.jpg}
+    					\centering
+    					\caption{Pozicioniranje u radni direktorij}
+    					\label{fig:pozicioniranje2}
+    		            \end{figure}
+    		            
+    		 \item \textbf{npm install}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.9]{slike/frontend/treca.png}
+    					\centering
+    					\caption{npm install}
+    					\label{fig:npm install}
+    		            \end{figure}
+    		            
+            \item \textbf{npm start}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.8]{slike/frontend/treca.jpg}
+    					\centering
+    					\caption{npm start}
+    					\label{fig:npm start}
+    		            \end{figure}
+    		            
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.40]{slike/frontend/cetvrta.png}
+    					\centering
+    					\caption{Konačno}
+    					\label{fig:konacno}
+    		            \end{figure}
+    		            
+    		            
+    		            
+    		            
+		           
+  	   
+				
+				\end{packed_enum}
+           
+            
+            
+			
 			
 			
 			\eject 
