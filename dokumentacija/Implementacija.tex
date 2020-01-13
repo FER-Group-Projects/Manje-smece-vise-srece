@@ -311,13 +311,13 @@ void testFetchingInformationAboutNonExistantWasteContainer() {
 			\begin{packed_enum}
 				\item[1.a] Prikazuje se početna stranica s kartom.
 				\item[1.b] Na karti su prikazani kontejneri koji su uneseni u aplikaciju.
-				\item[2.\ \ ] Prikazuje se padajući izbornik s opcijama "Prijava" i "Registracija". 
+				\item[2.\ \ ] Prikazuje se padajući izbornik s opcijama "Prijava" i "Registracija".
 				\item[3.\ \ ] Prikazuje se forma za prijavu korisnika s tekstualnim poljima za unos korisničkog imena i lozinke.
 				\item[4.a] Prikazuje se početna stranica s dodatnim gumbima sa strane.
-				\item[4.b] Korisnik je uspješno prijavljen. 
-				\item[5.\ \ ] Prikazuje se padajući izbornik s opcijama "Postavke" i "Odjava". 
+				\item[4.b] Korisnik je uspješno prijavljen.
+				\item[5.\ \ ] Prikazuje se padajući izbornik s opcijama "Postavke" i "Odjava".
 				\item[6.a] Prikazuje se početna stranica bez dodatnih gumbi sa strane.
-				\item[6.b] Korisnik je odjavljen. 
+				\item[6.b] Korisnik je odjavljen.
 			\end{packed_enum}
 			\noindent \textbf{Izvorni kod:}
 
@@ -328,9 +328,16 @@ TODO
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
-			\noindent \textbf{Rezultat:} TODO
+			\noindent \textbf{Rezultat:} Očekivani rezultat je ostvaren. Korisnik je uspješno prijavljen i odjavljen.
+				\begin{figure}[H]
+            					\includegraphics[scale=0.5]{dokumentacija/slike/selenium/LoginLogout.png}
+            					\centering
+            					\caption{Rezultat za ispitni slučaj 8}
+            					\label{fig:test 8}
+            		            \end{figure}
 			\refstepcounter{testcase}
 			\clearpage
+		
 
 			\noindent \textbf{Ispitni slučaj \thetestcase: Pregled osobnih podataka} \\
 			\noindent \textbf{Ulaz:}
@@ -339,7 +346,7 @@ TODO
 				\item Pritisak na ikonu korisnika u gornjem desnom kutku.
 				\item Odabir opcije "Postavke" iz padajućeg izbornika.
 				\item Odjava iz sustava\footnotemark[\value{footnote}].
-				
+
 				\footnotetext{Postupak prijave i odjave korisnika u sustav je prikazan u ispitnom slučaju 8.}
 			\end{packed_enum}
 			\noindent \textbf{Očekivani rezultat:}
@@ -347,7 +354,7 @@ TODO
 				\item[1.a] Prikazuje se početna stranica.
 				\item[1.b] Korisnik je prijavljen.
 				\item[2.\ \ ] Prikazuje se padajući izbornik s opcijama "Postavke" i "Odjava".
-				\item[3.\ \ ] Prikazuju se osobni podaci korisnika. 
+				\item[3.\ \ ] Prikazuju se osobni podaci korisnika.
 				\item[4.\ \ ] Korisnik je odjavljen iz sustava.
 			\end{packed_enum}
 			\noindent \textbf{Izvorni kod:}
@@ -359,20 +366,27 @@ TODO
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
-			\noindent \textbf{Rezultat:} TODO
+			\noindent \textbf{Rezultat:} Očekivani rezultat je ostvaren. Pregled osobnih podataka bio je uspješan. 
+			
+				\begin{figure}[H]
+            					\includegraphics[scale=0.5]{dokumentacija/slike/selenium/PersonalDataTest.png}
+            					\centering
+            					\caption{Rezultat za ispitni slučaj 9}
+            					\label{fig:test 9}
+            		            \end{figure}
 			\refstepcounter{testcase}
 			\clearpage
 
-			\noindent \textbf{Ispitni slučaj \thetestcase: Komentiranje i ocjenjivanje kontejnera} \\
+			\noindent \textbf{Ispitni slučaj \thetestcase: Komentiranje kontejnera} \\
 			\noindent \textbf{Ulaz:}
 			\begin{packed_enum}
 				\item Otvaranje početne stranice u web pregledniku te prijava u sustav\footnotemark.
 				\item Pritisak na ikonu povećala u lijevom izborniku.
-				\item Upisivanje ispravnog identifikatora kontejnera, pritisak na ikonu povećala. 
+				\item Upisivanje ispravnog identifikatora kontejnera, pritisak na ikonu povećala.
 				\item Pritisak na ikonu kontejnera s tim identifikatorom.
 				\item Upisivanje komentara kontejnera, ocjenjivanje kontejnera i pritisak na ikonu diskete.
 				\item Odjava iz sustava\footnotemark[\value{footnote}].
-				
+
 				\footnotetext{Postupak prijave i odjave korisnika u sustav je prikazan u ispitnom slučaju 8.}
 			\end{packed_enum}
 			\noindent \textbf{Očekivani rezultat:}
@@ -381,7 +395,7 @@ TODO
 				\item[1.b] Korisnik je prijavljen.
 				\item[2.\ \ ] Prikazuje se tekstualno polje za upis identifikatora kontejnera.
 				\item[3.\ \ ] Odabrani kontejner se centrira na karti.
-				\item[4.\ \ ] Prikazuje se stranica kontejnera s objavljenim recenzijama tog kontejnera. 
+				\item[4.\ \ ] Prikazuje se stranica kontejnera s objavljenim recenzijama tog kontejnera.
 				\item[5.a] Komentar je objavljen.
 				\item[5.b] Ocjena je zabilježena.
 				\item[6.\ \ ] Korisnik je odjavljen iz sustava.
@@ -395,8 +409,26 @@ TODO
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
-			\noindent \textbf{Rezultat:} TODO
+			\noindent \textbf{Rezultat:} Očekivani rezultat je zadovoljen. Ocjena i komentar su pohranjeni.
+			
+			\begin{figure}[H]
+            					\includegraphics[scale=0.5]{dokumentacija/slike/selenium/containercomment.png}
+            					\centering
+            					\caption{Rezultat za ispitni slučaj 10, prvi dio}
+            					\label{fig:test 10 p1}
+            		            \end{figure}
+			
+			
+			\begin{figure}[H]
+            					\includegraphics[scale=0.5]{dokumentacija/slike/selenium/containercomment2.png}
+            					\centering
+            					\caption{Rezultat za ispitni slučaj 10, drugi dio}
+            					\label{fig:test 10 p2}
+            		            \end{figure}
 			\refstepcounter{testcase}
+			
+			
+			
 
 			\clearpage
 
@@ -409,7 +441,7 @@ TODO
 				\item Upisivanje podataka o kontejneru i pritisak na ikonu diskete.
 				\item Pritisak na ikonu kante za smeće u kartici novostvorenog kontejnera.
 				\item Odjava iz sustava\footnotemark[\value{footnote}].
-				
+
 				\footnotetext{Postupak prijave i odjave korisnika u sustav je prikazan u ispitnom slučaju 8.}
 			\end{packed_enum}
 			\noindent \textbf{Očekivani rezultat:}
@@ -417,7 +449,7 @@ TODO
 				\item[1.a] Prikazuje se početna stranica.
 				\item[1.b] Korisnik je prijavljen.
 				\item[2.\ \ ] Prikazuje se popis kontejnera koji su uneseni u aplikaciju.
-				\item[3.\ \ ] Prikazuje se forma za unos podataka o novom kontejneru. 
+				\item[3.\ \ ] Prikazuje se forma za unos podataka o novom kontejneru.
 				\item[4.a] Kontejner je spremljen u bazu podataka.
 				\item[4.b] Prikazuje se popis kontejnera koji sadrži novostvoreni kontejner.
 				\item[5.a] Kontejner je izbrisan iz baze podataka.
@@ -433,7 +465,7 @@ TODO
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
-			\noindent \textbf{Rezultat:} TODO
+			\noindent \textbf{Rezultat:} 
 			\refstepcounter{testcase}
 			\eject 
 		
@@ -445,14 +477,14 @@ TODO
 			 % \textit{Potrebno je umetnuti \textbf{specifikacijski} dijagram razmještaja i opisati ga. Moguće je umjesto specifikacijskog dijagrama razmještaja umetnuti dijagram razmještaja instanci, pod uvjetom da taj dijagram bolje opisuje neki važniji dio sustava.}
 			
 			Dijagrami razmještaja opisuju topologiju sustava te su usredotočeni na odnos sklopovskih i programskih dijelova. Sustav je baziran na arhitekturi "klijent - poslužitelj". Klijenti preko web preglednika pristupaju web aplikaciji dok se na poslužiteljskom računalu nalaze web poslužitelj i poslužitelj baze podataka. Komunikacija između klijenta i poslužitelja odvija se preko HTTP veze.
-			
+
 			\begin{figure} [H]
 			    \centering
 			    \includegraphics[width=1.0\linewidth]{slike/Deployment_Diagram.png}
                 \caption{Dijagram razmještaja}
                 \label{fig:Dijagram razmještaja}
 		    \end{figure}
-			\eject 
+			\eject
 		
 		\section{Upute za puštanje u pogon}
 		
@@ -462,6 +494,141 @@ TODO
 			
 			
 			 % \textit{Dovršenu aplikaciju potrebno je pokrenuti na javno dostupnom poslužitelju. Studentima se preporuča korištenje neke od sljedećih besplatnih usluga: \href{https://aws.amazon.com/}{Amazon AWS}, \href{https://azure.microsoft.com/en-us/}{Microsoft Azure} ili \href{https://www.heroku.com/}{Heroku}. Mobilne aplikacije trebaju biti objavljene na F-Droid, Google Play ili Amazon App trgovini.}
+			 
+		   	\noindent \underbar{\textbf{Backend:}}
+		   	\begin{packed_enum}
+				
+					\item \textbf{Instalacija programske podrške}(Java, Apache Maven, PostgreSQL)
+    					\begin{packed_item}
+                			\item \textbf{Java}(\url{https://www.oracle.com/technetwork/java/javase/downloads/index.html})
+                			\item \textbf{Apache Maven}(\url{https://maven.apache.org/install.html})
+                			\item \textbf{PostgreSQL}(\url{https://www.postgresql.org/download/})
+    		      \end{packed_item}
+					\item \textbf{Postavljanje baze podataka}(Stvaranje korisnika te baze podataka)
+					
+    					\begin{figure}[H]
+    					\includegraphics[scale=1]{slike/backend/psqlsetup.png}
+    					\centering
+    					\caption{Postavljanje baze podataka}
+    					\label{fig:PSQL-setup}
+    		            \end{figure}
+    		            
+		            \item \textbf{Konfiguracija \textit{pom.xml} i \textit{application.properties} datoteka}
+		                \begin{packed_item}
+                			\item {U pom.xml potrebno je dodati:} 
+                			    \begin{figure}[H]
+            					\includegraphics[scale=0.7]{dokumentacija/slike/backend/pompostgres.png}
+            					\centering
+            					\caption{Konfiguracija pom.xml datoteke}
+            					\label{fig:pom.xml-setup}
+            		            \end{figure}
+                			\item {U application.properties potrebno je dodati:}
+                			    \begin{figure}[H]
+            					\includegraphics[scale=0.8]{dokumentacija/slike/backend/propertiesdb.png}
+            					\centering
+            					\caption{Konfiguracija application.properties datoteke}
+            					\label{fig:app.prop-setup}
+            		            \end{figure}
+    		            \end{packed_item}
+    		            
+    		      \item \textbf{Pozicioniranje u radni direktorij backend-a putem cmd terminala}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=1]{dokumentacija/slike/backend/backendposition.png}
+    					\centering
+    					\caption{Pozicioniranje u radni direktorij}
+    					\label{fig:pozicioniranje}
+    		            \end{figure}
+    		        
+    		      \item \textbf{mvn install}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.9]{dokumentacija/slike/backend/backendinstall.png}
+    					\centering
+    					\caption{mvn install}
+    					\label{fig:mvn-install}
+    		            \end{figure}
+    		            
+    		      \item \textbf{mvn package}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.9]{dokumentacija/slike/backend/backendpackage.png}
+    					\centering
+    					\caption{mvn package}
+    					\label{fig:mvn package}
+    		            \end{figure}
+    		            
+    		      \item \textbf{java -jar target/manje-smece-vise-srece-backend-0.0.1-SNAPSHOT.jar}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.9]{dokumentacija/slike/backend/backendjar.png}
+    					\centering
+    					\caption{Pokretanje}
+    					\label{fig:pokretanje}
+    		            \end{figure}
+  	   
+				
+				\end{packed_enum}
+		   	
+		   	\noindent \underbar{\textbf{Frontend:}}
+		   		\begin{packed_enum}
+				
+					\item \textbf{Instalacija programske podrške}(Node.js)
+    					\begin{packed_item}
+                			\item \textbf{Node.js}(\url{https://nodejs.org/en/download/})
+                		
+    		      \end{packed_item}
+					\item \textbf{Konfiguracija package.json datoteke}
+					\begin{packed_item}
+                			\item \textbf{U package.json datoteku potrebno je dodati: }
+                		
+    		      \end{packed_item}
+					
+    					\begin{figure}[H]
+    					\includegraphics[scale=1]{dokumentacija/slike/backend/proxy.png}
+    					\centering
+    					\caption{proxy}
+    					\label{fig:proxy}
+    		            \end{figure}
+    		            
+    		  \item \textbf{Pozicioniranje u radni direktorij frontenda-a putem cmd terminala}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=1]{dokumentacija/slike/frontend/prva.jpg}
+    					\centering
+    					\caption{Pozicioniranje u radni direktorij}
+    					\label{fig:pozicioniranje2}
+    		            \end{figure}
+    		            
+    		 \item \textbf{npm install}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.9]{dokumentacija/slike/frontend/treca.png}
+    					\centering
+    					\caption{npm install}
+    					\label{fig:npm install}
+    		            \end{figure}
+    		            
+            \item \textbf{npm start}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.8]{dokumentacija/slike/frontend/treca.jpg}
+    					\centering
+    					\caption{npm start}
+    					\label{fig:npm start}
+    		            \end{figure}
+    		            
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.40]{dokumentacija/slike/frontend/cetvrta.png}
+    					\centering
+    					\caption{Konačno}
+    					\label{fig:konacno}
+    		            \end{figure}
+    		            
+    		            
+    		            
+    		            
+		           
+  	   
+				
+				\end{packed_enum}
+           
+            
+            
+			
 			
 			
 			\eject 
