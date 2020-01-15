@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 public class UserDTO {
 
+    private Long id;
     private String username;
     private String email;
     private String password;
@@ -22,6 +23,7 @@ public class UserDTO {
 
     public UserDTO(UserModel userModel) {
         this(userModel.getUsername(), userModel.getEmail(), "");
+        setId(userModel.getId());
     }
 
     public UserDTO(User user) {
@@ -65,5 +67,13 @@ public class UserDTO {
 
     public void setAuthorities(List<String> authorities) {
         this.authorities = authorities;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
