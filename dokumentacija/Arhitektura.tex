@@ -342,14 +342,14 @@
 			\eject
 		\section{Dijagram komponenti}
 		
-			Dijagram komponenti prikazan na sljedećoj stranici opisuje organizaciju i međuovisnost komponenti, interne strukture i odnose prema okolini. Sustavu se pristupa preko dva različita sučelja: sučelja za dohvat HTML, CSS i JS datoteka, preko kojega se poslužuju datoteke koje pripadaju \textit{frontend} dijelu aplikacije te sučelja za dohvat JSON podataka, preko kojega se pristupa REST API komponenti. Router je komponenta koja na upit s url određuje koja će se datoteka poslužiti na sučelje. \textit{Frontend} dio sastoji se od niza JavaScript datoteka koje su raspoređene u logičke cjeline nazvane po tipovima aktora koji im pristupaju. Sve JavaScript datoteke ovise o React biblioteci iz koje dohvaćaju gotove komponente (gumbe, forme, i sl.). REST API poslužuje podatke koji pripadaju \textit{backend} dijelu aplikacije. EntityFrameworkCore zadužen je za dohvaćanje tablica iz baze podataka koristeći SQL upite. Ti podaci se dalje šalju MVC arhitekturi u obliku DTO (\textit{Data Transfer Object}) React-view komponenta komunicira preko dostupnih sučelja s Više Sreće Manje Smeće aplikacijom te osvježava prikaz i dohvaća nove podatke ili datoteke ovisno o korisnikovim akcijama.
+			Dijagram komponenti prikazan na sljedećoj stranici opisuje organizaciju i međuovisnost komponenti, interne strukture i odnose prema okolini. Sustavu se pristupa preko dva različita sučelja: sučelja za dohvat HTML, CSS i JS datoteka, preko kojega se poslužuju datoteke koje pripadaju \textit{frontend} dijelu aplikacije te sučelja za dohvat JSON podataka, preko kojega se pristupa REST API komponenti. Router je komponenta koja na upit s url određuje koja će se datoteka poslužiti na sučelje. \textit{Frontend} dio sastoji se od niza JavaScript datoteka koje su raspoređene u logičke cjeline nazvane po tipovima aktora koji im pristupaju. Sve JavaScript datoteke ovise o React biblioteci iz koje dohvaćaju gotove komponente (gumbe, forme, i sl.). REST API poslužuje podatke koji pripadaju \textit{backend} dijelu aplikacije. Hibernate je zadužen za dohvaćanje tablica iz baze podataka koristeći SQL upite. Ti podaci se dalje šalju MVC arhitekturi u obliku DTO (\textit{Data Transfer Object}) React-view komponenta komunicira preko dostupnih sučelja s Više Sreće Manje Smeće aplikacijom te osvježava prikaz i dohvaća nove podatke ili datoteke ovisno o korisnikovim akcijama.
 
 
 			\eject
 
 			\begin{figure}
 				\centering
-				\includegraphics[width=1.0\linewidth]{slike/ComponentDiagram.jpg}
+				\includegraphics[width=1.0\linewidth]{slike/ComponentDiagram.png}
 				\caption{Dijagram komponenti}
 				\label{fig:ComponentDiagram}
 			\end{figure}
