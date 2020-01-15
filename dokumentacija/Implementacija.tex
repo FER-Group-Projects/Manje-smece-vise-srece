@@ -289,6 +289,9 @@ void testFetchingInformationAboutNonExistantWasteContainer() {
 
 			\subsection{Ispitivanje sustava}
 			
+		 \indent Ispitivanje sustava izvršeno je upotrebom Selenium IDE alata integriranog u Google Chrome preglednik. 
+		 \newline
+			
 %			 \textit{Potrebno je provesti i opisati ispitivanje sustava koristeći radni okvir Selenium\footnote{\url{https://www.seleniumhq.org/}}. Razraditi \textbf{minimalno 4 ispitna slučaja} u kojima će se ispitati redovni slučajevi, rubni uvjeti te poziv funkcionalnosti koja nije implementirana/izaziva pogrešku kako bi se vidjelo na koji način sustav reagira kada nešto nije u potpunosti ostvareno. Ispitni slučaj se treba sastojati od ulaza (npr. korisničko ime i lozinka), očekivanog izlaza ili rezultata, koraka ispitivanja i dobivenog izlaza ili rezultata.\\ }
 %			 
 %			 \textit{Izradu ispitnih slučajeva pomoću radnog okvira Selenium moguće je provesti pomoću jednog od sljedeća dva alata:}
@@ -320,11 +323,35 @@ void testFetchingInformationAboutNonExistantWasteContainer() {
 				\item[6.b] Korisnik je odjavljen.
 			\end{packed_enum}
 			\noindent \textbf{Izvorni kod:}
+\begin{lstlisting}
+    //otvaranje pocetne stranice
+driver.get("http://localhost:3000/");
+driver.manage().window().setSize(new Dimension(1051, 806));
 
+    //prijava
+driver.findElement(By.cssSelector(".dropdown-toggle")).click();
+driver.findElement(By.linkText("Prijava")).click();
+    
+    //upis korisnickog imena
+driver.findElement(By.id("username")).click();
+driver.findElement(By.id("username")).sendKeys("korisnik");
+    
+    //upis lozinke
+driver.findElement(By.id("password")).click();
+driver.findElement(By.id("password")).sendKeys("korisnik_lozinka");
+    
+    //potvrda
+driver.findElement(By.cssSelector("div:nth-child(5) > .btn")).click();
+
+    //odjava
+driver.findElement(By.cssSelector(".dropdown-toggle")).click();
+driver.findElement(By.linkText("Odjava")).click();
+
+    //zatvaranje
+driver.close();
+ 
+\end{lstlisting}
 			\begin{listing}[H]
-\begin{minted}{java}
-TODO
-\end{minted}
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
@@ -360,9 +387,19 @@ TODO
 			\noindent \textbf{Izvorni kod:}
 
 			\begin{listing}[H]
-\begin{minted}{java}
-TODO
-\end{minted}
+\begin{lstlisting}
+    //prijava
+    
+    //klik na padajuci izbornik
+driver.findElement(By.cssSelector(".dropdown-toggle")).click();
+    
+    //klik na korisnika
+driver.findElement(By.linkText("korisnik")).click();
+
+    //pregled osobnih podataka
+
+    //odjava
+\end{lstlisting}
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
@@ -401,15 +438,51 @@ TODO
 				\item[6.\ \ ] Korisnik je odjavljen iz sustava.
 			\end{packed_enum}
 			\noindent \textbf{Izvorni kod:}
+\begin{lstlisting}
 
+    //prijava
+
+    //klik na gumb za trazenje kontejnera
+driver.findElement(By.cssSelector(".btn:nth-child(1) path")).click();
+    {
+      WebElement element = driver.
+        findElement(By.cssSelector(".btn:nth-child(1)"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element).perform();
+    }
+    
+    //upisivanje id-a kontejnera
+driver.findElement(By.cssSelector(".form-control")).click();
+driver.findElement(By.cssSelector(".form-control")).sendKeys("93");
+    
+    //potvrda
+driver.findElement(By.id("addon-wrapping")).click();
+
+    //klik na kontejner
+driver.
+    findElement(By.cssSelector("div:nth-child(2) > div > svg > path")).
+        click();
+    
+    //upis ocjene
+driver.findElement(By.name("userOcjena")).click();
+driver.findElement(By.name("userOcjena")).sendKeys("3");
+
+    //upis komentara
+driver.findElement(By.name("userKomentar")).click();
+driver.findElement(By.name("userKomentar")).
+    sendKeys("Kontejner je u prosjecnom stanju.");
+    
+    //potvrda
+driver.findElement(By.cssSelector("div:nth-child(6) svg")).click();
+
+    //odjava
+\end{lstlisting}
 			\begin{listing}[H]
-\begin{minted}{java}
-TODO
-\end{minted}
+
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
-			\noindent \textbf{Rezultat:} Očekivani rezultat je zadovoljen. Ocjena i komentar su pohranjeni.
+			\noindent \textbf{Rezultat:} Očekivani rezultat je ostvaren. Ocjena i komentar su pohranjeni.
 			
 			\begin{figure}[H]
             					\includegraphics[scale=0.5]{dokumentacija/slike/selenium/containercomment.png}
@@ -458,14 +531,56 @@ TODO
 			\end{packed_enum}
 			\noindent \textbf{Izvorni kod:}
 
-			\begin{listing}[H]
-\begin{minted}{java}
-TODO
-\end{minted}
+		
+\begin{lstlisting}
+    //prijava
+ 
+    //klik na gumb za trazenje kontejnera
+driver.findElement(By.cssSelector(".btn:nth-child(1) > svg")).click();
+
+    //klik na gumb kontejnera    
+driver.
+    findElement(By.cssSelector(".btn:nth-child(5) > svg")).click();
+    
+    //klik na gumb za dodavanje kontejnera
+driver.
+    findElement(By.cssSelector("div:nth-child(1) > svg > path")).click();
+    
+    //unos podataka za kontejner i potvrda unosa
+driver.findElement(By.name("adresa")).click();
+driver.findElement(By.name("adresa")).sendKeys("Savska Ulica 1");
+driver.
+    findElement(By.cssSelector("div:nth-child(2) > button path")).
+        click();
+        
+    //brisanje kontejnera 
+driver.
+findElement(By.cssSelector("div:nth-child(5) svg:nth-child(2) > path")).
+    click();
+    
+    //odjava
+\end{lstlisting}
+
+	\begin{listing}[H]
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
-			\noindent \textbf{Rezultat:} 
+			\noindent \textbf{Rezultat: Očekivani rezultat je ostvaren. Upravljanje kontejnerima bilo je uspješno. } 
+			
+			\begin{figure}[H]
+            					\includegraphics[scale=0.5]{dokumentacija/slike/selenium/containermanagement.png}
+            					\centering
+            					\caption{Rezultat za ispitni slučaj 11, prvi dio}
+            					\label{fig:test 11 p1}
+            \end{figure}
+            
+            \begin{figure}[H]
+            					\includegraphics[scale=0.5]{dokumentacija/slike/selenium/containermanagement2.png}
+            					\centering
+            					\caption{Rezultat za ispitni slučaj 11, drugi dio}
+            					\label{fig:test 11 p2}
+            \end{figure}
+			
 			\refstepcounter{testcase}
 			\eject 
 		
@@ -494,7 +609,8 @@ TODO
 			
 			
 			 % \textit{Dovršenu aplikaciju potrebno je pokrenuti na javno dostupnom poslužitelju. Studentima se preporuča korištenje neke od sljedećih besplatnih usluga: \href{https://aws.amazon.com/}{Amazon AWS}, \href{https://azure.microsoft.com/en-us/}{Microsoft Azure} ili \href{https://www.heroku.com/}{Heroku}. Mobilne aplikacije trebaju biti objavljene na F-Droid, Google Play ili Amazon App trgovini.}
-			 
+			
+		
 		   	\noindent \underbar{\textbf{Backend:}}
 		   	\begin{packed_enum}
 				
@@ -505,7 +621,13 @@ TODO
                 			\item \textbf{PostgreSQL}(\url{https://www.postgresql.org/download/})
     		      \end{packed_item}
 					\item \textbf{Postavljanje baze podataka}(Stvaranje korisnika te baze podataka)
-					
+					    \begin{verbatim}
+					    create user testuser;
+					    alter user testuser with encrypted password 'password';
+					    create database testdb;
+					    grant all privileges on database testdb to testuser;
+			            \end{verbatim}
+			            
     					\begin{figure}[H]
     					\includegraphics[scale=1]{slike/backend/psqlsetup.png}
     					\centering
@@ -516,19 +638,24 @@ TODO
 		            \item \textbf{Konfiguracija \textit{pom.xml} i \textit{application.properties} datoteka}
 		                \begin{packed_item}
                 			\item {U pom.xml potrebno je dodati:} 
-                			    \begin{figure}[H]
-            					\includegraphics[scale=0.7]{dokumentacija/slike/backend/pompostgres.png}
-            					\centering
-            					\caption{Konfiguracija pom.xml datoteke}
-            					\label{fig:pom.xml-setup}
-            		            \end{figure}
+                			\begin{verbatim}
+					    <dependency>
+					        <groupId>org.postresql</groupId>
+					        <artifactId>postresql</artifactId>
+					   </dependency>
+			            \end{verbatim}
+                			    
                 			\item {U application.properties potrebno je dodati:}
-                			    \begin{figure}[H]
-            					\includegraphics[scale=0.8]{dokumentacija/slike/backend/propertiesdb.png}
-            					\centering
-            					\caption{Konfiguracija application.properties datoteke}
-            					\label{fig:app.prop-setup}
-            		            \end{figure}
+\begin{lstlisting}[Java]
+spring.datasource.url = jdbc:postresql://localhost:5432/testdb
+spring.datasource.username = testuser
+spring.datasource.password = password
+\end{lstlisting}
+
+
+
+
+                			
     		            \end{packed_item}
     		            
     		      \item \textbf{Pozicioniranje u radni direktorij backend-a putem cmd terminala}
@@ -577,15 +704,12 @@ TODO
 					\item \textbf{Konfiguracija package.json datoteke}
 					\begin{packed_item}
                 			\item \textbf{U package.json datoteku potrebno je dodati: }
+                			\begin{verbatim}"proxy": "http://localhost:8080"
+                			\end{verbatim}
                 		
     		      \end{packed_item}
 					
-    					\begin{figure}[H]
-    					\includegraphics[scale=1]{dokumentacija/slike/backend/proxy.png}
-    					\centering
-    					\caption{proxy}
-    					\label{fig:proxy}
-    		            \end{figure}
+    					
     		            
     		  \item \textbf{Pozicioniranje u radni direktorij frontenda-a putem cmd terminala}
     		            \begin{figure}[H]
