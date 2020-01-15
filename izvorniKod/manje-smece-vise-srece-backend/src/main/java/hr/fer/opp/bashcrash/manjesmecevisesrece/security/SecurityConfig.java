@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/h2-console/*").permitAll()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
-                .antMatchers(HttpMethod.GET, "/zones/*", "/waste-containers/*", "/cities/*", "/companies/*", "/countries/*", "/sensors/*", "/users/*").permitAll()
+                .antMatchers(HttpMethod.GET, "/zones/*", "/waste-containers/*", "/cities/*", "/companies/*", "/countries/*", "/sensors/*", "/users/*", "/reviews/for-waste-container/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").loginProcessingUrl("/login").successForwardUrl("/login/success").failureForwardUrl("/login/failure").permitAll()
