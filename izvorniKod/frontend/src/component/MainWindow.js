@@ -18,9 +18,8 @@ class MainWindow extends Component {
   }
 
   render() {
-    console.log('vanjski:',this.state.containers)
     return (
-        <GarbageMap containers={this.state.containers}/>
+        <GarbageMap containers={this.state.containers} containerColor="black"/>
     )
   }
 }

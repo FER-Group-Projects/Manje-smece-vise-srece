@@ -44,9 +44,6 @@ function App() {
                         <Route path="/sluzbenici">
                             <Workers />
                         </Route>
-                        <Route path="/zone/dodaj">
-                            <ZonesAdd />
-                        </Route>
                         <Route path="/zone">
                             <Zones />
                         </Route>
@@ -61,12 +58,6 @@ function App() {
                         </Route>
                         <Route path="/kontejneri">
                             <Containers />
-                        </Route>
-                        <Route path="/moje-rute">
-                            <MyRoutes />
-                        </Route>
-                        <Route path="/moje-zone">
-                            <MyZones />
                         </Route>
                         <Route path="/moji-kontejneri">
                             <FavoriteContainers />

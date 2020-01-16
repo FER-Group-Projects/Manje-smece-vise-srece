@@ -52,7 +52,7 @@ const Cards = (props) => {
                             style={{height:'50px', width:'50px'}}/>
                 </div>
             }
-            {
+            {/* {
                 props.zones &&
                 <div style={{
                     display:'flex', flexDirection:'column',
@@ -64,7 +64,7 @@ const Cards = (props) => {
                     <MdAddCircleOutline onClick={()=> history.push('zone/dodaj')}
                         style={{height:'50px', width:'50px'}}/>
                 </div>
-            }
+            } */}
             {
                 props.workers &&
                 <div style={{

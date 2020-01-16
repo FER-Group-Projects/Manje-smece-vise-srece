@@ -26,7 +26,7 @@ const ContainerSearch = () => {
         axios.get('/waste-containers/all')
         .then((e) => {
           console.log(e)
-          setContainers(e.data.map((container) => ({ID: container.id,lat: container.latitude, lng: container.longitude})))
+          setContainers(e.data.map((container) => ({ID: container.id,lat: container.latitude, lng: container.longitude, address: container.address})))
         })
         setLoading(false)
     },[])

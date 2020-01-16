@@ -1,32 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import GoogleMapReact from 'google-map-react';
 import { useHistory } from 'react-router-dom'
-import { FaDumpster } from 'react-icons/fa'
+import { FaDumpster, FaRegStar } from 'react-icons/fa'
 import { observer } from 'mobx-react';
 
 
-const Kontejner = (props) => 
+const Kontejner = (props) => {
+return(
 <div
     lat={props.lat}
     lng={props.lng}
     >
-    <FaDumpster/>
-    {props.$hover && 
-      <div style={{display:'flex', flexDirection: 'column',
-        justifyContent:'center', alignItems:'center',
-        backgroundColor: 'white', border:'1px solid grey',
-        borderRadius:'15px', width:'100px'}}>
-        <span>
-          Broj kontejner: {props.ID}
-        </span>
-        <span>
-          Adresa: {props.address}
-        </span>
-      </div>
-    }
+    <FaDumpster color={props.color}/>
+    <div>
+      {props.$hover && 
+        <div style={{display:'flex', flexDirection: 'column',
+          justifyContent:'center', alignItems:'center',
+          backgroundColor: 'white', border:'1px solid grey',
+          borderRadius:'15px', width:'100px'}}>
+          <span>
+            Broj kontejner: {props.ID}
+          </span>
+          <span>
+            Adresa: {props.address}
+          </span>
+        </div>
+      }
+    </div>
   </div>
-
-
+)
+}
 const GarbageMap = observer((props) => {
   const history = useHistory()
   const [containers, setContainers] = useState()
@@ -41,7 +44,7 @@ const GarbageMap = observer((props) => {
       lng: 15.974027299999989
     },
     zoom: 15,
-    fillColor: 'red',
+    fillColor: 'black',
   };
 
   const _onClick = ({x, y, lat, lng, event}) => {
@@ -89,6 +92,7 @@ const GarbageMap = observer((props) => {
                       lat={container.lat}
                       lng={container.lng}
                       address={container.address}
+                      color={props.containerColor}
                   />)
           }
       </GoogleMapReact>

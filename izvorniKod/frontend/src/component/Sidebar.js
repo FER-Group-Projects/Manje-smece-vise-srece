@@ -42,12 +42,6 @@ const Sidebar = observer(() => {
     const goToFavoriteKontejner = () => {
         history.push('/moji-kontejneri')
     }
-    const goToMojeZone = () => {
-        history.push('/moje-zone')
-    }
-    const goToMojeRute = () => {
-        history.push('/moje-rute')
-    }
     const goToKontejneri = () => {
         history.push('/kontejneri')
     }
@@ -69,12 +63,6 @@ const Sidebar = observer(() => {
             <SearchKontejnerButton changePage={goToSearchKontejner}/>
             {AuthStore.getLoggedIn()!=='' &&
                 <FavoriteKontejnerButton changePage={goToFavoriteKontejner}/>
-            }
-            {AuthStore.isEmployee() &&
-                <MojeZoneButton changePage={goToMojeZone}/>
-            }
-            {AuthStore.isEmployee() &&
-                <MojeRuteButton changePage={goToMojeRute}/>
             }
             {AuthStore.isDirectorOrAdmin() &&
                 <KontejneriButton changePage={goToKontejneri}/>
