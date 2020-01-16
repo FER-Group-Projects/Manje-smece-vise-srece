@@ -136,7 +136,7 @@ const ContainerEdit = () => {
                                 <div style={{backgroundColor:'darkgrey'}}>
                                     <label style={{margin:'0.5rem'}}>Ocjena</label>
                                 </div>
-                                <Field name='ocjena'  type="text" placeholer={container.ocjena}
+                                <Field name='ocjena' disabled type="text" placeholer={container.ocjena}
                                     style={{width:'100%'}}
                                 />
                             </div>
