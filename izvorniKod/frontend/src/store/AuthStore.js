@@ -54,9 +54,11 @@ class store {
         this.token.token=''
     }
 
-    setLoggedIn(username) {
+    setLoggedIn(username, roles) {
         localStorage.setItem('username', username)
+        localStorage.setItem('roles', roles)
         this.loggedIn.loggedIn=username
+        this.roles.roles=roles
     }
     getLoggedIn(){
         return this.loggedIn.loggedIn
