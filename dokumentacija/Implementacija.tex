@@ -20,10 +20,14 @@
 		
 	
 		\section{Ispitivanje programskog rješenja}
-			
 %			\textbf{\textit{dio 2. revizije}}\\
 %			
 %			 \textit{U ovom poglavlju je potrebno opisati provedbu ispitivanja implementiranih funkcionalnosti na razini komponenti i na razini cijelog sustava s prikazom odabranih ispitnih slučajeva. Studenti trebaju ispitati temeljnu funkcionalnost i rubne uvjete.}
+			Sustav se ispituje jediničnim testovima \engl{unit tests} i integracijskim testovima \engl{integration tests}. 
+			Jediničnim testovima se testiraju komponente backenda, dok se integracijskim testovima testira frontend i obrasci uporabe.
+			
+			U sljedeća dva potpoglavlja razloženi su ispitni slučajevi za ispitivanje komponenti i cjelokupnog sustava.
+			Cilj takvog ispitivanje je ranije otkrivanje i jednostavnije ispravljanje neispravnih i nepoželjnih ponašanja aplikacije te kao provjera zadovoljava li aplikacija obrasce uporabe.
 	
 			\clearpage
 			\subsection{Ispitivanje komponenti}
@@ -31,8 +35,8 @@
 			\newcounter{testcase}
 			\refstepcounter{testcase}
 			
-			Ispitivanje komponenti \engl{unit testing} se kontinuirano prati koristeći GitLab CI/CD\footnote{\url{https://docs.gitlab.com/ee/ci/}}. 
-			U nastavku su prikazani ispitni slučajevi komponenti koji se prate, njihovi očekivani i trenutni rezultati, a na kraju potpoglavlja je prikazan rezultatizvođenja ispita u razvojnom okruženju.  \\
+			\indent Ispitivanje komponenti se kontinuirano prati koristeći GitLab CI/CD\footnote{\url{https://docs.gitlab.com/ee/ci/}}. 
+			U nastavku su prikazani ispitni slučajevi komponenti koji se prate, njihovi očekivani i trenutni rezultati, a na kraju potpoglavlja je prikazan rezultat izvođenja ispita u razvojnom okruženju JUnit\footnote{\url{https://junit.org/}}.  \\
 			
 			\noindent \textbf{Ispitni slučaj \thetestcase: Registracija korisnika sprema korisnika u bazu podataka} \\
 			\noindent \textbf{Ulaz:}
@@ -289,6 +293,11 @@ void testFetchingInformationAboutNonExistantWasteContainer() {
 
 			\subsection{Ispitivanje sustava}
 			
+		 \indent Ispitivanje sustava prati se ručno upotrebom Selenium IDE alata integriranog u Google Chrome preglednik\footnote{\url{https://selenium.dev/selenium-ide/}}. 
+		 Ispitni slučajevi ispituju obrasce uporabe UC4, UC5, UC6, UC7, UC8, UC11, UC12 i UC13.
+	  	 U nastavku su prikazani koraci ispitivanja, njihovi očekivani i trenutni rezultati te programski isječci ispitnih slučajeva.
+		 \newline
+			
 %			 \textit{Potrebno je provesti i opisati ispitivanje sustava koristeći radni okvir Selenium\footnote{\url{https://www.seleniumhq.org/}}. Razraditi \textbf{minimalno 4 ispitna slučaja} u kojima će se ispitati redovni slučajevi, rubni uvjeti te poziv funkcionalnosti koja nije implementirana/izaziva pogrešku kako bi se vidjelo na koji način sustav reagira kada nešto nije u potpunosti ostvareno. Ispitni slučaj se treba sastojati od ulaza (npr. korisničko ime i lozinka), očekivanog izlaza ili rezultata, koraka ispitivanja i dobivenog izlaza ili rezultata.\\ }
 %			 
 %			 \textit{Izradu ispitnih slučajeva pomoću radnog okvira Selenium moguće je provesti pomoću jednog od sljedeća dva alata:}
@@ -321,16 +330,48 @@ void testFetchingInformationAboutNonExistantWasteContainer() {
 			\end{packed_enum}
 			\noindent \textbf{Izvorni kod:}
 
-			\begin{listing}[H]
 \begin{minted}{java}
-TODO
+    //otvaranje pocetne stranice
+driver.get("http://localhost:3000/");
+driver.manage().window().setSize(new Dimension(1051, 806));
+
+    //prijava
+driver.findElement(By.cssSelector(".dropdown-toggle")).click();
+driver.findElement(By.linkText("Prijava")).click();
+    
+    //upis korisnickog imena
+driver.findElement(By.id("username")).click();
+driver.findElement(By.id("username")).sendKeys("korisnik");
+    
+    //upis lozinke
+driver.findElement(By.id("password")).click();
+driver.findElement(By.id("password")).sendKeys("korisnik_lozinka");
+    
+    //potvrda
+driver.findElement(By.cssSelector("div:nth-child(5) > .btn")).click();
+
+    //odjava
+driver.findElement(By.cssSelector(".dropdown-toggle")).click();
+driver.findElement(By.linkText("Odjava")).click();
+
+    //zatvaranje
+driver.close();
+ 
 \end{minted}
+			\begin{listing}[H]
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
-			\noindent \textbf{Rezultat:} TODO
+			\noindent \textbf{Rezultat:} Očekivani rezultat je ostvaren. Korisnik je uspješno prijavljen i odjavljen.
+				\begin{figure}[H]
+            					\includegraphics[width=\linewidth]{slike/selenium/LoginLogout.png}
+            					\centering
+            					\caption{Rezultat za ispitni slučaj 8}
+            					\label{fig:test 8}
+            		            \end{figure}
 			\refstepcounter{testcase}
 			\clearpage
+		
 
 			\noindent \textbf{Ispitni slučaj \thetestcase: Pregled osobnih podataka} \\
 			\noindent \textbf{Ulaz:}
@@ -353,13 +394,31 @@ TODO
 			\noindent \textbf{Izvorni kod:}
 
 			\begin{listing}[H]
+
 \begin{minted}{java}
-TODO
+    //prijava
+    
+    //klik na padajuci izbornik
+driver.findElement(By.cssSelector(".dropdown-toggle")).click();
+    
+    //klik na korisnika
+driver.findElement(By.linkText("korisnik")).click();
+
+    //pregled osobnih podataka
+
+    //odjava
 \end{minted}
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
-			\noindent \textbf{Rezultat:} TODO
+			\noindent \textbf{Rezultat:} Očekivani rezultat je ostvaren. Pregled osobnih podataka bio je uspješan. 
+			
+				\begin{figure}[H]
+            					\includegraphics[width=\linewidth]{slike/selenium/PersonalDataTest.png}
+            					\centering
+            					\caption{Rezultat za ispitni slučaj 9}
+            					\label{fig:test 9}
+            		            \end{figure}
 			\refstepcounter{testcase}
 			\clearpage
 
@@ -387,16 +446,69 @@ TODO
 				\item[6.\ \ ] Korisnik je odjavljen iz sustava.
 			\end{packed_enum}
 			\noindent \textbf{Izvorni kod:}
-
-			\begin{listing}[H]
 \begin{minted}{java}
-TODO
+
+    //prijava
+
+    //klik na gumb za trazenje kontejnera
+driver.findElement(By.cssSelector(".btn:nth-child(1) path")).click();
+    {
+      WebElement element = driver.
+        findElement(By.cssSelector(".btn:nth-child(1)"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element).perform();
+    }
+    
+    //upisivanje id-a kontejnera
+driver.findElement(By.cssSelector(".form-control")).click();
+driver.findElement(By.cssSelector(".form-control")).sendKeys("93");
+    
+    //potvrda
+driver.findElement(By.id("addon-wrapping")).click();
+
+    //klik na kontejner
+driver.
+    findElement(By.cssSelector("div:nth-child(2) > div > svg > path")).
+        click();
+    
+    //upis ocjene
+driver.findElement(By.name("userOcjena")).click();
+driver.findElement(By.name("userOcjena")).sendKeys("3");
+
+    //upis komentara
+driver.findElement(By.name("userKomentar")).click();
+driver.findElement(By.name("userKomentar")).
+    sendKeys("Kontejner je u prosjecnom stanju.");
+    
+    //potvrda
+driver.findElement(By.cssSelector("div:nth-child(6) svg")).click();
+
+    //odjava
 \end{minted}
+			\begin{listing}[H]
+
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
-			\noindent \textbf{Rezultat:} TODO
+			\noindent \textbf{Rezultat:} Očekivani rezultat je ostvaren. Ocjena i komentar su pohranjeni.
+			
+			\begin{figure}[H]
+            					\includegraphics[width=\linewidth]{slike/selenium/containercomment.png}
+            					\centering
+            					\caption{Rezultat za ispitni slučaj 10, prvi dio}
+            					\label{fig:test 10 p1}
+            		            \end{figure}
+			
+			
+			\begin{figure}[H]
+            					\includegraphics[width=\linewidth]{slike/selenium/containercomment2.png}
+            					\centering
+            					\caption{Rezultat za ispitni slučaj 10, drugi dio}
+            					\label{fig:test 10 p2}
+            		            \end{figure}
 			\refstepcounter{testcase}
+			
+			
 
 			\clearpage
 
@@ -426,14 +538,56 @@ TODO
 			\end{packed_enum}
 			\noindent \textbf{Izvorni kod:}
 
-			\begin{listing}[H]
+		
 \begin{minted}{java}
-TODO
+    //prijava
+ 
+    //klik na gumb za trazenje kontejnera
+driver.findElement(By.cssSelector(".btn:nth-child(1) > svg")).click();
+
+    //klik na gumb kontejnera    
+driver.
+    findElement(By.cssSelector(".btn:nth-child(5) > svg")).click();
+    
+    //klik na gumb za dodavanje kontejnera
+driver.
+    findElement(By.cssSelector("div:nth-child(1) > svg > path")).click();
+    
+    //unos podataka za kontejner i potvrda unosa
+driver.findElement(By.name("adresa")).click();
+driver.findElement(By.name("adresa")).sendKeys("Savska Ulica 1");
+driver.
+    findElement(By.cssSelector("div:nth-child(2) > button path")).
+        click();
+        
+    //brisanje kontejnera 
+driver.
+findElement(By.cssSelector("div:nth-child(5) svg:nth-child(2) > path")).
+    click();
+    
+    //odjava
 \end{minted}
+
+	\begin{listing}[H]
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
-			\noindent \textbf{Rezultat:} TODO
+			\noindent \textbf{Rezultat:} Očekivani rezultat je ostvaren. Upravljanje kontejnerima bilo je uspješno.  
+			
+			\begin{figure}[H]
+            					\includegraphics[width=\linewidth]{slike/selenium/containermanagement.png}
+            					\centering
+            					\caption{Rezultat za ispitni slučaj 11, prvi dio}
+            					\label{fig:test 11 p1}
+            \end{figure}
+            
+            \begin{figure}[H]
+            					\includegraphics[width=\linewidth]{slike/selenium/containermanagement2.png}
+            					\centering
+            					\caption{Rezultat za ispitni slučaj 11, drugi dio}
+            					\label{fig:test 11 p2}
+            \end{figure}
+			
 			\refstepcounter{testcase}
 			\eject 
 		
@@ -464,6 +618,7 @@ TODO
 			
 			 % \textit{Dovršenu aplikaciju potrebno je pokrenuti na javno dostupnom poslužitelju. Studentima se preporuča korištenje neke od sljedećih besplatnih usluga: \href{https://aws.amazon.com/}{Amazon AWS}, \href{https://azure.microsoft.com/en-us/}{Microsoft Azure} ili \href{https://www.heroku.com/}{Heroku}. Mobilne aplikacije trebaju biti objavljene na F-Droid, Google Play ili Amazon App trgovini.}
 			 
+		
 		   	\noindent \underbar{\textbf{Backend:}}
 		   	\begin{packed_enum}
 				
@@ -473,10 +628,16 @@ TODO
                 			\item \textbf{Apache Maven} (\url{https://maven.apache.org/install.html})
                 			\item \textbf{PostgreSQL} (\url{https://www.postgresql.org/download/})
     		      \end{packed_item}
-					\item \textbf{Postavljanje baze podataka}(Stvaranje korisnika te baze podataka)
-					
+					\item \textbf{Postavljanje baze podataka} (Stvaranje korisnika te baze podataka)
+					    \begin{verbatim}
+					    create user testuser;
+					    alter user testuser with encrypted password 'password';
+					    create database testdb;
+					    grant all privileges on database testdb to testuser;
+			            \end{verbatim}
+			            
     					\begin{figure}[H]
-    					\includegraphics[scale=1]{slike/backend/psqlsetup.png}
+    					\includegraphics[width=\linewidth]{slike/backend/psqlsetup.png}
     					\centering
     					\caption{Postavljanje baze podataka}
     					\label{fig:PSQL-setup}
@@ -485,24 +646,29 @@ TODO
 		            \item \textbf{Konfiguracija \textit{pom.xml} i \textit{application.properties} datoteka}
 		                \begin{packed_item}
                 			\item {U pom.xml potrebno je dodati:} 
-                			    \begin{figure}[H]
-            					\includegraphics[scale=0.7]{slike/backend/pompostgres.png}
-            					\centering
-            					\caption{Konfiguracija pom.xml datoteke}
-            					\label{fig:pom.xml-setup}
-            		            \end{figure}
+                			\begin{verbatim}
+					    <dependency>
+					        <groupId>org.postresql</groupId>
+					        <artifactId>postresql</artifactId>
+					   </dependency>
+			            \end{verbatim}
+                			    
                 			\item {U application.properties potrebno je dodati:}
-                			    \begin{figure}[H]
-            					\includegraphics[scale=0.8]{slike/backend/propertiesdb.png}
-            					\centering
-            					\caption{Konfiguracija application.properties datoteke}
-            					\label{fig:app.prop-setup}
-            		            \end{figure}
+\begin{minted}{properties}
+spring.datasource.url = jdbc:postresql://localhost:5432/testdb
+spring.datasource.username = testuser
+spring.datasource.password = password
+\end{minted}
+
+
+
+
+                			
     		            \end{packed_item}
     		            
     		      \item \textbf{Pozicioniranje u radni direktorij backend-a putem cmd terminala}
     		            \begin{figure}[H]
-    					\includegraphics[scale=1]{slike/backend/backendposition.png}
+    					\includegraphics[width=\linewidth]{slike/backend/backendposition.png}
     					\centering
     					\caption{Pozicioniranje u radni direktorij}
     					\label{fig:pozicioniranje}
@@ -510,7 +676,7 @@ TODO
     		        
     		      \item \textbf{mvn install}
     		            \begin{figure}[H]
-    					\includegraphics[scale=0.9]{slike/backend/backendinstall.png}
+    					\includegraphics[width=\linewidth]{slike/backend/backendinstall.png}
     					\centering
     					\caption{mvn install}
     					\label{fig:mvn-install}
@@ -518,7 +684,7 @@ TODO
     		            
     		      \item \textbf{mvn package}
     		            \begin{figure}[H]
-    					\includegraphics[scale=0.9]{slike/backend/backendpackage.png}
+    					\includegraphics[width=\linewidth]{slike/backend/backendpackage.png}
     					\centering
     					\caption{mvn package}
     					\label{fig:mvn package}
@@ -526,7 +692,7 @@ TODO
     		            
     		      \item \textbf{java -jar target/manje-smece-vise-srece-backend-0.0.1-SNAPSHOT.jar}
     		            \begin{figure}[H]
-    					\includegraphics[scale=0.9]{slike/backend/backendjar.png}
+    					\includegraphics[width=\linewidth]{slike/backend/backendjar.png}
     					\centering
     					\caption{Pokretanje}
     					\label{fig:pokretanje}
@@ -540,25 +706,22 @@ TODO
 				
 					\item \textbf{Instalacija programske podrške}(Node.js)
     					\begin{packed_item}
-                			\item \textbf{Node.js}(\url{https://nodejs.org/en/download/})
+                			\item \textbf{Node.js} (\url{https://nodejs.org/en/download/})
                 		
     		      \end{packed_item}
 					\item \textbf{Konfiguracija package.json datoteke}
 					\begin{packed_item}
                 			\item \textbf{U package.json datoteku potrebno je dodati: }
+                			\begin{verbatim}"proxy": "http://localhost:8080"
+                			\end{verbatim}
                 		
     		      \end{packed_item}
 					
-    					\begin{figure}[H]
-    					\includegraphics[scale=1]{slike/backend/proxy.png}
-    					\centering
-    					\caption{proxy}
-    					\label{fig:proxy}
-    		            \end{figure}
+    					
     		            
     		  \item \textbf{Pozicioniranje u radni direktorij frontenda-a putem cmd terminala}
     		            \begin{figure}[H]
-    					\includegraphics[scale=1]{slike/frontend/prva.jpg}
+    					\includegraphics[width=\linewidth]{slike/frontend/prva.jpg}
     					\centering
     					\caption{Pozicioniranje u radni direktorij}
     					\label{fig:pozicioniranje2}
@@ -566,7 +729,7 @@ TODO
     		            
     		 \item \textbf{npm install}
     		            \begin{figure}[H]
-    					\includegraphics[scale=0.9]{slike/frontend/treca.png}
+    					\includegraphics[width=\linewidth]{slike/frontend/treca.png}
     					\centering
     					\caption{npm install}
     					\label{fig:npm install}
@@ -574,14 +737,14 @@ TODO
     		            
             \item \textbf{npm start}
     		            \begin{figure}[H]
-    					\includegraphics[scale=0.8]{slike/frontend/treca.jpg}
+    					\includegraphics[width=\linewidth]{slike/frontend/treca.jpg}
     					\centering
     					\caption{npm start}
     					\label{fig:npm start}
     		            \end{figure}
     		            
     		            \begin{figure}[H]
-    					\includegraphics[scale=0.40]{slike/frontend/cetvrta.png}
+    					\includegraphics[width=\linewidth]{slike/frontend/cetvrta.png}
     					\centering
     					\caption{Konačno}
     					\label{fig:konacno}
