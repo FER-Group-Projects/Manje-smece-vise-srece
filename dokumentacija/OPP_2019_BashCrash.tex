@@ -18,6 +18,8 @@
 \usepackage[classicReIm]{kpfonts}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
+\usepackage{minted}
+\usepackage{listings}
 
 \usepackage{float}
 \usepackage{setspace}
@@ -37,7 +39,7 @@
 	top=1in,
 }
 
-\hypersetup{ colorlinks, citecolor=black, filecolor=black, linkcolor=black,	urlcolor=black }
+\hypersetup{ colorlinks, citecolor=black, filecolor=black, linkcolor=black,	urlcolor=blue }
 
 
 \newenvironment{packed_enum}{
@@ -58,7 +60,7 @@
 \definecolor{LightBlue}{rgb}{0.9,0.9,1}
 \definecolor{LightGreen}{rgb}{0.9,1,0.9}
 
-\newcommand{\engl}[1]{(\textit{engl. #1})}
+\newcommand{\engl}[1]{(engl. \textit{#1})}
 
 %podesavanje headera i footera
 
@@ -71,6 +73,16 @@
 \rfoot{\today}
 \renewcommand{\headrulewidth}{0.2pt}
 \renewcommand{\footrulewidth}{0.2pt}
+
+\setminted[java]{
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+}
+\renewcommand{\listingscaption}{Programski isječak}
+
 
 
 \begin{document}

@@ -12,12 +12,15 @@ compile_documentation:
   stage: build
   image: tianon/latex
   script:
+    - apt-get update -qy
+    - apt-get install -y python-pygments
     - cd dokumentacija
-    - latexmk -pdf OPP_2019_BashCrash.tex
+    - latexmk -pdf -shell-escape OPP_2019_BashCrash.tex
     - cp OPP_2019_BashCrash.pdf ..
   artifacts:
     paths:
       - OPP_2019_BashCrash.pdf
+    expire_in: 1 week 
 
 build_backend:
   stage: build
