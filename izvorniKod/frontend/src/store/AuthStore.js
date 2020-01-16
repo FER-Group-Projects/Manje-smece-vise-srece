@@ -47,7 +47,7 @@ class store {
 
     logout(){
         localStorage.setItem('username','')
-        localStorage.setItem('roles',[''])
+        localStorage.setItem('roles','')
         localStorage.setItem('token','')
         this.loggedIn.loggedIn=''
         this.roles.roles=['']

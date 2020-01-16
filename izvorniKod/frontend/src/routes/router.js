@@ -25,7 +25,7 @@ function App() {
     useEffect(() => {
         console.log('called')
         const username = localStorage.getItem('username') || ''
-        let roles = localStorage.getItem('roles') || ['']
+        let roles = localStorage.getItem('roles') || ''
         AuthStore.setLoggedIn(username,roles)
         setLoading(false)
     },[])

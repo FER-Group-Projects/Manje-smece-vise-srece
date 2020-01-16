@@ -32,8 +32,8 @@ const Header = () => {
 
     useEffect(() => {
         const username = localStorage.getItem('username') || ''
-        const roles = localStorage.getItem('roles') || ['']
-        AuthStore.setLoggedIn(username)
+        const roles = localStorage.getItem('roles') || ''
+        AuthStore.setLoggedIn(username, roles)
     },[])
 
     let items

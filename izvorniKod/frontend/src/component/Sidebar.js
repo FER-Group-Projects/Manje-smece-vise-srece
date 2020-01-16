@@ -60,7 +60,7 @@ const Sidebar = observer(() => {
 
     useEffect(() => {
         const username = localStorage.getItem('username') || ''
-        const roles = localStorage.getItem('roles') || ['']
+        const roles = localStorage.getItem('roles') || ''
         AuthStore.setLoggedIn(username, roles)
     })
     
