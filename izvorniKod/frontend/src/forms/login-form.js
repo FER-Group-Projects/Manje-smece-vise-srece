@@ -29,24 +29,30 @@ const Loginform = observer(() => {
                 }
             }).then((e) => {
                 if(e.status==200){
-                    localStorage.setItem('username', 'username')
-                    console.log("hellos")
+                    console.log(e)
+                    localStorage.setItem('username',username)
                     AuthStore.setLoggedIn(username)
+                    AuthStore.setToken(e.headers.authorization)
                     history.push('/')
+
+                    return axios({
+                        method: 'GET',
+                        url: '/users/current-user'
+                    })
+                }
+            }).then((e) => {
+                if(e.status==200){
+                    AuthStore.setRoles(e.data.authorities)
                 }
             })
         } catch (error) {
-            console.log("hello")
+            console.log({error})
         }
     }
 
     useEffect(() => {
-        if(AuthStore.getLoggedIn()===''){
-            const username = localStorage.getItem('username') || ''
-            AuthStore.setLoggedIn(username)
-        }
         if(AuthStore.getLoggedIn()!=='') history.push('/')
-    })
+    },[])
 
     return (
         <div id="container">

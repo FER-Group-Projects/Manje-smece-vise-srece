@@ -21,7 +21,6 @@ const Myform = observer(() => {
                 }
             }).then((e) => {
                 if(e.status==200){
-                    console.log("hellos")
                     history.push('/login')
                 }
             })
@@ -31,12 +30,8 @@ const Myform = observer(() => {
     }
 
     useEffect(() => {
-        if(AuthStore.getLoggedIn()===''){
-            const username = localStorage.getItem('username') || ''
-            AuthStore.setLoggedIn(username)
-        }
         if(AuthStore.getLoggedIn()!=='') history.push('/')
-    })
+    },[])
 
     return(
         <Formik
