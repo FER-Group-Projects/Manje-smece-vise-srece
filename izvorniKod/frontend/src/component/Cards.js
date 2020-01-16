@@ -18,7 +18,7 @@ const Cards = (props) => {
             }
         })
     }
-    function _deleteWorker(username){
+    function _deleteWorker(userID){
         let dirID = null
         let comID= null
         axios.get('/users/current-user').then((res) => {
@@ -28,10 +28,8 @@ const Cards = (props) => {
                     if(company.director.username==dirID) {
                         comID=company.id
                     }})
-                axios.get(`/users/${username}`).then((user) => {
-                    axios.post(`/companies/${comID}/remove-employee/${user.ID}`).then(()=>{
-                        console.log('user removed')
-                    })
+                axios.put(`/companies/${comID}/remove-employee/${userID}`).then(()=>{
+                    history.push('/sluzbenici/dodaj')
                 })
             })
         })
@@ -158,7 +156,7 @@ const Cards = (props) => {
                                 {/* <MdEdit style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
                             onClick={() => history.push(`/kontejner/edit/${value.ID}`)}/> */}
                                 <MdDelete style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
-                                          onClick={() => _deleteWorker(value.ID)}/>
+                                          onClick={() => _deleteWorker(value.id)}/>
                             </div>
                         )
                     }

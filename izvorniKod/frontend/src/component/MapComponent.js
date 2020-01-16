@@ -34,6 +34,7 @@ const GarbageMap = observer((props) => {
   const [center, setCenter] = useState()
   const [isAdding, setisAdding] = useState(false)
   const [isRedirect, setisRedirect] = useState(false)
+
   const defaultProps = {
     center: {
       lat: 45.8074124,
@@ -42,10 +43,11 @@ const GarbageMap = observer((props) => {
     zoom: 15,
     fillColor: 'red',
   };
+
   const _onClick = ({x, y, lat, lng, event}) => {
     console.log(x, y, lat, lng, event)
-    setContainers([...containers,{lat:lat, lng:lng}])
-    console.log(containers)
+    // setContainers([...containers,{lat:lat, lng:lng}])
+    // console.log(containers)
   }
   const _onChildClick = (key, childProps) => {
     console.log(key)
@@ -56,9 +58,11 @@ const GarbageMap = observer((props) => {
     history.push(`/kontejner/${key}`)
   }
   let fillColor=defaultProps.fillColor
+  let mpdimensions = {}
 
   useEffect(()=>{
     setContainers(props.containers)
+    // setZones(props.zones)
     if(props.center) setCenter(props.center)
     if(props.isAdding) setisAdding(true)
     if(props.isRedirect) setisRedirect(true)
@@ -68,14 +72,14 @@ const GarbageMap = observer((props) => {
   if(loading) return <div>...loading</div>
   return (
     <div style={{ zIndex: 1, height: '100vh', width: '100%' }}>
-      {console.log('containers:',containers)}
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyCW0ohmI3x_qH-tT8Rr8JNl_uenFg0TsvY' }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
-        onClick={(isAdding) ? _onClick : null}
+        onClick={(true) ? _onClick : null}
         center={center}
         onChildClick={(isRedirect) ? _onChildClickRedirect : _onChildClick}
+        onChange={({ center, zoom, marginBounds }) => {console.log(marginBounds)}}
       >
           { Array.isArray(containers) &&
               containers.map((container) => 
@@ -87,18 +91,6 @@ const GarbageMap = observer((props) => {
                       address={container.address}
                   />)
           }
-          {/* <svg height="210" width="500" 
-                  lat= {59.95}
-                  lng= {30.33}
-                  >
-              <polygon
-                points="200,10 250,190 160,210" 
-                style={{
-                  fillOpacity:'0', 
-                  stroke: fillColor, 
-                  strokeWidth:'1'
-                  }} />
-          </svg> */}
       </GoogleMapReact>
     </div>
   )

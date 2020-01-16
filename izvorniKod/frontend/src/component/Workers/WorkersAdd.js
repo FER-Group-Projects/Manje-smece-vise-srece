@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { MdAdd } from 'react-icons/md'
+import { useHistory } from 'react-router-dom'
+import {AuthStore} from '../../store/AuthStore'
 
 const WorkersAdd = () => {
     const [workers,setWorkers] = useState([])
     const [companyID, setCompanyID] = useState()
     const [direktor, setDirektor] = useState()
     const [loading,setLoading] = useState(true)
+    const history = useHistory()
 
-    function _addWorker(username){
-        console.log(username)
-        axios.get(`/users/${username}`).then((user)=>{
-            axios.post(`${companyID}/add-employee/${user.ID}`)
+    const axiosInstance = axios.create()
+
+    async function _addWorker(id){
+        axios.put(`/companies/${companyID}/add-employee/${id}`).then(() => {
+            history.push('/sluzbenici')
         })
     }
 
@@ -69,7 +73,7 @@ const WorkersAdd = () => {
                             {/* <MdEdit style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}} 
                                 onClick={() => history.push(`/kontejner/edit/${value.ID}`)}/> */}
                             <MdAdd style={{backgroundColor:'white', borderRadius:'8px', height:'24px', width:'24px', borderRadius:'8px'}}
-                                onClick={() => _addWorker(value.username)}/>
+                                onClick={() => _addWorker(value.id)}/>
                         </div>
                     </div>
                     )}
