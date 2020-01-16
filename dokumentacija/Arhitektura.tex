@@ -278,22 +278,31 @@
 			
 		\section{Dijagram razreda}
 		
-			Na slici \ref{fig:dijagramRazreda} su prikazani trenutno implementirani razredi vezani za autentikaciju korisnika, odnosno registraciju, prijavu i odjavu korisnika.
+			Na slikama \ref{fig:controllers}, \ref{fig:DTO} i \ref{fig:models} su prikazani razredi \textit{backenda}.
+			Razredi su podijeljeni u dijagrame prema njihovim odgovornostima: controller razredi odgovaraju na upite \textit{frontenda} te koriste razrede models za komunikaciju s bazom podataka i razrede DTO \engl{Data Transfer Object} za komunikaciju s \textit{frontendom} u JSON formatu.
+			Radi preglednosti na dijagramima razreda su prikazane samo veze između razreda prikazanih na istom dijagramu.
+		
 			
 			\begin{figure}[H]
-				\includegraphics[width=1.0\linewidth]{slike/dijagramRazreda.png}
+				\includegraphics[width=1.0\linewidth]{slike/Controllers.png}
 				\centering
-				\caption{Dijagram razreda - trenutno implementirani razredi}
-				\label{fig:dijagramRazreda}
+				\caption{Dijagram razreda - dio Controllers}
+				\label{fig:controllers}
 			\end{figure}
 		
-			Model razredi preslikavaju strukturu baze podataka u aplikaciji. Preko njih se vrši komunikacija s bazom podataka.
 			
 			\begin{figure}[H]
-				\includegraphics[width=1.0\linewidth]{slike/dijagramRazredaModels.png}
+				\includegraphics[width=1.0\linewidth]{slike/DTO.png}
+				\centering
+				\caption{Dijagram razreda - dio DTO}
+				\label{fig:DTO}
+			\end{figure}
+
+			\begin{figure}[H]
+				\includegraphics[width=1.0\linewidth]{slike/Models.png}
 				\centering
 				\caption{Dijagram razreda - dio Models}
-				\label{fig:dijagramRazredaModels}
+				\label{fig:models}
 			\end{figure}
 		
 %			\textbf{\textit{dio 2. revizije}}\\			
@@ -333,14 +342,14 @@
 			\eject
 		\section{Dijagram komponenti}
 		
-			Dijagram komponenti prikazan na sljedećoj stranici opisuje organizaciju i međuovisnost komponenti, interne strukture i odnose prema okolini. Sustavu se pristupa preko dva različita sučelja: sučelja za dohvat HTML, CSS i JS datoteka, preko kojega se poslužuju datoteke koje pripadaju \textit{frontend} dijelu aplikacije te sučelja za dohvat JSON podataka, preko kojega se pristupa REST API komponenti. Router je komponenta koja na upit s url određuje koja će se datoteka poslužiti na sučelje. \textit{Frontend} dio sastoji se od niza JavaScript datoteka koje su raspoređene u logičke cjeline nazvane po tipovima aktora koji im pristupaju. Sve JavaScript datoteke ovise o React biblioteci iz koje dohvaćaju gotove komponente (gumbe, forme, i sl.). REST API poslužuje podatke koji pripadaju \textit{backend} dijelu aplikacije. EntityFrameworkCore zadužen je za dohvaćanje tablica iz baze podataka koristeći SQL upite. Ti podaci se dalje šalju MVC arhitekturi u obliku DTO (\textit{Data Transfer Object}) React-view komponenta komunicira preko dostupnih sučelja s Više Sreće Manje Smeće aplikacijom te osvježava prikaz i dohvaća nove podatke ili datoteke ovisno o korisnikovim akcijama.
+			Dijagram komponenti prikazan na sljedećoj stranici opisuje organizaciju i međuovisnost komponenti, interne strukture i odnose prema okolini. Sustavu se pristupa preko dva različita sučelja: sučelja za dohvat HTML, CSS i JS datoteka, preko kojega se poslužuju datoteke koje pripadaju \textit{frontend} dijelu aplikacije te sučelja za dohvat JSON podataka, preko kojega se pristupa REST API komponenti. Router je komponenta koja na upit s url određuje koja će se datoteka poslužiti na sučelje. \textit{Frontend} dio sastoji se od niza JavaScript datoteka koje su raspoređene u logičke cjeline nazvane po tipovima aktora koji im pristupaju. Sve JavaScript datoteke ovise o React biblioteci iz koje dohvaćaju gotove komponente (gumbe, forme, i sl.). REST API poslužuje podatke koji pripadaju \textit{backend} dijelu aplikacije. Hibernate je zadužen za dohvaćanje tablica iz baze podataka koristeći SQL upite. Ti podaci se dalje šalju MVC arhitekturi u obliku DTO (\textit{Data Transfer Object}) React-view komponenta komunicira preko dostupnih sučelja s Više Sreće Manje Smeće aplikacijom te osvježava prikaz i dohvaća nove podatke ili datoteke ovisno o korisnikovim akcijama.
 
 
 			\eject
 
 			\begin{figure}
 				\centering
-				\includegraphics[width=1.0\linewidth]{slike/ComponentDiagram.jpg}
+				\includegraphics[width=1.0\linewidth]{slike/ComponentDiagram}
 				\caption{Dijagram komponenti}
 				\label{fig:ComponentDiagram}
 			\end{figure}

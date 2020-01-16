@@ -7,13 +7,13 @@
 %			
 %			 \textit{Detaljno navesti sve tehnologije i alate koji su primijenjeni pri izradi dokumentacije i aplikacije. Ukratko ih opisati, te navesti njihovo značenje i mjesto primjene. Za svaki navedeni alat i tehnologiju je potrebno \textbf{navesti internet poveznicu} gdje se mogu preuzeti ili više saznati o njima}.
 			
-			Komunikacija u time realizirana je korištenjem aplikacije \underline{Slack}\footnote{\url{https://slack.com/}}. Za izradu UML dijagrama korišten je alat \underline{Astah Professional}\footnote{\url{http://astah.net/editions/professional}}, a za sustav za upravljanje izvornim kodom korišten je \underline{Git}\footnote{\url{https://git-scm.com/}}. Udaljeni repozitorij projekta je dostupan na web platformi \underline{Gitlab}\footnote{\url{https://gitlab.com/}}.
+			Komunikacija u timu realizirana je korištenjem aplikacije \underline{Slack}\footnote{\url{https://slack.com/}}. Slack omogućuje laku podjelu u podskupine, brz način komuniciranja kao i mogućnost povezivanja s web platformom na kojoj se nalazi projekt kako bi se u svakom trenutku mogle vidjeti nove promjene na projektu. Za izradu UML dijagrama korišten je alat \underline{Astah Professional}\footnote{\url{http://astah.net/editions/professional}} koji služi za vizualizaciju ideja i stvaranje dijagrama koji pomažu pri lakšem razvoju i razumijevanju projektnog zadatka. Za sustav za upravljanje izvornim kodom korišten je \underline{Git}\footnote{\url{https://git-scm.com/}} koji je najpopularniji sustav za upravljanje izvornim kodom na svijetu. Udaljeni repozitorij projekta dostupan je na web platformi \underline{Gitlab}\footnote{\url{https://gitlab.com/}} koja služi za upravljanje git repozitorijima na centraliziranom serveru. Gitlab omogućuje potpunu kontrolu nad repozitorijima i članovi tima mogu odlučiti hoće li ti repozitoriji biti javno dostupni ili ne.
 			
 			Kao razvojno okruženje korišten je \underline{Eclipse}\footnote{\url{https://www.eclipse.org/}} - integrirano razvojno okruženje (IDE) tvrtke Eclipse Foundation. Služi prventstveno za razvoj aplikacija u Javi, ali aplikacije se mogu raditi i u drugim programskim jezicima pomoću plug-ina.
 			
-			Aplikacija je napisana koristeći radni okvir \underline{Spring Boot}\footnote{\url{https://spring.io/projects/spring-boot}} i jezik \underline{Java}\footnote{\url{https://www.java.com/en/}} za izradu backenda te \underline{React}\footnote{\url{https://reactjs.org/}} i jezik \underline{JavaScript}\footnote{\url{https://www.javascript.com/}} za izradu frontenda. React je biblioteka u JavaScriptu za izgradnju korisničkih sučelja. React posjeduje tvrtka Facebook koja ga također i održava. React se najčešće koristi kao osnova u razvoju web ili mobilnih aplikacija. Radni okvir Spring Boot ima mikro servis arhitekturu koja omogućuje da svaki servis ima svoj vlastiti proces što je vrlo korisno pri razvoju aplikacija.
+			Aplikacija je napisana koristeći radni okvir \underline{Spring Boot}\footnote{\url{https://spring.io/projects/spring-boot}} i jezik \underline{Java}\footnote{\url{https://www.java.com/en/}} za izradu backenda. Radni okvir Spring Boot ima mikro servis arhitekturu koja omogućuje da svaki servis ima svoj vlastiti proces što je vrlo korisno pri razvoju aplikacija. Java je brz, siguran i pouzdan objektno orijentirani programski jezik kojeg je dizajnirala tvrtka Sun Mircosystems. Za izradu frontenda korišteni su \underline{React}\footnote{\url{https://reactjs.org/}} i jezik \underline{JavaScript}\footnote{\url{https://www.javascript.com/}}. React je biblioteka u JavaScriptu za izgradnju korisničkih sučelja. Posjeduje ga tvrtka Facebook koja ga također i održava, a najčešće koristi kao osnova u razvoju web ili mobilnih aplikacija. Javascript je skriptno programski jezik koji se izvršava u web pregledniku na strani korisnika.
 			
-			Baza podataka nalazi se na poslužitelju u oblaku \underline{Heroku}\footnote{\url{https://www.heroku.com/}}
+			Baza podataka nalazi se na poslužitelju u oblaku \underline{Heroku}\footnote{\url{https://www.heroku.com/}}. Heroku je cloud platforma koja omogućuje tvrtkama da izgrađuju, dostavljaju, nadziru i skaliraju aplikacije.
 			
 			\eject 
 
@@ -323,7 +323,8 @@ void testFetchingInformationAboutNonExistantWasteContainer() {
 				\item[6.b] Korisnik je odjavljen.
 			\end{packed_enum}
 			\noindent \textbf{Izvorni kod:}
-\begin{lstlisting}
+
+\begin{minted}{java}
     //otvaranje pocetne stranice
 driver.get("http://localhost:3000/");
 driver.manage().window().setSize(new Dimension(1051, 806));
@@ -350,14 +351,14 @@ driver.findElement(By.linkText("Odjava")).click();
     //zatvaranje
 driver.close();
  
-\end{lstlisting}
+\end{minted}
 			\begin{listing}[H]
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
 			\noindent \textbf{Rezultat:} Očekivani rezultat je ostvaren. Korisnik je uspješno prijavljen i odjavljen.
 				\begin{figure}[H]
-            					\includegraphics[scale=0.5]{dokumentacija/slike/selenium/LoginLogout.png}
+            					\includegraphics[width=\linewidth]{slike/selenium/LoginLogout.png}
             					\centering
             					\caption{Rezultat za ispitni slučaj 8}
             					\label{fig:test 8}
@@ -387,7 +388,8 @@ driver.close();
 			\noindent \textbf{Izvorni kod:}
 
 			\begin{listing}[H]
-\begin{lstlisting}
+
+\begin{minted}{java}
     //prijava
     
     //klik na padajuci izbornik
@@ -399,14 +401,14 @@ driver.findElement(By.linkText("korisnik")).click();
     //pregled osobnih podataka
 
     //odjava
-\end{lstlisting}
+\end{minted}
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
 			\noindent \textbf{Rezultat:} Očekivani rezultat je ostvaren. Pregled osobnih podataka bio je uspješan. 
 			
 				\begin{figure}[H]
-            					\includegraphics[scale=0.5]{dokumentacija/slike/selenium/PersonalDataTest.png}
+            					\includegraphics[width=\linewidth]{slike/selenium/PersonalDataTest.png}
             					\centering
             					\caption{Rezultat za ispitni slučaj 9}
             					\label{fig:test 9}
@@ -438,7 +440,7 @@ driver.findElement(By.linkText("korisnik")).click();
 				\item[6.\ \ ] Korisnik je odjavljen iz sustava.
 			\end{packed_enum}
 			\noindent \textbf{Izvorni kod:}
-\begin{lstlisting}
+\begin{minted}{java}
 
     //prijava
 
@@ -476,7 +478,7 @@ driver.findElement(By.name("userKomentar")).
 driver.findElement(By.cssSelector("div:nth-child(6) svg")).click();
 
     //odjava
-\end{lstlisting}
+\end{minted}
 			\begin{listing}[H]
 
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
@@ -485,7 +487,7 @@ driver.findElement(By.cssSelector("div:nth-child(6) svg")).click();
 			\noindent \textbf{Rezultat:} Očekivani rezultat je ostvaren. Ocjena i komentar su pohranjeni.
 			
 			\begin{figure}[H]
-            					\includegraphics[scale=0.5]{dokumentacija/slike/selenium/containercomment.png}
+            					\includegraphics[width=\linewidth]{slike/selenium/containercomment.png}
             					\centering
             					\caption{Rezultat za ispitni slučaj 10, prvi dio}
             					\label{fig:test 10 p1}
@@ -493,13 +495,12 @@ driver.findElement(By.cssSelector("div:nth-child(6) svg")).click();
 			
 			
 			\begin{figure}[H]
-            					\includegraphics[scale=0.5]{dokumentacija/slike/selenium/containercomment2.png}
+            					\includegraphics[width=\linewidth]{slike/selenium/containercomment2.png}
             					\centering
             					\caption{Rezultat za ispitni slučaj 10, drugi dio}
             					\label{fig:test 10 p2}
             		            \end{figure}
 			\refstepcounter{testcase}
-			
 			
 			
 
@@ -532,7 +533,7 @@ driver.findElement(By.cssSelector("div:nth-child(6) svg")).click();
 			\noindent \textbf{Izvorni kod:}
 
 		
-\begin{lstlisting}
+\begin{minted}{java}
     //prijava
  
     //klik na gumb za trazenje kontejnera
@@ -559,23 +560,23 @@ findElement(By.cssSelector("div:nth-child(5) svg:nth-child(2) > path")).
     click();
     
     //odjava
-\end{lstlisting}
+\end{minted}
 
 	\begin{listing}[H]
 				\caption{Izvorni kod za ispitni slučaj \thetestcase}
 				\label{test3}
 			\end{listing}
-			\noindent \textbf{Rezultat: Očekivani rezultat je ostvaren. Upravljanje kontejnerima bilo je uspješno. } 
+			\noindent \textbf{Rezultat:} Očekivani rezultat je ostvaren. Upravljanje kontejnerima bilo je uspješno.  
 			
 			\begin{figure}[H]
-            					\includegraphics[scale=0.5]{dokumentacija/slike/selenium/containermanagement.png}
+            					\includegraphics[width=\linewidth]{slike/selenium/containermanagement.png}
             					\centering
             					\caption{Rezultat za ispitni slučaj 11, prvi dio}
             					\label{fig:test 11 p1}
             \end{figure}
             
             \begin{figure}[H]
-            					\includegraphics[scale=0.5]{dokumentacija/slike/selenium/containermanagement2.png}
+            					\includegraphics[width=\linewidth]{slike/selenium/containermanagement2.png}
             					\centering
             					\caption{Rezultat za ispitni slučaj 11, drugi dio}
             					\label{fig:test 11 p2}
@@ -601,6 +602,7 @@ findElement(By.cssSelector("div:nth-child(5) svg:nth-child(2) > path")).
 		    \end{figure}
 			\eject
 		
+
 		\section{Upute za puštanje u pogon}
 		
 			% \textbf{\textit{dio 2. revizije}}\\
@@ -609,6 +611,141 @@ findElement(By.cssSelector("div:nth-child(5) svg:nth-child(2) > path")).
 			
 			
 			 % \textit{Dovršenu aplikaciju potrebno je pokrenuti na javno dostupnom poslužitelju. Studentima se preporuča korištenje neke od sljedećih besplatnih usluga: \href{https://aws.amazon.com/}{Amazon AWS}, \href{https://azure.microsoft.com/en-us/}{Microsoft Azure} ili \href{https://www.heroku.com/}{Heroku}. Mobilne aplikacije trebaju biti objavljene na F-Droid, Google Play ili Amazon App trgovini.}
+			 
+		   	\noindent \underbar{\textbf{Backend:}}
+		   	\begin{packed_enum}
+				
+					\item \textbf{Instalacija programske podrške}(Java, Apache Maven, PostgreSQL)
+    					\begin{packed_item}
+                			\item \textbf{Java} (\url{https://www.oracle.com/technetwork/java/javase/downloads/index.html})
+                			\item \textbf{Apache Maven} (\url{https://maven.apache.org/install.html})
+                			\item \textbf{PostgreSQL} (\url{https://www.postgresql.org/download/})
+    		      \end{packed_item}
+					\item \textbf{Postavljanje baze podataka}(Stvaranje korisnika te baze podataka)
+					
+    					\begin{figure}[H]
+    					\includegraphics[scale=1]{slike/backend/psqlsetup.png}
+    					\centering
+    					\caption{Postavljanje baze podataka}
+    					\label{fig:PSQL-setup}
+    		            \end{figure}
+    		            
+		            \item \textbf{Konfiguracija \textit{pom.xml} i \textit{application.properties} datoteka}
+		                \begin{packed_item}
+                			\item {U pom.xml potrebno je dodati:} 
+                			    \begin{figure}[H]
+            					\includegraphics[scale=0.7]{slike/backend/pompostgres.png}
+            					\centering
+            					\caption{Konfiguracija pom.xml datoteke}
+            					\label{fig:pom.xml-setup}
+            		            \end{figure}
+                			\item {U application.properties potrebno je dodati:}
+                			    \begin{figure}[H]
+            					\includegraphics[scale=0.8]{slike/backend/propertiesdb.png}
+            					\centering
+            					\caption{Konfiguracija application.properties datoteke}
+            					\label{fig:app.prop-setup}
+            		            \end{figure}
+    		            \end{packed_item}
+    		            
+    		      \item \textbf{Pozicioniranje u radni direktorij backend-a putem cmd terminala}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=1]{slike/backend/backendposition.png}
+    					\centering
+    					\caption{Pozicioniranje u radni direktorij}
+    					\label{fig:pozicioniranje}
+    		            \end{figure}
+    		        
+    		      \item \textbf{mvn install}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.9]{slike/backend/backendinstall.png}
+    					\centering
+    					\caption{mvn install}
+    					\label{fig:mvn-install}
+    		            \end{figure}
+    		            
+    		      \item \textbf{mvn package}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.9]{slike/backend/backendpackage.png}
+    					\centering
+    					\caption{mvn package}
+    					\label{fig:mvn package}
+    		            \end{figure}
+    		            
+    		      \item \textbf{java -jar target/manje-smece-vise-srece-backend-0.0.1-SNAPSHOT.jar}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.9]{slike/backend/backendjar.png}
+    					\centering
+    					\caption{Pokretanje}
+    					\label{fig:pokretanje}
+    		            \end{figure}
+  	   
+				
+				\end{packed_enum}
+		   	
+		   	\noindent \underbar{\textbf{Frontend:}}
+		   		\begin{packed_enum}
+				
+					\item \textbf{Instalacija programske podrške}(Node.js)
+    					\begin{packed_item}
+                			\item \textbf{Node.js}(\url{https://nodejs.org/en/download/})
+                		
+    		      \end{packed_item}
+					\item \textbf{Konfiguracija package.json datoteke}
+					\begin{packed_item}
+                			\item \textbf{U package.json datoteku potrebno je dodati: }
+                		
+    		      \end{packed_item}
+					
+    					\begin{figure}[H]
+    					\includegraphics[scale=1]{slike/backend/proxy.png}
+    					\centering
+    					\caption{proxy}
+    					\label{fig:proxy}
+    		            \end{figure}
+    		            
+    		  \item \textbf{Pozicioniranje u radni direktorij frontenda-a putem cmd terminala}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=1]{slike/frontend/prva.jpg}
+    					\centering
+    					\caption{Pozicioniranje u radni direktorij}
+    					\label{fig:pozicioniranje2}
+    		            \end{figure}
+    		            
+    		 \item \textbf{npm install}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.9]{slike/frontend/treca.png}
+    					\centering
+    					\caption{npm install}
+    					\label{fig:npm install}
+    		            \end{figure}
+    		            
+            \item \textbf{npm start}
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.8]{slike/frontend/treca.jpg}
+    					\centering
+    					\caption{npm start}
+    					\label{fig:npm start}
+    		            \end{figure}
+    		            
+    		            \begin{figure}[H]
+    					\includegraphics[scale=0.40]{slike/frontend/cetvrta.png}
+    					\centering
+    					\caption{Konačno}
+    					\label{fig:konacno}
+    		            \end{figure}
+    		            
+    		            
+    		            
+    		            
+		           
+  	   
+				
+				\end{packed_enum}
+           
+            
+            
+			
 			
 		
 		   	\noindent \underbar{\textbf{Backend:}}
@@ -646,7 +783,7 @@ findElement(By.cssSelector("div:nth-child(5) svg:nth-child(2) > path")).
 			            \end{verbatim}
                 			    
                 			\item {U application.properties potrebno je dodati:}
-\begin{lstlisting}[Java]
+\begin{lstlisting}
 spring.datasource.url = jdbc:postresql://localhost:5432/testdb
 spring.datasource.username = testuser
 spring.datasource.password = password
@@ -660,7 +797,7 @@ spring.datasource.password = password
     		            
     		      \item \textbf{Pozicioniranje u radni direktorij backend-a putem cmd terminala}
     		            \begin{figure}[H]
-    					\includegraphics[scale=1]{dokumentacija/slike/backend/backendposition.png}
+    					\includegraphics[scale=1]{slike/backend/backendposition.png}
     					\centering
     					\caption{Pozicioniranje u radni direktorij}
     					\label{fig:pozicioniranje}
@@ -668,7 +805,7 @@ spring.datasource.password = password
     		        
     		      \item \textbf{mvn install}
     		            \begin{figure}[H]
-    					\includegraphics[scale=0.9]{dokumentacija/slike/backend/backendinstall.png}
+    					\includegraphics[scale=0.9]{slike/backend/backendinstall.png}
     					\centering
     					\caption{mvn install}
     					\label{fig:mvn-install}
@@ -676,7 +813,7 @@ spring.datasource.password = password
     		            
     		      \item \textbf{mvn package}
     		            \begin{figure}[H]
-    					\includegraphics[scale=0.9]{dokumentacija/slike/backend/backendpackage.png}
+    					\includegraphics[scale=0.9]{slike/backend/backendpackage.png}
     					\centering
     					\caption{mvn package}
     					\label{fig:mvn package}
@@ -684,7 +821,7 @@ spring.datasource.password = password
     		            
     		      \item \textbf{java -jar target/manje-smece-vise-srece-backend-0.0.1-SNAPSHOT.jar}
     		            \begin{figure}[H]
-    					\includegraphics[scale=0.9]{dokumentacija/slike/backend/backendjar.png}
+    					\includegraphics[scale=0.9]{slike/backend/backendjar.png}
     					\centering
     					\caption{Pokretanje}
     					\label{fig:pokretanje}
@@ -713,7 +850,7 @@ spring.datasource.password = password
     		            
     		  \item \textbf{Pozicioniranje u radni direktorij frontenda-a putem cmd terminala}
     		            \begin{figure}[H]
-    					\includegraphics[scale=1]{dokumentacija/slike/frontend/prva.jpg}
+    					\includegraphics[scale=1]{slike/frontend/prva.jpg}
     					\centering
     					\caption{Pozicioniranje u radni direktorij}
     					\label{fig:pozicioniranje2}
@@ -721,7 +858,7 @@ spring.datasource.password = password
     		            
     		 \item \textbf{npm install}
     		            \begin{figure}[H]
-    					\includegraphics[scale=0.9]{dokumentacija/slike/frontend/treca.png}
+    					\includegraphics[scale=0.9]{slike/frontend/treca.png}
     					\centering
     					\caption{npm install}
     					\label{fig:npm install}
@@ -729,14 +866,14 @@ spring.datasource.password = password
     		            
             \item \textbf{npm start}
     		            \begin{figure}[H]
-    					\includegraphics[scale=0.8]{dokumentacija/slike/frontend/treca.jpg}
+    					\includegraphics[scale=0.8]{slike/frontend/treca.jpg}
     					\centering
     					\caption{npm start}
     					\label{fig:npm start}
     		            \end{figure}
     		            
     		            \begin{figure}[H]
-    					\includegraphics[scale=0.40]{dokumentacija/slike/frontend/cetvrta.png}
+    					\includegraphics[scale=0.40]{slike/frontend/cetvrta.png}
     					\centering
     					\caption{Konačno}
     					\label{fig:konacno}
